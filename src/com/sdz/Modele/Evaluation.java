@@ -7,9 +7,13 @@ package com.sdz.Modele;
  */
 public class Evaluation {
 	
-	private String note;
-	private String commentaire;
+	private String note; //note textuelle attribuée par le professeur
+	private String commentaire; //commentaire textuel du professeur sur le travail de l'élève
 	
+	/**
+	 * Constructeur de la classe Evaluation
+	 * prend en paramètres deux attributs de type String
+	 */
 	public Evaluation(String no, String co){
 		setNote(no);
 		setCommentaire(co);
