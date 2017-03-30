@@ -15,16 +15,21 @@ public abstract class Utilisateur {
 	private String motDePasse;	// Le mot de passe de connexion
 	private String nom;			// Le nom de l'utilisateur
 	private String prenom;		// Le prenom de l'utilisateur
+	private static int nombreUtilisateur = 0;
 	
 	/**
 	 * Constructeur de la classe utilisateur
+	 * Si l'identifiant est vide le remplace par "utilisateur" suivi du numero d'utilisateur
+	 * Si le mot de passe est vide le remplace par defaut par "***"
+	 * Si le nom est vide remplace le nom par defaut a "nom"
+	 * Si le prenom est vide remplace le prenom a "prenom"
 	 * @param identifiant	L'identifiant de l'utilisateur
 	 * @param motDePasse	Le mot de passe de l'utilisateur
 	 * @param nom			Le nom de l'utilisateur
 	 * @param prenom		Le prenom de l'utilisateur
 	 */
 	public Utilisateur (String identifiant, String motDePasse, String nom, String prenom){
-		
+		nombreUtilisateur += 1;
 	}
 	
 	/**
