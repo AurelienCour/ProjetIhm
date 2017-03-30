@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 /**
  * Represente une tentative effectuée par un élève pour résoudre un exercice
- * @author Groupe8
+ * @author AurelienCourtillat
  * @version 30/03/2017
  */
 public class Tentative {
 	
-	private ArrayList<Action> listeAction;
+	private ArrayList<Action> listeAction; // La liste des actions de la tentative
 
 	/**
 	 * Le constructeur de la classe tentative

@@ -5,15 +5,15 @@ import java.util.ArrayList;
 /**
  * Cette classe correspond aux exercice complété par les Eleves.
  * Ces exercices pourront par la suite être évulaué par le professeur
- * @author Groupe8
+ * @author AurelienCourtillat
  * @version 30/03/2017
  */
 public class ExerciceRealise {
 
-	private ArrayList<Tentative> listeTentatives;
-	private boolean correct;
-	private Evaluation resultat;
-	private Exercice exerciceFait;
+	private ArrayList<Tentative> listeTentatives; // la liste des tentatives effectué sur l'exercice
+	private boolean correct;	// Booleen permettant de savoir si l'exercice à été corrigé
+	private Evaluation resultat;	// L'évaluation de l'exercice si elle a été corrigé
+	private Exercice exerciceFait;	// L'exercice qui a été effectué
 	
 	/**
 	 * Constructeur de la classe ExerciceRealise

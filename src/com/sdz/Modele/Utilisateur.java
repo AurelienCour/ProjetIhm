@@ -2,7 +2,7 @@ package com.sdz.Modele;
 
 /**
  * La classe utilisateur représente les personnes pouvant se connecter à l’application
- * @author Groupe8
+ * @author AurelienCourtillat
  * @version 30/03/2017
  */
 /**
@@ -11,10 +11,10 @@ package com.sdz.Modele;
  */
 public abstract class Utilisateur {
 	
-	private String identifiant;
-	private String motDePasse;
-	private String nom;
-	private String prenom;
+	private String identifiant; // L'identifiant de connexion
+	private String motDePasse;	// Le mot de passe de connexion
+	private String nom;			// Le nom de l'utilisateur
+	private String prenom;		// Le prenom de l'utilisateur
 	
 	/**
 	 * Constructeur de la classe utilisateur

@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 /**
  * Classe héritant de la classe Utilisateur. Cette classe représente un enseignant, qui gère des classes
- * @author Groupe8
+ * @author AurelienCourtillat
  * @version 30/03/2017
  */
 public class Professeur extends Utilisateur{
 
-	private ArrayList<Classes> classes;
+	private ArrayList<Classes> classes; // Les classe que le professeur gère
 
 	/**
 	 * Constructeur de la classe Professeur
