@@ -10,29 +10,62 @@ import java.util.ArrayList;
  */
 public class Eleve extends Utilisateur{
 	
-	private ArrayList<ExerciceRealise> exerciceRealise; //Liste des exercices réalisés par un élève. 
-	private Classes classe; // La classe de l’élève
-	private URL photo; // Photo de l’élève. 
+	/**
+	 * Liste des exercices réalisés par un élève.
+	 */
+	private ArrayList<ExerciceRealise> exerciceRealise;
 	
+	/**
+	 * La classe de l’élève
+	 */
+	private Classes classe;
 	
-	private Eleve(int id, String mdp, String nom, String prenom, Classes classe, URL photo){ //Constructor de la classe Eleve
+	/**
+	 * Photo de l’élève. 
+	 */
+	private URL photo;
+	
+	/**
+	 * Constructor de la classe Eleve.
+	 * @param mdp mot de passe de l'élève
+	 * @param nom Nom de l'élève
+	 * @param prenom Prenom de l'élève
+	 * @param classe Classe de l'élève.Type classe
+	 * @param photo URL de la photo de l'élève
+	 */
+	private Eleve(String mdp, String nom, String prenom, Classes classe, URL photo){
 		
 	}
 	
-	public void addExerciceRealise(Exercice ex){ // Cette méthode permet d’ajouter un exercice réalisé dans la liste des exercices réalisés.
+	/**
+	 * Cette méthode permet d’ajouter un exercice réalisé dans la liste des exercices réalisés.
+	 * @param ex exercice réalisé par l'élève
+	 */
+	public void addExerciceRealise(Exercice ex){ 
 	
 	}
 	
-	public void getPhoto(){// Permet de retourner la photo de l’élève. Affichage ou URL ?
+	/**
+	 * Permet de retourner la photo de l’élève. Affichage ou URL ?
+	 */
+	public void getPhoto(){
 		
 	}
 	
-	
-	public void setPhoto(URL photo){// Permet de modifier la photo de l’élève.
+	/**
+	 * Permet de modifier la photo de l’élève.
+	 * @param photo URL de la photo de l'élève
+	 */
+	public void setPhoto(URL photo){
 		
 	}
+	
+	/**
+	 * Permet de récupérer la classe de l’élève.
+	 * @return TODO a voir ce qu'on return
+	 */
 	public Classes getClasse(){
-		return null;// Permet de récupérer la classe de l’élève.
+		return null;
 		
 	}
 
