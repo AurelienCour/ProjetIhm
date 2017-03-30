@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  * Classe héritant d’Utilisateur. Cette classe permet de représenter un élève
- * @author Groupe8
+ * @author MathiasAntunes
  * @version 30/03/2017
  */
 public class Eleve extends Utilisateur{
