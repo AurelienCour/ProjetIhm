@@ -3,7 +3,7 @@ package com.sdz.Vue;
 import javax.swing.JPanel;
 
 /**
- * 
+ * Panel permettant de visualiser les tentatives effectuer sur un exercice
  * @author Groupe8
  * @version 30/03/2017
  */
