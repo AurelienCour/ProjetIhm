@@ -1,5 +1,5 @@
 package com.sdz.Modele;
 
-public class Eleve {
+public class Eleve extends Utilisateur{
 
 }

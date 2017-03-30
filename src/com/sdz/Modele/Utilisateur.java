@@ -1,5 +1,5 @@
 package com.sdz.Modele;
 
-public class Utilisateur {
+public abstract class Utilisateur {
 
 }
