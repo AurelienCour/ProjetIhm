@@ -1,5 +1,7 @@
 package com.sdz.Vue;
 
-public class PanelListeAction {
+import javax.swing.JPanel;
+
+public class PanelListeAction extends JPanel{
 
 }

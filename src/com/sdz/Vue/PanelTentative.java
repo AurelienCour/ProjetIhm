@@ -1,5 +1,7 @@
 package com.sdz.Vue;
 
-public class PanelTentative {
+import javax.swing.JPanel;
+
+public class PanelTentative extends JPanel{
 
 }

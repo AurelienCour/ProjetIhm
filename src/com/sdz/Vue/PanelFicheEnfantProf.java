@@ -1,5 +1,7 @@
 package com.sdz.Vue;
 
-public class PanelFicheEnfantProf {
+import javax.swing.JPanel;
+
+public class PanelFicheEnfantProf extends JPanel{
 
 }

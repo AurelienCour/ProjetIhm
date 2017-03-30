@@ -1,5 +1,7 @@
 package com.sdz.Vue;
 
-public class PanelCommandeReplay {
+import javax.swing.JPanel;
+
+public class PanelCommandeReplay extends JPanel{
 
 }

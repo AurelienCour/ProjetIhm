@@ -1,5 +1,7 @@
 package com.sdz.Vue;
 
-public class PanelFicheExerciceEleve {
+import javax.swing.JPanel;
+
+public class PanelFicheExerciceEleve extends JPanel{
 
 }

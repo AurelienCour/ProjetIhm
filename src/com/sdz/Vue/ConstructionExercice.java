@@ -1,5 +1,7 @@
 package com.sdz.Vue;
 
-public class ConstructionExercice {
+import javax.swing.JFrame;
+
+public class ConstructionExercice extends JFrame{
 
 }

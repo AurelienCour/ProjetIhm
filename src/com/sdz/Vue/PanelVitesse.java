@@ -1,5 +1,7 @@
 package com.sdz.Vue;
 
-public class PanelVitesse {
+import javax.swing.JPanel;
+
+public class PanelVitesse extends JPanel{
 
 }

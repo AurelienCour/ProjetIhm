@@ -1,5 +1,7 @@
 package com.sdz.Vue;
 
-public class PanelResolution {
+import javax.swing.JPanel;
+
+public class PanelResolution extends JPanel{
 
 }

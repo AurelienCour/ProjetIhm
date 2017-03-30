@@ -1,5 +1,7 @@
 package com.sdz.Vue;
 
-public class Acceuil {
+import javax.swing.JFrame;
+
+public class Acceuil extends JFrame{
 
 }

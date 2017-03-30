@@ -1,5 +1,7 @@
 package com.sdz.Vue;
 
-public class PanelCouleur {
+import javax.swing.JPanel;
+
+public class PanelCouleur extends JPanel{
 
 }
