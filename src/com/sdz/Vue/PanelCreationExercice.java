@@ -8,6 +8,7 @@ import javax.swing.JPanel;
  * 		- une image modèle
  * 		- Le nom de l'exercice
  * 		- Le type d'exercice
+ * Va modifier un objet de type Exercice a l'aide d'un ControlerExercice
  * @author Groupe8
  * @version 30/03/2017
  */
