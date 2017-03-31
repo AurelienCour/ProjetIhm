@@ -26,16 +26,21 @@ public class Eleve extends Utilisateur{
 	private URL photo;
 	
 	/**
-	 * Constructor de la classe Eleve.
-	 * @param mdp mot de passe de l'élève
-	 * @param nom Nom de l'élève
-	 * @param prenom Prenom de l'élève
-	 * @param classe Classe de l'élève.Type classe
-	 * @param photo URL de la photo de l'élève
+	 * Constructeur de la classe Eleve
+	 * @param identifiant L'identifiant de l'eleve
+	 * @param motDePasse  Le mot de passe de l'élève
+	 * @param nom		  Le nom de l'élève
+	 * @param prenom	  Le prenom de l'élève
+	 * @param classe	  La classe de l'élève
+	 * @param photo		  La photo de l'élève
 	 */
-	private Eleve(String mdp, String nom, String prenom, Classes classe, URL photo){
-		
+	public Eleve(String identifiant, String motDePasse, String nom, String prenom,
+			Classes classe, URL photo) {
+		super(identifiant, motDePasse, nom, prenom);
+		this.classe = classe;
+		this.photo = photo;
 	}
+
 	
 	/**
 	 * Cette méthode permet d’ajouter un exercice réalisé dans la liste des exercices réalisés.
@@ -44,6 +49,7 @@ public class Eleve extends Utilisateur{
 	public void addExerciceRealise(Exercice ex){ 
 	
 	}
+	
 	
 	/**
 	 * Permet de retourner la photo de l’élève. Affichage ou URL ?
