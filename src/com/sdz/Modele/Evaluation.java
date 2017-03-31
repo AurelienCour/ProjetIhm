@@ -13,26 +13,27 @@ public class Evaluation {
 	/**
 	 * Constructeur de la classe Evaluation
 	 * prend en paramètres deux attributs de type String
+	 * @param note	La note mise a l'exercice
+	 * @param commentaire	Le commentaire de l'exercice
 	 */
-	public Evaluation(String no, String co){
-		setNote(no);
-		setCommentaire(co);
+	public Evaluation(String note, String commentaire){
+		
 	}
 	
 	public String getNote(){
-		return(n);
+		return(note);
 	}
 	
-	public void setNote(String n){
-		this.note = n;
+	public void setNote(String note){
+		this.note = note;
 	}
 	
 	public String getCommentaire(){
-		return(c);
+		return(commentaire);
 	}
 	
-	public void setCommentaire(String c){
-		this.commentaire = c;
+	public void setCommentaire(String commentaire){
+		this.commentaire = commentaire;
 	}
 	
 }

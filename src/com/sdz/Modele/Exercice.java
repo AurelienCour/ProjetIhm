@@ -28,9 +28,9 @@ public class Exercice {
 	
 	/**
 	 * Constructor de la classe Exercice
-	 * @param nomExercice
-	 * @param TypeExercice
-	 * @param modele
+	 * @param nomExercice Le nom de l'Exercice
+	 * @param TypeExercice	Le type d'exercice
+	 * @param modele	Le modele de l'exercice
 	 */
 	public Exercice(String nomExercice, String TypeExercice, URL modele){
 		
@@ -53,7 +53,7 @@ public class Exercice {
 	}
 	/**
 	 * Renvoie le type d’exercice
-	 * @return
+	 * @return Le type d'exercice
 	 */
 	public String getType(){
 		return null;
@@ -69,7 +69,7 @@ public class Exercice {
 	}
 	/**
 	 * Renvoie le modèle de l'exercice.
-	 * @return
+	 * @return Permet de récupérer le lien d'acces au modèle
 	 */
 	public URL getModele(){
 		return null;

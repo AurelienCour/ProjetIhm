@@ -15,10 +15,11 @@ public class Action {
 	 * Constructeur de la classe Action
 	 * prend en paramètres un attribut de type TortueG 
 	 * et un attribut de type String
+	 * @param tortue La tortue sur laquel va etre effectué l'action
+	 * @param action	L'action qui a été effectué
 	 */
-	public Action(TortueG to, String ac){
-		setTortue(to);
-		setAction(ac);
+	public Action(TortueG tortue, String action){
+
 	}
 	
 	/**
@@ -30,15 +31,6 @@ public class Action {
 	}
 	
 	/**
-	 * Modifieur de l'attribut tortue
-	 * prend en paramètre un attribut de type TortueG
-	 * modifie la valeur de l'attribut tortue par l'attribut entré
-	 */	
-	public void setTortue(TortueG t){
-		this.tortue = t;
-	}
-	
-	/**
 	 * Accesseur de l'attribut action
 	 * @return renvoie l'attribut action
 	 */
@@ -46,13 +38,5 @@ public class Action {
 		return action;
 	}
 	
-	/**
-	 * Modifieur de l'attribut action
-	 * prend en paramètre un attribut de type String
-	 * modifie la valeur de l'attribut action par l'attribut entré
-	 */	
-	public void setAction(String s){
-		this.action = s;
-	}
 	
 }
