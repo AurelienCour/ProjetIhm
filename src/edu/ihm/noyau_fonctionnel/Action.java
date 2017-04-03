@@ -21,7 +21,8 @@ public class Action {
 	 * @param action : l'action qui a été effectuée
 	 */
 	public Action(TortueG tortue, String action){
-
+		setTortue(tortue);
+		setAction(action);
 	}
 	
 	/**
@@ -33,6 +34,14 @@ public class Action {
 	}
 	
 	/**
+	 * Modifieur de l'attribut tortue
+	 * @return remplace la tortue
+	 */
+	public void setTortue(TortueG tortue){
+		this.tortue = tortue;
+	}
+		
+	/**
 	 * Accesseur de l'attribut action
 	 * @return renvoie l'attribut action
 	 */
@@ -40,5 +49,12 @@ public class Action {
 		return action;
 	}
 	
+	/**
+	 * Modifieur de l'attribut action
+	 * @return remplace l'action
+	 */
+	public void setAction(String action){
+		this.action = action;
+	}	
 	
 }
