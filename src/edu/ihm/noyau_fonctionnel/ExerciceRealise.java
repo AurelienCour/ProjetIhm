@@ -17,8 +17,10 @@ public class ExerciceRealise {
 	
 	/**
 	 * Constructeur de la classe ExerciceRealise
+	 * Si au moins un exercice, sinon erreur.
 	 * @param exerciceFait L'exercice qui a été réalisé
 	 */
+	
 	public ExerciceRealise(Exercice exerciceFait) {
 		this.exerciceFait = exerciceFait;
 	}
@@ -33,7 +35,7 @@ public class ExerciceRealise {
 
 	/**
 	 * permet de savoir si l'exercice à été corrigé
-	 * Callable si un exercice
+	 * Callable si un exercice existe, sinon erreur
 	 * @return true si l'exercice à été corrigé
 	 */
 	public boolean isCorrect() {
@@ -42,6 +44,7 @@ public class ExerciceRealise {
 
 	/**
 	 * Permet de dire si l'exercice à été corrigé ou non
+	 * Si un au moins un exercice, sinon erreur
 	 * @param correct true si l'exercice à été corrigé
 	 */
 	public void setCorrect(boolean correct) {
@@ -77,7 +80,6 @@ public class ExerciceRealise {
 	/**
 	 * Permet de rajouter un tentative a la liste si cette derniere n'est pas présente
 	 * @param e la tentative à ajouter
-	 * 
 	 * @return true si la tentative a été ajouté
 	 */
 	public boolean addTentative(Tentative e) {
