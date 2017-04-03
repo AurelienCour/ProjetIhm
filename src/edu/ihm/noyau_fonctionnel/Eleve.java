@@ -27,12 +27,18 @@ public class Eleve extends Utilisateur{
 	
 	/**
 	 * Constructeur de la classe Eleve
-	 * @param identifiant L'identifiant de l'eleve
+	 * @param identifiant L'identifiant de l'eleve, string
+	 * identifiant ne peut etre null, toto par default
 	 * @param motDePasse  Le mot de passe de l'élève
+	 * mot de passe ne peut etre null, toto par default
 	 * @param nom		  Le nom de l'élève
+	 * Si nom de de l'élève null, toto par default
 	 * @param prenom	  Le prenom de l'élève
+	 * si prénom de l'élève null, toto par défault
 	 * @param classe	  La classe de l'élève
+	 * TODO classe peut etre null ?
 	 * @param photo		  La photo de l'élève
+	 * photo n'est pas obligatoire, donc peut etre null
 	 */
 	public Eleve(String identifiant, String motDePasse, String nom, String prenom,
 			Classes classe, URL photo) {
@@ -44,6 +50,7 @@ public class Eleve extends Utilisateur{
 	
 	/**
 	 * Cette méthode permet d’ajouter un exercice réalisé dans la liste des exercices réalisés.
+	 * Méthode callable uniquement si il y a au moins un exercice et un enfant dans dans le systeme.
 	 * @param ex exercice réalisé par l'élève
 	 */
 	public void addExerciceRealise(Exercice ex){ 
@@ -60,6 +67,7 @@ public class Eleve extends Utilisateur{
 	
 	/**
 	 * Permet de modifier la photo de l’élève.
+	 * Callable uniquement si au moins un enfant dans le systeme.
 	 * @param photo URL de la photo de l'élève
 	 */
 	public void setPhoto(URL photo){
