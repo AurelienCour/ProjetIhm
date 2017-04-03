@@ -19,10 +19,10 @@ public class Classes {
 	 * Constructeur de la classe Classe.
 	 * 
 	 */
-	public Classes(ArrayList<Exercice> listEx, ArrayList<Eleve> listEl, String nomClasse)
+	public Classes(String nomClasse)
 	{
-		this.exercices = listEx;
-		this.eleves = listEl;
+		this.exercices = new ArrayList<Exercice>();
+		this.eleves = new ArrayList<Eleve>();
 		this.nomClasse = nomClasse;
 	}
 	

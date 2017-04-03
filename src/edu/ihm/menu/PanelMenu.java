@@ -42,9 +42,10 @@ public class PanelMenu{
 				
 				DefaultMutableTreeNode exercices = new DefaultMutableTreeNode("Exercices");
 				for(Exercice ex : cl.getExercices()){
-					DefaultMutableTreeNode exo = new DefaultMutableTreeNode(exo);
+					DefaultMutableTreeNode exo = new DefaultMutableTreeNode(ex);
+					exercices.add(exo);
 				}
-				
+				classe.add(exercices);
 				racine.add(classe);
 			}
 			
@@ -56,10 +57,11 @@ public class PanelMenu{
 		else if(user instanceof Eleve){
 			Eleve el = (Eleve) user;
 			DefaultMutableTreeNode racine = new DefaultMutableTreeNode("Exercice");
+			for(Exercice ex : el.getClasse().getExercices()){
+				DefaultMutableTreeNode exo = new DefaultMutableTreeNode(ex);
+				racine.add(exo);
+			}
 		}
-		
-		
-
 	}
 	
 	public JTree getJTree(){

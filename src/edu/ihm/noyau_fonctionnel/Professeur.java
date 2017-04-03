@@ -24,6 +24,7 @@ public class Professeur extends Utilisateur{
 	 */
 	public Professeur(String identifiant, String motDePasse, String nom, String prenom) {
 		super(identifiant, motDePasse, nom, prenom);
+		this.classes = new ArrayList<Classes>();
 	}
 
 	/**

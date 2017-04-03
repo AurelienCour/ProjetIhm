@@ -12,6 +12,7 @@ import javax.swing.tree.TreeCellRenderer;
 
 import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Eleve;
+import edu.ihm.noyau_fonctionnel.Exercice;
 
 public class TreeRenderer implements TreeCellRenderer{
 
@@ -41,7 +42,7 @@ public class TreeRenderer implements TreeCellRenderer{
 		        } else {
 		          renderer.setBackground(backgroundNonSelectionColor);
 		        }
-				name.setText(e.toString());
+				name.setText(e.getNom()+" "+e.getPrenom());
 				returnValue = renderer;
 			}
 			else if(userObject instanceof Classes){
@@ -51,10 +52,19 @@ public class TreeRenderer implements TreeCellRenderer{
 		          renderer.setBackground(backgroundNonSelectionColor);
 		        }
 				Classes e = (Classes) userObject;
-				name.setText(e.);
+				name.setText(e.getNomClasse());
 				returnValue = renderer;
 			}
-			else if()
+			else if(userObject instanceof Exercice){
+				if (selected) {
+		          renderer.setBackground(backgroundSelectionColor);
+		        } else {
+		          renderer.setBackground(backgroundNonSelectionColor);
+		        }
+				Exercice e = (Exercice) userObject;
+				name.setText(e.getNomEx());
+				returnValue = renderer;
+			}
 		}
 		if (returnValue == null) {
 			returnValue = defaultRenderer.getTreeCellRendererComponent(tree, value, selected, expanded,
