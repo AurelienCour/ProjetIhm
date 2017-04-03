@@ -53,16 +53,19 @@ public class Eleve extends Utilisateur{
 	 * Méthode callable uniquement si il y a au moins un exercice et un enfant dans dans le systeme.
 	 * @param ex exercice réalisé par l'élève
 	 */
-	public void addExerciceRealise(Exercice ex){ 
-	
+		
+	public void addExerciceRealise(ExerciceRealise ex){ 
+		
+		this.exerciceRealise.add(ex);		
 	}
 	
 	
 	/**
 	 * Permet de retourner la photo de l’élève. Affichage ou URL ?
 	 */
-	public void getPhoto(){
+	public URL getPhoto(){
 		
+		return this.photo;
 	}
 	
 	/**
@@ -72,6 +75,7 @@ public class Eleve extends Utilisateur{
 	 */
 	public void setPhoto(URL photo){
 		
+		this.photo = photo;
 	}
 	
 	/**
@@ -79,9 +83,9 @@ public class Eleve extends Utilisateur{
 	 * @return TODO a voir ce qu'on return
 	 */
 	public Classes getClasse(){
-		return null;
+			
+		return this.classe;
 		
 	}
-
 
 }
