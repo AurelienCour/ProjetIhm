@@ -5,8 +5,8 @@ import java.net.URL;
 /**
  * Cette classe représente les exercices que doivent effectuer les élèves.
  * Les exercices sont regroupés par noms et types. Ils sont listés dans la classe Classe.
- * @author Groupe8
- * @version 30/03/2017
+ * @author Erwan MAZUREAU
+ * @version 03/04/2017
  */
 public class Exercice {
 	
@@ -61,8 +61,7 @@ public class Exercice {
 	 * @return Le type d'exercice
 	 */
 	public String getTypeEx(){
-		return typeExercice;
-		
+		return typeExercice;		
 	}
 	
 	/**
