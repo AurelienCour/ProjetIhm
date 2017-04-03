@@ -69,7 +69,7 @@ public class Exercice {
 	 * @param type Type de la tortue (Rapide, couleur,normal)
 	 */
 	public void setTypeEx(String typeEx){
-		this.typeExercice = typeEX
+		this.typeExercice = typeEx;
 	}
 	/**
 	 * Renvoie le modèle de l'exercice.
