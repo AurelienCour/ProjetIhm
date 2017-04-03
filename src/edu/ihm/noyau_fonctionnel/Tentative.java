@@ -14,7 +14,8 @@ public class Tentative {
 	/**
 	 * Le constructeur de la classe tentative
 	 */
-	public Tentative() {
+	public Tentative() 
+	{
 		
 	}
 	
@@ -22,8 +23,9 @@ public class Tentative {
 	 * Permet de recuperer la liste d'action
 	 * @return
 	 */
-	public ArrayList<Action> getListeAction() {
-		return listeAction;
+	public ArrayList<Action> getListeAction() 
+	{
+		return this.listeAction;
 	}
 
 	/**
@@ -31,16 +33,18 @@ public class Tentative {
 	 * si cette derniesre n'existe pas dans la liste
 	 * @param arg0 L'action à ajouter, true si l'action a ete ajouter, false sinon
 	 */
-	public boolean addAction(Action arg0) {
-		return listeAction.add(arg0);
+	public boolean addAction(Action arg0)
+	{
+		return this.listeAction.add(arg0);
 	}
 
 	/**
 	 * Permet de savoir si la liste d'action est vide ou pas
 	 * @return true si la liste est vide
 	 */
-	public boolean isEmpty() {
-		return listeAction.isEmpty();
+	public boolean isEmpty()
+	{
+		return this.listeAction.isEmpty();
 	}
 
 	/**
@@ -48,15 +52,17 @@ public class Tentative {
 	 * @param arg0	L'action a supprimer de la liste
 	 * @return true si l'action a ete supprimer
 	 */
-	public boolean removeAction(Action arg0) {
-		return listeAction.remove(arg0);
+	public boolean removeAction(Action arg0) 
+	{
+		return this.listeAction.remove(arg0);
 	}
 
 	/**
 	 * Fonction permettant de visualiser toutes les actions d'une tentatives
 	 * 
 	 */
-	public void visualiserTentative(){
+	public void visualiserTentative()
+	{
 		
 	}
 

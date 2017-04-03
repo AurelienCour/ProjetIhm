@@ -54,14 +54,14 @@ public class Classes {
 	
 	
 	/**
-	 * Renvoie les informations de l exercice donne.
-	 * TODO return a voir
-	 * @return renvoie le numero de l'exercice
+	 * Renvoie l'exercice à l'emplacement spécifié de la liste d'exercices
+	 * @param num numero de l'exercice dans la liste
+	 * @return renvoie l'exercice
 	 */
-	public int getExercice()
+	public Exercice getExercice(int num)
 	{
 		
-		return(0);
+		return exercices.get(num);
 	}
 	
 	
@@ -99,12 +99,13 @@ public class Classes {
 	
 	/**
 	 * Accesseur de l'attribut Eleve.
-	 * Renvoie les informations de l Ã©lÃ¨ve donnÃ©.
-	 * TODO return a voir.
+	 * Renvoie les informations de l'élève à l'emplacement spécifié de la liste d'élève
+	 * @param num numero de l'élève dans la liste
+	 * @return l'élève
 	 */
-	public Eleve getEleve()
+	public Eleve getEleve(int num)
 	{
-		return null;
+		return this.eleves.get(num);
 	}
 	
 	
