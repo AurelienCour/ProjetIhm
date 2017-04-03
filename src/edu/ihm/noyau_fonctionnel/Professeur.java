@@ -31,7 +31,7 @@ public class Professeur extends Utilisateur{
 	 * @return La liste des classes du professeur
 	 */
 	public ArrayList<Classes> getClasses() {
-		return classes;
+		return this.classes;
 	}
 
 	/**
@@ -42,7 +42,7 @@ public class Professeur extends Utilisateur{
 	 * @return true si la classe a ete ajouter
 	 */
 	public boolean addClasses(Classes e) {
-		return classes.add(e);
+		return this.classes.add(e);
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class Professeur extends Utilisateur{
 	 * @return true si la liste est vide
 	 */
 	public boolean isEmpty() {
-		return classes.isEmpty();
+		return this.classes.isEmpty();
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class Professeur extends Utilisateur{
 	 * @return true si la classe est retiree
 	 */
 	public boolean removeClasses(Classes e) {
-		return classes.remove(e);
+		return this.classes.remove(e);
 	}
 
 	
