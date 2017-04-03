@@ -7,6 +7,7 @@ import javax.swing.tree.TreeSelectionModel;
 
 import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Eleve;
+import edu.ihm.noyau_fonctionnel.Exercice;
 import edu.ihm.noyau_fonctionnel.Professeur;
 import edu.ihm.noyau_fonctionnel.Utilisateur;
 
@@ -40,7 +41,9 @@ public class PanelMenu{
 				classe.add(eleves);
 				
 				DefaultMutableTreeNode exercices = new DefaultMutableTreeNode("Exercices");
-				for(Exercice ex : cl.g)
+				for(Exercice ex : cl.getExercices()){
+					DefaultMutableTreeNode exo = new DefaultMutableTreeNode(exo);
+				}
 				
 				racine.add(classe);
 			}
@@ -48,7 +51,6 @@ public class PanelMenu{
 			tree = new JTree(racine);
 			tree.setRootVisible(true);
 			tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-			tree.addTreeSelectionListener(new JTreeControler(this,this.model));
 			tree.setCellRenderer(new TreeRenderer());
 		}
 		else if(user instanceof Eleve){

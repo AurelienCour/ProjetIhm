@@ -12,16 +12,18 @@ public class Classes {
 
 	private ArrayList<Exercice> exercices; //Liste d exercices à faire pour les eleves de cette classe.
 	private ArrayList<Eleve> eleves; //Liste des eleves qui font partie de la classe. 
+	private String nomClasse;
 	
 		
 	/**
 	 * Constructeur de la classe Classe.
 	 * 
 	 */
-	public Classes(ArrayList<Exercice> listEx, ArrayList<Eleve> listEl)
+	public Classes(ArrayList<Exercice> listEx, ArrayList<Eleve> listEl, String nomClasse)
 	{
 		this.exercices = listEx;
 		this.eleves = listEl;
+		this.nomClasse = nomClasse;
 	}
 	
 	
