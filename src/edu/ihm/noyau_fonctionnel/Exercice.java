@@ -35,10 +35,10 @@ public class Exercice {
 	 * @param TypeExercice : le type d'exercice
 	 * @param modele : le modele de l'exercice
 	 */
-	public Exercice(String nomExercice, String typeExercice, URL modele){
-		setNomEx(nomExercice);
-		setTypeEx(typeExercice);
-		setModele(modele);
+	public Exercice(String nomExercice, String typeExercice, String modele){
+		this.nomExercice = nomExercice;
+		this.typeExercice = typeExercice;
+		this.modele = Exercice.class.getResource(modele);
 	}
 	
 	/**

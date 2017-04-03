@@ -61,6 +61,11 @@ public class PanelMenu{
 				DefaultMutableTreeNode exo = new DefaultMutableTreeNode(ex);
 				racine.add(exo);
 			}
+			
+			tree = new JTree(racine);
+			tree.setRootVisible(true);
+			tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+			tree.setCellRenderer(new TreeRenderer());
 		}
 	}
 	

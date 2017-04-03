@@ -38,13 +38,13 @@ public class Eleve extends Utilisateur{
 	 * @param nom		  Le nom de l'élève
 	 * @param prenom	  Le prenom de l'élève
 	 * @param classe	  La classe de l'élève
-	 * @param photo		  La photo de l'élève
+	 * @param string		  La photo de l'élève
 	 */
 	public Eleve(String identifiant, String motDePasse, String nom, String prenom,
-			Classes classe, URL photo) {
+			Classes classe, String photo) {
 		super(identifiant, motDePasse, nom, prenom);
 		this.classe = classe;
-		this.photo = photo;
+		this.photo = Eleve.class.getResource(photo);
 	}
 
 	
@@ -55,7 +55,6 @@ public class Eleve extends Utilisateur{
 	 */
 		
 	public void addExerciceRealise(ExerciceRealise ex){ 
-		
 		this.exerciceRealise.add(ex);		
 	}
 	
@@ -64,7 +63,6 @@ public class Eleve extends Utilisateur{
 	 * Permet de retourner la photo de l’élève. Affichage ou URL ?
 	 */
 	public URL getPhoto(){
-		
 		return this.photo;
 	}
 	
@@ -74,7 +72,6 @@ public class Eleve extends Utilisateur{
 	 * @param photo URL de la photo de l'élève
 	 */
 	public void setPhoto(URL photo){
-		
 		this.photo = photo;
 	}
 	
@@ -83,9 +80,11 @@ public class Eleve extends Utilisateur{
 	 * @return TODO a voir ce qu'on return
 	 */
 	public Classes getClasse(){
-			
 		return this.classe;
-		
+	}
+	
+	public void setClasse(Classes c){
+		classe = c;
 	}
 
 }
