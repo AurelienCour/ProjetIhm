@@ -3,16 +3,14 @@ package edu.ihm.acceuil;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 
 import edu.ihm.database.Database;
 import edu.ihm.menu.PanelMenu;
-import edu.ihm.noyau_fonctionnel.Eleve;
-import edu.ihm.noyau_fonctionnel.Exercice;
 import edu.ihm.noyau_fonctionnel.Professeur;
 import edu.ihm.noyau_fonctionnel.Utilisateur;
 
@@ -31,7 +29,8 @@ public class Acceuil extends JFrame{
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle(user.getNom());
-		this.add(new PanelMenu(user).getJTree(),BorderLayout.WEST);
+		JScrollPane j = new JScrollPane(new PanelMenu(user).getJTree());
+		this.add(j,BorderLayout.WEST);
 		
 		this.setVisible(true);
 		this.setSize(new Dimension(300,300));
