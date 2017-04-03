@@ -27,18 +27,18 @@ public class Eleve extends Utilisateur{
 	
 	/**
 	 * Constructeur de la classe Eleve
+	 * Si l'identifiant est vide le remplace par "utilisateur" suivi du numero d'utilisateur
+	 * Si le mot de passe est vide le remplace par defaut par "***"
+	 * Si le nom est vide remplace le nom par defaut a "nom"
+	 * Si le prenom est vide remplace le prenom a "prenom"
+	 * Si le classe est vide, laisse "null"
+	 * Si photo est vide, photo par défault
 	 * @param identifiant L'identifiant de l'eleve, string
-	 * identifiant ne peut etre null, erreur si non rentré
 	 * @param motDePasse  Le mot de passe de l'élève
-	 * mot de passe ne peut etre null, erreur si non rentré
 	 * @param nom		  Le nom de l'élève
-	 * Si nom de de l'élève null, erreur si non rentré
 	 * @param prenom	  Le prenom de l'élève
-	 * si prénom de l'élève null, erreur si non rentré
 	 * @param classe	  La classe de l'élève
-	 * classe not null, erreur si non rentré
 	 * @param photo		  La photo de l'élève
-	 * photo n'est pas obligatoire, donc peut etre null
 	 */
 	public Eleve(String identifiant, String motDePasse, String nom, String prenom,
 			Classes classe, URL photo) {
@@ -53,16 +53,19 @@ public class Eleve extends Utilisateur{
 	 * Méthode callable uniquement si il y a au moins un exercice et un enfant dans dans le systeme.
 	 * @param ex exercice réalisé par l'élève
 	 */
-	public void addExerciceRealise(Exercice ex){ 
-	
+		
+	public void addExerciceRealise(ExerciceRealise ex){ 
+		
+		this.exerciceRealise.add(ex);		
 	}
 	
 	
 	/**
 	 * Permet de retourner la photo de l’élève. Affichage ou URL ?
 	 */
-	public void getPhoto(){
+	public URL getPhoto(){
 		
+		return this.photo;
 	}
 	
 	/**
@@ -72,6 +75,7 @@ public class Eleve extends Utilisateur{
 	 */
 	public void setPhoto(URL photo){
 		
+		this.photo = photo;
 	}
 	
 	/**
@@ -79,9 +83,9 @@ public class Eleve extends Utilisateur{
 	 * @return TODO a voir ce qu'on return
 	 */
 	public Classes getClasse(){
-		return null;
+			
+		return this.classe;
 		
 	}
-
 
 }

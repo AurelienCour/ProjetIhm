@@ -28,7 +28,7 @@ public class Evaluation {
 	 * @return renvoie la valeur de la note
 	 */
 	public String getNote(){
-		return(note);
+		return this.note;
 	}
 	
 	/**
@@ -44,7 +44,7 @@ public class Evaluation {
 	 * @return renvoie la valeur du commentaire
 	 */
 	public String getCommentaire(){
-		return(commentaire);
+		return this.commentaire;
 	}
 	
 	/**

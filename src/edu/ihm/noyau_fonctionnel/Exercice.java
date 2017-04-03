@@ -5,8 +5,8 @@ import java.net.URL;
 /**
  * Cette classe représente les exercices que doivent effectuer les élèves.
  * Les exercices sont regroupés par noms et types. Ils sont listés dans la classe Classe.
- * @author Groupe8
- * @version 30/03/2017
+ * @author Erwan MAZUREAU
+ * @version 03/04/2017
  */
 public class Exercice {
 	
@@ -46,7 +46,7 @@ public class Exercice {
 	 * @return Nom de l'exercice
 	 */
 	public String getNomEx(){
-		return nomExercice;
+		return this.nomExercice;
 	}
 	
 	/**
@@ -61,8 +61,7 @@ public class Exercice {
 	 * @return Le type d'exercice
 	 */
 	public String getTypeEx(){
-		return typeExercice;
-		
+		return this.typeExercice;		
 	}
 	
 	/**
@@ -70,14 +69,14 @@ public class Exercice {
 	 * @param type Type de la tortue (Rapide, couleur,normal)
 	 */
 	public void setTypeEx(String typeEx){
-		this.typeExercice = typeEX
+		this.typeExercice = typeEx;
 	}
 	/**
 	 * Renvoie le modèle de l'exercice.
 	 * @return Permet de récupérer le lien d'acces au modèle
 	 */
 	public URL getModele(){
-		return modele;
+		return this.modele;
 	}
 	
 	/**

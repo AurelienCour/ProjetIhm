@@ -30,7 +30,7 @@ public class Action {
 	 * @return renvoie l'attribut tortue
 	 */
 	public TortueG getTortue(){
-		return tortue;
+		return this.tortue;
 	}
 	
 	/**
@@ -46,7 +46,7 @@ public class Action {
 	 * @return renvoie l'attribut action
 	 */
 	public String getAction(){
-		return action;
+		return this.action;
 	}
 	
 	/**

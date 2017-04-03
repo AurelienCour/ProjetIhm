@@ -29,7 +29,11 @@ public abstract class Utilisateur {
 	 * @param prenom		Le prenom de l'utilisateur
 	 */
 	public Utilisateur (String identifiant, String motDePasse, String nom, String prenom){
-		nombreUtilisateur += 1;
+		this.nombreUtilisateur += 1;
+		this.identifiant = identifiant;
+		this.motDePasse = motDePasse;
+		this.nom = nom;
+		this.prenom = prenom;
 	}
 	
 	/**
@@ -37,7 +41,7 @@ public abstract class Utilisateur {
 	 * @return L'identifiant de l'utilisateur
 	 */
 	public String getIdentifiant(){
-		return identifiant;
+		return this.identifiant;
 	}
 	
 	/**
@@ -45,7 +49,7 @@ public abstract class Utilisateur {
 	 * @return	Le mot de passe de l'utilisateur
 	 */
 	public String getMotDePasse(){
-		return motDePasse;
+		return this.motDePasse;
 	}
 	
 	/**
@@ -53,7 +57,7 @@ public abstract class Utilisateur {
 	 * @return Le nom de l'utilisateur
 	 */
 	public String getNom() {
-		return nom;
+		return this.nom;
 	}
 
 	/**
@@ -61,7 +65,7 @@ public abstract class Utilisateur {
 	 * @return Le prenom de l'utilisateur
 	 */
 	public String getPrenom() {
-		return prenom;
+		return this.prenom;
 	}
 
 	/**

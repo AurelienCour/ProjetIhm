@@ -30,7 +30,7 @@ public class ExerciceRealise {
 	 * @return La liste des tentatives
 	 */
 	public ArrayList<Tentative> getListeTentatives() {
-		return listeTentatives;
+		return this.listeTentatives;
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class ExerciceRealise {
 	 * @return true si l'exercice à été corrigé
 	 */
 	public boolean isCorrect() {
-		return correct;
+		return this.correct;
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class ExerciceRealise {
 	 * @return L'evaluation si l'exercice est corrigé, null sinon
 	 */
 	public Evaluation getResultat() {
-		return resultat;
+		return this.resultat;
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class ExerciceRealise {
 	 * @return L'exercice effectué
 	 */
 	public Exercice getExerciceFait() {
-		return exerciceFait;
+		return this.exerciceFait;
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class ExerciceRealise {
 	 * @return true si la tentative a été ajouté
 	 */
 	public boolean addTentative(Tentative e) {
-		return listeTentatives.add(e);
+		return this.listeTentatives.add(e);
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class ExerciceRealise {
 	 * @return true si la liste est vide
 	 */
 	public boolean isEmpty() {
-		return listeTentatives.isEmpty();
+		return this.listeTentatives.isEmpty();
 	}
 
 }
