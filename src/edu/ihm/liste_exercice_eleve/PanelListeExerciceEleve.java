@@ -1,5 +1,7 @@
 package edu.ihm.liste_exercice_eleve;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -9,5 +11,10 @@ import javax.swing.JPanel;
  * @version 30/03/2017
  */
 public class PanelListeExerciceEleve extends JPanel{
+	
+	public PanelListeExerciceEleve(){
+		this.add(new JLabel("ListeExerciceEleve"));
+		this.add(new JButton("Retour"));
+	}
 
 }

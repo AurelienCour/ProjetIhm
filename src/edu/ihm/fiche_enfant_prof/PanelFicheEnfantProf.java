@@ -1,6 +1,8 @@
 package edu.ihm.fiche_enfant_prof;
 
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -10,5 +12,10 @@ import javax.swing.JPanel;
  * @version 30/03/2017
  */
 public class PanelFicheEnfantProf extends JPanel{
+	
+	public PanelFicheEnfantProf(){
+		this.add(new JLabel("FicheEnfantProf"));
+		this.add(new JButton("Retour"));
+	}
 
 }

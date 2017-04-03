@@ -1,5 +1,7 @@
 package edu.ihm.creation_exercice;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -14,4 +16,8 @@ import javax.swing.JPanel;
  */
 public class PanelCreationExercice extends JPanel{
 
+	public PanelCreationExercice(){
+		this.add(new JLabel("CreationExercice"));
+		this.add(new JButton("Retour"));
+	}
 }

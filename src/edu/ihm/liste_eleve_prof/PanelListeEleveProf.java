@@ -1,6 +1,8 @@
 package edu.ihm.liste_eleve_prof;
 
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -10,5 +12,10 @@ import javax.swing.JPanel;
  * @version 30/03/2017
  */
 public class PanelListeEleveProf extends JPanel{
+	
+	public PanelListeEleveProf(){
+		this.add(new JLabel("ListeEleveProf"));
+		this.add(new JButton("Retour"));
+	}
 
 }

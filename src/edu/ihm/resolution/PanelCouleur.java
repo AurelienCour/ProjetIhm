@@ -1,5 +1,8 @@
 package edu.ihm.resolution;
 
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -11,4 +14,13 @@ import javax.swing.JPanel;
  */
 public class PanelCouleur extends JPanel{
 
+	public PanelCouleur(){
+		this.setLayout(new GridLayout(3,3));
+		this.add(new JButton("N"));
+		this.add(new JButton("B"));
+		this.add(new JButton("R"));
+		this.add(new JButton("V"));
+		this.add(new JButton("V"));
+		this.add(new JButton("BF"));
+	}
 }

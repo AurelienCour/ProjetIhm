@@ -1,6 +1,8 @@
 package edu.ihm.liste_exercice_prof;
 
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -11,5 +13,10 @@ import javax.swing.JPanel;
  * @version 30/03/2017
  */
 public class PanelExerciceProf extends JPanel{
-
+	
+	public PanelExerciceProf(){
+		JLabel test = new JLabel("ExerciceProf");
+		this.add(test);
+		this.add(new JButton("Retour"));
+	}
 }

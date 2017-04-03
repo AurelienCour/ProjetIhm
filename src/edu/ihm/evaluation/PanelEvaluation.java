@@ -1,6 +1,8 @@
 package edu.ihm.evaluation;
 
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -11,5 +13,10 @@ import javax.swing.JPanel;
  * @version 30/03/2017
  */
 public class PanelEvaluation extends JPanel{
+	
+	public PanelEvaluation(){
+		this.add(new JLabel("Evaluation"));
+		this.add(new JButton("Retour"));
+	}
 
 }

@@ -1,7 +1,14 @@
 package edu.ihm.menu;
 
 
-import javax.swing.JPanel;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeSelectionModel;
+
+import edu.ihm.noyau_fonctionnel.Classes;
+import edu.ihm.noyau_fonctionnel.Eleve;
+import edu.ihm.noyau_fonctionnel.Professeur;
+import edu.ihm.noyau_fonctionnel.Utilisateur;
 
 /**
  * Panel contenant le menu sous la forme d'un JTree
@@ -9,6 +16,44 @@ import javax.swing.JPanel;
  * @author Groupe8
  * @version 30/03/2017
  */
-public class PanelMenu extends JPanel{
+public class PanelMenu{
+	
+	private Utilisateur user;
+	private JTree tree;
+
+	public PanelMenu(Utilisateur user){
+		this.user = user;
+		buildTree();
+	}
+
+	public void buildTree() {
+		if(user instanceof Professeur){
+			Professeur pr = (Professeur) user;
+			DefaultMutableTreeNode racine = new DefaultMutableTreeNode("Classes");
+			for (Classes cl : pr.getClasses()) {
+				DefaultMutableTreeNode classe = new DefaultMutableTreeNode(cl);
+				for (Eleve el : cl.getEleves()) {
+					DefaultMutableTreeNode eleve = new DefaultMutableTreeNode(el);
+					classe.add(eleve);
+				}
+				racine.add(classe);
+			}
+			tree = new JTree(racine);
+			tree.setRootVisible(true);
+			tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+			tree.addTreeSelectionListener(new JTreeControler(this,this.model));
+			tree.setCellRenderer(new TreeRenderer());
+		}
+		else if(user instanceof Eleve){
+			
+		}
+		
+		
+
+	}
+	
+	public JTree getJTree(){
+		return this.tree;
+	}
 
 }

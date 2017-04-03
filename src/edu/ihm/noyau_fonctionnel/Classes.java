@@ -102,9 +102,9 @@ public class Classes {
 	 * Renvoie les informations de l élève donné.
 	 * TODO return a voir.
 	 */
-	public Eleve getEleve()
+	public ArrayList<Eleve> getEleves()
 	{
-		return null;
+		return eleves;
 	}
 	
 	
