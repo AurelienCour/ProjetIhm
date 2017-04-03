@@ -10,15 +10,18 @@ import java.util.ArrayList;
 
 public class Classes {
 
-	private ArrayList<Exercice> Exercices; //Liste d exercices à faire pour les eleves de cette classe.
-	private ArrayList<Eleve> Eleves; //Liste des eleves qui font partie de la classe. 
+	private ArrayList<Exercice> exercices; //Liste d exercices à faire pour les eleves de cette classe.
+	private ArrayList<Eleve> eleves; //Liste des eleves qui font partie de la classe. 
 	
 		
 	/**
 	 * Constructeur de la classe Classe.
+	 * 
 	 */
-	public Classes(ArrayList<Exercice> listEx, ArrayList<Eleve> listEl){
-		
+	public Classes(ArrayList<Exercice> listEx, ArrayList<Eleve> listEl)
+	{
+		this.exercices = listEx;
+		this.eleves = listEl;
 	}
 	
 	
@@ -30,8 +33,10 @@ public class Classes {
 	 * Message d'erreur si ajout d un exercice dans une liste non existente.
 	 * @param ex nouvel Exercice
 	 */
-	public void addExercice(Exercice ex){ 
+	public void addExercice(Exercice ex)
+	{ 
 		
+		this.exercices.add(ex);		
 	}
 	
 	
@@ -42,8 +47,9 @@ public class Classes {
 	 *  Si exercice non present. Un message d'erreur est envoy�.
 	 * @param ex Exercice a� supprimer
 	 */
-	public void suppExercice(Exercice ex){
-		
+	public void suppExercice(Exercice ex)
+	{
+		this.exercices.remove(ex);
 	}
 	
 	
@@ -52,7 +58,8 @@ public class Classes {
 	 * TODO return a voir
 	 * @return renvoie le numero de l'exercice
 	 */
-	public int getExercice(){
+	public int getExercice()
+	{
 		
 		return(0);
 	}
@@ -69,8 +76,10 @@ public class Classes {
 	 * Un eleve appartient a une seule classe.
 	 * @param el nouvel Eleve a ajouter
 	 */
-	public void addEleve(Eleve el){
-		
+	public void addEleve(Eleve el)
+	{
+		this.eleves.add(el);		
+
 	}
 	
 	
@@ -82,8 +91,10 @@ public class Classes {
 	 * Si eleve non present. Un message d'erreur est envoy�.
 	 * @param el Eleve a supprimer
 	 */
-	public void suppEleve(Eleve el){
-		
+	public void suppEleve(Eleve el)
+	{
+		this.eleves.remove(el);
+
 	}
 	
 	/**
@@ -91,7 +102,8 @@ public class Classes {
 	 * Renvoie les informations de l élève donné.
 	 * TODO return a voir.
 	 */
-	public Eleve getEleve(){
+	public Eleve getEleve()
+	{
 		return null;
 	}
 	
