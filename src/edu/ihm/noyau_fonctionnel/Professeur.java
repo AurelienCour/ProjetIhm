@@ -17,9 +17,10 @@ public class Professeur extends Utilisateur{
 	 * @param motDePasse	Le mot de passe de l'utilisateur
 	 * @param nom			Le nom de l'utilisateur
 	 * @param prenom		Le prenom de l'utilisateur
-	 * Si nom et prenom du professeur sont vides, valeurs par défaut
-	 * Si mot de passe vide, valeurs par défaut
-	 * Si indentifiant vide, valeurs par défaut.
+	 * Si nom et prenom du professeur sont vides,  message d erreur
+	 * Si mot de passe vide, message d erreur
+	 * Si indentifiant vide,  message d erreur
+	 * Tous les champs vides envoient un message d erreur
 	 */
 	public Professeur(String identifiant, String motDePasse, String nom, String prenom) {
 		super(identifiant, motDePasse, nom, prenom);

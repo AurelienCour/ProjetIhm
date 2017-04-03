@@ -3,7 +3,7 @@ package edu.ihm.noyau_fonctionnel;
 import java.util.ArrayList;
 
 /**
- * Represente une tentative effectuée par un élève pour résoudre un exercice
+ * Represente une tentative effectuée par un eleve pour resoudre un exercice
  * @author AurelienCourtillat
  * @version 30/03/2017
  */
@@ -19,7 +19,7 @@ public class Tentative {
 	}
 	
 	/**
-	 * Permet de récupérer la liste d'action
+	 * Permet de recuperer la liste d'action
 	 * @return
 	 */
 	public ArrayList<Action> getListeAction() {
@@ -28,8 +28,8 @@ public class Tentative {
 
 	/**
 	 * Permet de rajouter une action à la liste des actions
-	 * si cette dernière n'existe pas dans la liste
-	 * @param arg0 L'action à ajouter, true si l'action à été ajouter, false sinon
+	 * si cette derniesre n'existe pas dans la liste
+	 * @param arg0 L'action à ajouter, true si l'action a ete ajouter, false sinon
 	 */
 	public boolean addAction(Action arg0) {
 		return listeAction.add(arg0);
@@ -46,7 +46,7 @@ public class Tentative {
 	/**
 	 * Permet de supprimer une action de la liste
 	 * @param arg0	L'action a supprimer de la liste
-	 * @return true si l'action à été supprimer
+	 * @return true si l'action a ete supprimer
 	 */
 	public boolean removeAction(Action arg0) {
 		return listeAction.remove(arg0);
@@ -54,6 +54,7 @@ public class Tentative {
 
 	/**
 	 * Fonction permettant de visualiser toutes les actions d'une tentatives
+	 * 
 	 */
 	public void visualiserTentative(){
 		
