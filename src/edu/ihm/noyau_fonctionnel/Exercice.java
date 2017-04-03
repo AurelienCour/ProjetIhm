@@ -46,7 +46,7 @@ public class Exercice {
 	 * @return Nom de l'exercice
 	 */
 	public String getNomEx(){
-		return nomExercice;
+		return this.nomExercice;
 	}
 	
 	/**
@@ -61,7 +61,7 @@ public class Exercice {
 	 * @return Le type d'exercice
 	 */
 	public String getTypeEx(){
-		return typeExercice;		
+		return this.typeExercice;		
 	}
 	
 	/**
@@ -76,7 +76,7 @@ public class Exercice {
 	 * @return Permet de récupérer le lien d'acces au modèle
 	 */
 	public URL getModele(){
-		return modele;
+		return this.modele;
 	}
 	
 	/**
