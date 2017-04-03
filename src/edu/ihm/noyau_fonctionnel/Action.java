@@ -55,7 +55,6 @@ public class Action {
 	 */
 	public void setAction(String action){
 		this.action = action;
-	}
-	
+	}	
 	
 }

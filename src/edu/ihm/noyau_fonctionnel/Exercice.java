@@ -13,7 +13,7 @@ public class Exercice {
 	/**
 	 * Nom de l’exercice que les élèves doivent réaliser.
 	 */
-	private String NomExercice;  
+	private String nomExercice;  
 	
 	/**
 	 * cela représente le type de l’exercice. Le type est de trois types différents : une tortue générale, une tortue rapide et une rapide traçant en plusieurs couleurs.
@@ -22,9 +22,8 @@ public class Exercice {
 	
 	/**
 	 * le modèle est une image. Cette image représente l’exercice que doit réaliser les enfants.
-
 	 */
-	private URL Modele;
+	private URL modele;
 	
 	/**
 	 * Constructeur de la classe Exercice
@@ -37,30 +36,32 @@ public class Exercice {
 	 * @param modele : le modele de l'exercice
 	 */
 	public Exercice(String nomExercice, String typeExercice, URL modele){
-		
+		setNomEx(nomExercice);
+		setTypeEx(typeExercice);
+		setModele(modele);
 	}
 	
 	/**
 	 * Getter du nom
 	 * @return Nom de l'exercice
 	 */
-	public String getNom(){
-		return null;
+	public String getNomEx(){
+		return nomExercice;
 	}
 	
 	/**
 	 * Permet de modifier le nom de l’exercice
 	 * @param nom Nouveau nom de l'exercice
 	 */
-	public void setNom(String nom){
-		
+	public void setNomEx(String nomEx){
+		this.nomExercice = nomEx;
 	}
 	/**
 	 * Renvoie le type d’exercice
 	 * @return Le type d'exercice
 	 */
-	public String getType(){
-		return null;
+	public String getTypeEx(){
+		return typeExercice;
 		
 	}
 	
@@ -68,16 +69,15 @@ public class Exercice {
 	 *  Permet de modifier le type de l’exercice
 	 * @param type Type de la tortue (Rapide, couleur,normal)
 	 */
-	public void setType(String type){
-		
+	public void setTypeEx(String typeEx){
+		this.typeExercice = typeEX
 	}
 	/**
 	 * Renvoie le modèle de l'exercice.
 	 * @return Permet de récupérer le lien d'acces au modèle
 	 */
 	public URL getModele(){
-		return null;
-		
+		return modele;
 	}
 	
 	/**
@@ -85,7 +85,7 @@ public class Exercice {
 	 * @param modele URL du nouveau modele de l'exercice
 	 */
 	public void setModele(URL modele){
-		
+		this.modele = modele;
 	}
 	
 }
