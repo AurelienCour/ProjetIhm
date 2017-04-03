@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Classes {
 
 	private ArrayList<Exercice> Exercices; //Liste d exercices à faire pour les eleves de cette classe.
-	private ArrayList<Eleve> Eleves; //Liste des eleves qui font partie de la classe.
+	private ArrayList<Eleve> Eleves; //Liste des eleves qui font partie de la classe.//
 	
 		
 	/**
