@@ -41,6 +41,10 @@ public class Classes {
 		this.exercices.add(ex);		
 	}
 	
+	public String getNomClasse(){
+		return nomClasse;
+	}
+	
 	
 	/**
 	 *  Supprime un exercice donne de la liste.
