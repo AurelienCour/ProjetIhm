@@ -22,18 +22,34 @@ public class Evaluation {
 		
 	}
 	
+	/**
+	 * Accesseur de l'attribut note
+	 * @return renvoie la valeur de la note
+	 */
 	public String getNote(){
 		return(note);
 	}
 	
+	/**
+	 * Modifieur de l'attribut note
+	 * @return remplace la valeur de la note
+	 */
 	public void setNote(String note){
 		this.note = note;
 	}
 	
+	/**
+	 * Accesseur de l'attribut commentaire
+	 * @return renvoie la valeur du commentaire
+	 */
 	public String getCommentaire(){
 		return(commentaire);
 	}
 	
+	/**
+	 * Modifieur de l'attribut commentaire
+	 * @return remplace la valeur du commentaire
+	 */
 	public void setCommentaire(String commentaire){
 		this.commentaire = commentaire;
 	}
