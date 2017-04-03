@@ -1,9 +1,9 @@
 package edu.ihm.noyau_fonctionnel;
 
 /**
- * Représente une Evaluation saisis par un professeur
+ * Représente l'évaluation saisie par un professeur sur la tentative d'un élève.
  * @author Erwan Mazureau
- * @version 30/03/2017
+ * @version 03/04/2017
  */
 public class Evaluation {
 	
@@ -12,9 +12,11 @@ public class Evaluation {
 	
 	/**
 	 * Constructeur de la classe Evaluation
-	 * prend en paramètres deux attributs de type String
-	 * @param note	La note mise a l'exercice
-	 * @param commentaire	Le commentaire de l'exercice
+	 * prend en paramètres deux attributs de type String,
+	 * si null, on initialise avec les valeurs "En cours d'acquisition." pour la note
+	 * et "Vu." pour le commentaire.
+	 * @param note : la note mise a l'exercice
+	 * @param commentaire : le commentaire de l'exercice
 	 */
 	public Evaluation(String note, String commentaire){
 		
