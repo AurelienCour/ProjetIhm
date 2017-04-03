@@ -17,7 +17,8 @@ public class Classes {
 	/**
 	 * Constructeur de la classe Classe.
 	 */
-	public Classes(){
+	public Classes(ArrayList<Exercice> listEx, ArrayList<Eleve> listEl){
+		
 	}
 	
 	
