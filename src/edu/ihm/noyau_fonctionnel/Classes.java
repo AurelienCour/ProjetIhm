@@ -15,7 +15,7 @@ public class Classes {
 	
 		
 	/**
-	 * Constructor de la classe Classe.
+	 * Constructeur de la classe Classe.
 	 */
 	public Classes(){
 	}
@@ -24,7 +24,7 @@ public class Classes {
 	/**
 	 * Ajoute un exercice donne a la liste.
 	 * Un exercice ne peut etre ajoute qu a une liste deja presente. 
-	 * Un exercie peut etre ajouté a une classe vide
+	 * Un exercie peut etre ajoutï¿½ a une classe vide
 	 * Seul un exercice peut etre ajoute a cette liste.
 	 * Message d'erreur si ajout d un exercice dans une liste non existente.
 	 * @param ex nouvel Exercice
@@ -38,8 +38,8 @@ public class Classes {
 	 *  Supprime un exercice donne de la liste.
 	 *  Un exercice ne peut etre supprimer que si l exercice existe.
 	 *  Un exercice doit etre present dans la liste.
-	 *  Si exercice non present. Un message d'erreur est envoyé.
-	 * @param ex Exercice a  supprimer
+	 *  Si exercice non present. Un message d'erreur est envoyï¿½.
+	 * @param ex Exercice aï¿½ supprimer
 	 */
 	public void suppExercice(Exercice ex){
 		
@@ -49,7 +49,7 @@ public class Classes {
 	/**
 	 * Renvoie les informations de l exercice donne.
 	 * TODO return a voir
-	 * @return renvoie le noumero de l'exercice
+	 * @return renvoie le numero de l'exercice
 	 */
 	public int getExercice(){
 		
@@ -78,15 +78,16 @@ public class Classes {
 	 * (Si au moins un Eleve)
 	 * Un eleve ne peut etre supprimer que si l eleve existe.
 	 * Un eleve doit etre present dans la liste.
-	 * Si eleve non present. Un message d'erreur est envoyé.
+	 * Si eleve non present. Un message d'erreur est envoyï¿½.
 	 * @param el Eleve a supprimer
 	 */
 	public void suppEleve(Eleve el){
 		
 	}
 	
-	/*
-	 * Renvoie les informations de l eleve donne
+	/**
+	 * Accesseur de l'attribut Eleve.
+	 * Renvoie les informations de l Ã©lÃ¨ve donnÃ©.
 	 * TODO return a voir.
 	 */
 	public Eleve getEleve(){
