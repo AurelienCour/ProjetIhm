@@ -19,7 +19,8 @@ public class Evaluation {
 	 * @param commentaire : le commentaire de l'exercice
 	 */
 	public Evaluation(String note, String commentaire){
-		
+		setNote(note);
+		setCommentaire(commentaire);
 	}
 	
 	/**
