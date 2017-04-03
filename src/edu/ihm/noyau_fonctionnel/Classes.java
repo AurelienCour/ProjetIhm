@@ -64,6 +64,10 @@ public class Classes {
 		return exercices.get(num);
 	}
 	
+	public ArrayList<Exercice> getExercices(){
+		return this.exercices;
+	}
+	
 	
 	/**
 	 * Ajoute un eleve donne a la liste.

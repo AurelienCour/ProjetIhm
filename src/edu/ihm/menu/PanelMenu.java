@@ -32,12 +32,19 @@ public class PanelMenu{
 			DefaultMutableTreeNode racine = new DefaultMutableTreeNode("Classes");
 			for (Classes cl : pr.getClasses()) {
 				DefaultMutableTreeNode classe = new DefaultMutableTreeNode(cl);
+				DefaultMutableTreeNode eleves = new DefaultMutableTreeNode("Eleves");
 				for (Eleve el : cl.getEleves()) {
 					DefaultMutableTreeNode eleve = new DefaultMutableTreeNode(el);
-					classe.add(eleve);
+					eleves.add(eleve);
 				}
+				classe.add(eleves);
+				
+				DefaultMutableTreeNode exercices = new DefaultMutableTreeNode("Exercices");
+				for(Exercice ex : cl.g)
+				
 				racine.add(classe);
 			}
+			
 			tree = new JTree(racine);
 			tree.setRootVisible(true);
 			tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
@@ -45,7 +52,8 @@ public class PanelMenu{
 			tree.setCellRenderer(new TreeRenderer());
 		}
 		else if(user instanceof Eleve){
-			
+			Eleve el = (Eleve) user;
+			DefaultMutableTreeNode racine = new DefaultMutableTreeNode("Exercice");
 		}
 		
 		
