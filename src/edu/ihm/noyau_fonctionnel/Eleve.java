@@ -28,15 +28,15 @@ public class Eleve extends Utilisateur{
 	/**
 	 * Constructeur de la classe Eleve
 	 * @param identifiant L'identifiant de l'eleve, string
-	 * identifiant ne peut etre null, toto par default
+	 * identifiant ne peut etre null, erreur si non rentré
 	 * @param motDePasse  Le mot de passe de l'élève
-	 * mot de passe ne peut etre null, toto par default
+	 * mot de passe ne peut etre null, erreur si non rentré
 	 * @param nom		  Le nom de l'élève
-	 * Si nom de de l'élève null, toto par default
+	 * Si nom de de l'élève null, erreur si non rentré
 	 * @param prenom	  Le prenom de l'élève
-	 * si prénom de l'élève null, toto par défault
+	 * si prénom de l'élève null, erreur si non rentré
 	 * @param classe	  La classe de l'élève
-	 * TODO classe peut etre null ?
+	 * classe not null, erreur si non rentré
 	 * @param photo		  La photo de l'élève
 	 * photo n'est pas obligatoire, donc peut etre null
 	 */

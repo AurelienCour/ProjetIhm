@@ -24,7 +24,7 @@ public class ExerciceRealise {
 	}
 
 	/**
-	 * Permet de récupérer la liste des tentatives
+	 * Permet de récupérer la liste des tentatives.
 	 * @return La liste des tentatives
 	 */
 	public ArrayList<Tentative> getListeTentatives() {
@@ -33,6 +33,7 @@ public class ExerciceRealise {
 
 	/**
 	 * permet de savoir si l'exercice à été corrigé
+	 * Callable si un exercice
 	 * @return true si l'exercice à été corrigé
 	 */
 	public boolean isCorrect() {
@@ -76,6 +77,7 @@ public class ExerciceRealise {
 	/**
 	 * Permet de rajouter un tentative a la liste si cette derniere n'est pas présente
 	 * @param e la tentative à ajouter
+	 * 
 	 * @return true si la tentative a été ajouté
 	 */
 	public boolean addTentative(Tentative e) {
