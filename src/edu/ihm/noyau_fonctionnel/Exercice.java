@@ -4,7 +4,7 @@ import java.net.URL;
 
 /**
  * Cette classe représente les exercices que doivent effectuer les élèves.
- * Les exercices sont regroupés par noms et types. Ils sont listés dans la classe Classe
+ * Les exercices sont regroupés par noms et types. Ils sont listés dans la classe Classe.
  * @author Groupe8
  * @version 30/03/2017
  */
@@ -18,7 +18,7 @@ public class Exercice {
 	/**
 	 * cela représente le type de l’exercice. Le type est de trois types différents : une tortue générale, une tortue rapide et une rapide traçant en plusieurs couleurs.
 	 */
-	private String TypeExercice;
+	private String typeExercice;
 	
 	/**
 	 * le modèle est une image. Cette image représente l’exercice que doit réaliser les enfants.
@@ -27,12 +27,16 @@ public class Exercice {
 	private URL Modele;
 	
 	/**
-	 * Constructor de la classe Exercice
-	 * @param nomExercice Le nom de l'Exercice
-	 * @param TypeExercice	Le type d'exercice
-	 * @param modele	Le modele de l'exercice
+	 * Constructeur de la classe Exercice
+	 * prend en paramètres 2 attributs de type String,
+	 * si null alors on initialise avec les valeurs "Exercice 0" pour nomExercice
+	 * et "Tortue normale" pour typeExercice,
+	 * et un attributs de type URL, possiblement null.
+	 * @param nomExercice : le nom de l'Exercice
+	 * @param TypeExercice : le type d'exercice
+	 * @param modele : le modele de l'exercice
 	 */
-	public Exercice(String nomExercice, String TypeExercice, URL modele){
+	public Exercice(String nomExercice, String typeExercice, URL modele){
 		
 	}
 	
