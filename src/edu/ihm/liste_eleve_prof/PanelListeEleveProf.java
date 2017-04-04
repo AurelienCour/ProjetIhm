@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 
 import edu.ihm.noyau_fonctionnel.Professeur;
 
@@ -38,9 +39,9 @@ public class PanelListeEleveProf extends JPanel{
 	 */
 	private void initJTable(){
 		this.tableEleve = new JTable(modeleTable);
-		/*tableEleve.setDefaultRenderer(Boolean.class, new SexeCellRenderer());
+		/*tableEleve.setDefaultRenderer(Boolean.class, new SexeCellRenderer());*/
 		tableEleve.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		ListSelectionModel listSelectionModel = tableClasse.getSelectionModel();        
+		/*ListSelectionModel listSelectionModel = tableClasse.getSelectionModel();        
 		listSelectionModel.addListSelectionListener(new JTableControler(tableEleve, this));*/
 	}
 
