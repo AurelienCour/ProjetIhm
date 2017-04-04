@@ -35,7 +35,7 @@ public class Acceuil extends JFrame{
 		JScrollPane j = new JScrollPane(new PanelMenu(user).getJTree());
 		this.add(j,BorderLayout.WEST);
 		if(this.user instanceof Professeur){
-			this.add(new PanelListeEleveProf(),BorderLayout.CENTER);
+			this.add(new PanelListeEleveProf((Professeur) user),BorderLayout.CENTER);
 		}
 		else if(this.user instanceof Eleve){
 			this.add(new PanelListeExerciceEleve(),BorderLayout.CENTER);
