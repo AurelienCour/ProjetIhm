@@ -66,8 +66,7 @@ public class Classes {
 	 */
 	public Exercice getExercice(int num)
 	{
-		
-		return exercices.get(num);
+		return this.exercices.get(num);
 	}
 	
 	public ArrayList<Exercice> getExercices(){
@@ -114,7 +113,7 @@ public class Classes {
 	 * @return l'�l�ve
 	 */
 	public ArrayList<Eleve> getEleves(){
-		return eleves;
+		return this.eleves;
 	}
 	
 	

@@ -13,8 +13,8 @@ public class ExerciceTest {
 	
 	/**
 	 * Partie qui s'execute avant chaque test
-	 * Ici permet donc de réinitialisé l'objet exercice avant chaque test
-	 * Il faut créer un objet correct ici
+	 * Ici permet donc de r�initialiser l'objet exercice avant chaque test
+	 * Il faut cr�er un objet correct ici
 	 */
     @Before
     public void setUp(){
@@ -22,7 +22,7 @@ public class ExerciceTest {
     }
 
     /**
-     * Chose qu'i s'execute après les test (pas utile dans notre cas)
+     * Chose qui s'execute après les test (pas utile dans notre cas)
      */
     @After
     public void tearDown(){

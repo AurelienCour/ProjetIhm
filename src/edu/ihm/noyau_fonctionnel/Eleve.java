@@ -60,6 +60,14 @@ public class Eleve extends Utilisateur{
 	
 	
 	/**
+	 * 
+	 */
+	public ExerciceRealise getExerciceRealise(int index)
+	{
+		return this.exerciceRealise.get(index);
+	}
+	
+	/**
 	 * Permet de retourner la photo de l’élève. Affichage ou URL ?
 	 */
 	public URL getPhoto(){
@@ -71,8 +79,8 @@ public class Eleve extends Utilisateur{
 	 * Callable uniquement si au moins un enfant dans le systeme.
 	 * @param photo URL de la photo de l'élève
 	 */
-	public void setPhoto(URL photo){
-		this.photo = photo;
+	public void setPhoto(String photo){
+		this.photo = Eleve.class.getResource(photo);
 	}
 	
 	/**

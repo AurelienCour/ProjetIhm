@@ -13,7 +13,8 @@ import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
 
 
-public class ClassesTest {
+public class ClassesTest 
+{
 
 	private ArrayList<Exercice> exercices; 
 	private ArrayList<Eleve> eleves; 
