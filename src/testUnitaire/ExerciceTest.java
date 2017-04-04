@@ -10,24 +10,36 @@ import edu.ihm.noyau_fonctionnel.Exercice;
 public class ExerciceTest {
 
 	private Exercice exercice;
+	
 	/**
-	 * Sets up the test fixture
+	 * Partie qui s'execute avant chaque test
+	 * Ici permet donc de réinitialisé l'objet exercice avant chaque test
+	 * Il faut créer un objet correct ici
 	 */
     @Before
     public void setUp(){
     	exercice = new Exercice("nomExercice", "leType", "leModele");
     }
 
+    /**
+     * Chose qu'i s'execute après les test (pas utile dans notre cas)
+     */
     @After
     public void tearDown(){
     }
     
+    /**
+     * Permet de test la modif du nom
+     */
 	@Test
 	public void testSetNomExercice() {
 		exercice.setNomEx("nom2");
 		assertEquals("nom2",exercice.getNomEx());
 	}
 	
+	/**
+	 * Permet de test la modif du type
+	 */
 	@Test
 	public void testSetTypeExercice() {
 		exercice.setTypeEx("type2");
