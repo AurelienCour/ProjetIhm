@@ -16,7 +16,7 @@ public class Tentative {
 	 */
 	public Tentative() 
 	{
-		
+		listeAction = new ArrayList<Action>(); 
 	}
 	
 	/**
@@ -54,7 +54,12 @@ public class Tentative {
 	 */
 	public boolean removeAction(Action arg0) 
 	{
-		return this.listeAction.remove(arg0);
+		if (this.isEmpty()==false) {
+			return this.listeAction.remove(arg0);
+		}
+		else{
+			return(false);
+		}
 	}
 
 	/**
