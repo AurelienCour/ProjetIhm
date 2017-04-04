@@ -35,7 +35,7 @@ public class ClassesTest {
 	{
     	classe = new Classes("nomClasse");
     	exercice = new Exercice("leNom", "leType", "leModele");
-    	//eleve = new Eleve("sonIdentifiant", "sonMotDePasse", "sonNom", "sonPrenom","saClasse", "saPhoto")
+    	eleve = new Eleve("sonIdentifiant", "sonMotDePasse", "sonNom", "sonPrenom",classe, "saPhoto");
     	}
 	
     /**
