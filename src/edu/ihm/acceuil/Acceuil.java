@@ -9,10 +9,13 @@ import java.util.Map.Entry;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
-import edu.ihm.database.Database;
+import edu.ihm.liste_eleve_prof.PanelListeEleveProf;
+import edu.ihm.liste_exercice_eleve.PanelListeExerciceEleve;
 import edu.ihm.menu.PanelMenu;
+import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Professeur;
 import edu.ihm.noyau_fonctionnel.Utilisateur;
+import etu.ihm.Main.Database;
 
 /**
  * La Jframe principal de l'application
@@ -31,25 +34,14 @@ public class Acceuil extends JFrame{
 		this.setTitle(user.getNom());
 		JScrollPane j = new JScrollPane(new PanelMenu(user).getJTree());
 		this.add(j,BorderLayout.WEST);
-		
-		this.setVisible(true);
-		this.setSize(new Dimension(300,300));
-	}
-	
-	
-	public static void main (String[] args){
-		
-		Database db = new Database();
-		//db.peuplement();
-		db.chargementDonnees();
-		Map<String,Object> professeurs = db.getProfesseur();
-		Map<String,Object> eleves = db.getEleves();
-		int i = 0;
-		for(Entry<String, Object> entry2 : professeurs.entrySet()) {
-			Professeur test = (Professeur) entry2.getValue();
-			//Eleve test = (Eleve) entry2.getValue();
-			Acceuil a = new Acceuil(test);
+		if(this.user instanceof Professeur){
+			this.add(new PanelListeEleveProf(),BorderLayout.CENTER);
 		}
+		else if(this.user instanceof Eleve){
+			this.add(new PanelListeExerciceEleve(),BorderLayout.CENTER);
+		}
+		this.setVisible(true);
+		this.setSize(new Dimension(500,500));
 	}
 
 }

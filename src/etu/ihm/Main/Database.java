@@ -1,4 +1,4 @@
-package edu.ihm.database;
+package etu.ihm.Main;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
