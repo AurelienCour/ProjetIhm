@@ -26,8 +26,8 @@ public class EleveTest {
 		
 	/**
 	 * Partie qui s'execute avant chaque test
-	 * Ici permet donc de réinitialiser l'objet eleve avant chaque test
-	 * Il faut créer un objet correct ici
+	 * Ici permet donc de rï¿½initialiser l'objet eleve avant chaque test
+	 * Il faut crï¿½er un objet correct ici
 	 */
     @Before
     public void setUp()
@@ -48,7 +48,7 @@ public class EleveTest {
     }
 	
     /**
-     * Permet d'ajouter un exercie réalisé à un élève
+     * Permet d'ajouter un exercie rï¿½alisï¿½ ï¿½ un ï¿½lï¿½ve
      */
 	@Test
 	public void testAddExerciceRealise()
