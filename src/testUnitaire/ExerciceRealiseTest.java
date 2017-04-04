@@ -1,7 +1,5 @@
 package testUnitaire;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import edu.ihm.noyau_fonctionnel.*;
@@ -23,19 +21,15 @@ public class ExerciceRealiseTest {
 	
 	public void TestExerciceRealise() {
 		
-		assertEquals("oui",exerciceFait,ER);
+	
 	}
 	
 	public void TestsetCorrect() {
-		
-		ER.setCorrect(true);
-		assertTrue("Erreur set",ER.isCorrect());
+
 	}
 	
 	public void TestisCorrect() {
-		
-		ER.setCorrect(true);
-		assertTrue("Erreur get",ER.isCorrect());
+
 	}
 	
 	
