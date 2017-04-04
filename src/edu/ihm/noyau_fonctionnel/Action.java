@@ -1,5 +1,7 @@
 package edu.ihm.noyau_fonctionnel;
 
+import edu.ihm.tortue.TortueG;
+
 /**
  * Action effectuée par l’élève pour réaliser l’exercice
  * composée d’une tortue logo et de l’action effectuée sous forme textuelle

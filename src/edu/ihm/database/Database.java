@@ -13,8 +13,11 @@ import java.util.Map.Entry;
 import edu.ihm.noyau_fonctionnel.Action;
 import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Eleve;
+import edu.ihm.noyau_fonctionnel.Evaluation;
 import edu.ihm.noyau_fonctionnel.Exercice;
+import edu.ihm.noyau_fonctionnel.ExerciceRealise;
 import edu.ihm.noyau_fonctionnel.Professeur;
+import edu.ihm.noyau_fonctionnel.Tentative;
 
 public class Database
 {
@@ -139,15 +142,6 @@ public class Database
 									+   "IDACTION             INTEGER,"
 									+	"FOREIGN KEY(IDACTION) REFERENCES ACTION(IDACTION),"
 									+	"FOREIGN KEY(IDTENTATIVE) REFERENCES TENTATIVES(IDTENTATIVE)"
-									+")");
-
-			statement.executeUpdate("create table if not exists EVALUATION"
-									+"("
-									+   "IDEVALUATION         INTEGER PRIMARY KEY AUTOINCREMENT,"
-									+   "IDEXERCICEREALISE    INTEGER not null,"
-									+   "NOTE                 char(20) not null,"
-									+   "COMMENTAIRE          text not null,"
-									+	"FOREIGN KEY(IDEXERCICEREALISE) REFERENCES EXERCICEREALISEE(IDEXERCICEREALISE)"
 									+")");
 			
 			statement.executeUpdate("create table if not exists TENTATIVES"
@@ -291,7 +285,6 @@ public class Database
 				sauvegardeEleve.put(Integer.toString(resultSet.getInt("IDELEVE")), eleve);
 			}
 
-
 			//CLASSE
 			ArrayList<Object> listClasse = new ArrayList<Object>();
 			resultSet = statement.executeQuery("SELECT * from CLASSE");
@@ -306,8 +299,37 @@ public class Database
 			resultSet = statement.executeQuery("SELECT * from ACTION");
 			while(resultSet.next())
 			{
-				Action action = new Action(null, action);
-				sauvegardeProfesseur.put(Integer.toString(resultSet.getInt("IDPROFESSEUR")),prof);
+				Action action = new Action(null, resultSet.getString("ACTIONFAITE"));
+				sauvegardeAction.put(Integer.toString(resultSet.getInt("IDACTION")),action);
+			}
+			
+			//EVALUATION
+			resultSet = statement.executeQuery("SELECT * from EVALUATION");
+			while(resultSet.next())
+			{
+				Evaluation eval = new Evaluation(resultSet.getString("NOTE"), resultSet.getString("COMMENTAIRE"));
+				sauvegardeEvaluation.put(Integer.toString(resultSet.getInt("IDEVALUATION")),eval);
+			}
+			
+			//EXERCICEREALISEE
+			resultSet = statement.executeQuery("SELECT * from EXERCICEREALISEE");
+			while(resultSet.next())
+			{
+				for(Entry<String, Object> entry2 : sauvegardeExercice.entrySet()) {
+					if(entry2.getKey().equals(Integer.toString(resultSet.getInt("IDEXERCICE")))){
+						Exercice exo = (Exercice) entry2.getValue();
+						ExerciceRealise exoR = new ExerciceRealise(exo);
+						sauvegardeExerciceRealise.put(Integer.toString(resultSet.getInt("IDEXERCICEREALISE")),exoR);
+					}
+				}
+			}
+			
+			//TENTATIVES
+			resultSet = statement.executeQuery("SELECT * from TENTATIVES");
+			while(resultSet.next())
+			{
+				Tentative tent = new Tentative();
+				sauvegardeTentative.put(Integer.toString(resultSet.getInt("IDTENTATIVE")),tent);
 			}
 			
 			
@@ -325,6 +347,26 @@ public class Database
 						for(Entry<String, Object> entry2 : sauvegardeClasse.entrySet()) {
 							if(entry2.getKey().equals(Integer.toString(resultSet.getInt("IDCLASSE")))){
 								prof.addClasses((Classes) entry2.getValue());
+							}
+						}
+					}
+				}
+			}
+			
+			// On ajoute les Exercices aux classes
+			for(Entry<String, Object> entry : sauvegardeClasse.entrySet()) {
+				String idPrimaire = entry.getKey();
+				Classes cl = (Classes) entry.getValue();
+				
+				if(idPrimaire != null){ // Si on a un résultat
+					resultSet = statement.executeQuery("SELECT IDEXERCICE from AVOIR where IDCLASSE="
+													+Integer.parseInt(idPrimaire)); // On recupère l'id des exercices liés
+					while(resultSet.next())  // Tant que l'on a des résultats
+					{
+						for(Entry<String, Object> entry2 : sauvegardeExercice.entrySet()) {
+							if(entry2.getKey().equals(Integer.toString(resultSet.getInt("IDEXERCICE")))){
+								Exercice test = (Exercice) entry2.getValue();
+								cl.addExercice((Exercice) entry2.getValue()); 
 							}
 						}
 					}
@@ -351,25 +393,76 @@ public class Database
 				}
 			}
 			
-			// On ajoute les Exercices aux classes
-			for(Entry<String, Object> entry : sauvegardeClasse.entrySet()) {
+			// On ajoute les Exercice Real aux eleve
+			for(Entry<String, Object> entry : sauvegardeEleve.entrySet()) {
 				String idPrimaire = entry.getKey();
-				Classes cl = (Classes) entry.getValue();
-				
+				Eleve eleve = (Eleve) entry.getValue();
 				if(idPrimaire != null){ // Si on a un résultat
-					resultSet = statement.executeQuery("SELECT IDEXERCICE from AVOIR where IDCLASSE="
+					resultSet = statement.executeQuery("SELECT IDEXERCICEREALISE from EXERCICEREALISEE where IDELEVE="
 													+Integer.parseInt(idPrimaire)); // On recupère l'id des exercices liés
 					while(resultSet.next())  // Tant que l'on a des résultats
 					{
-						for(Entry<String, Object> entry2 : sauvegardeExercice.entrySet()) {
-							if(entry2.getKey().equals(Integer.toString(resultSet.getInt("IDEXERCICE")))){
-								Exercice test = (Exercice) entry2.getValue();
-								cl.addExercice((Exercice) entry2.getValue()); 
+						for(Entry<String, Object> entry2 : sauvegardeExerciceRealise.entrySet()) {
+							if(entry2.getKey().equals(Integer.toString(resultSet.getInt("IDEXERCICEREALISE")))){
+								ExerciceRealise exoR = (ExerciceRealise) entry2.getValue();
+								eleve.addExerciceRealise(exoR);
 							}
 						}
 					}
 				}
 			}
+			
+			// On assigne l'Exercice a l'exercice realise ainsi que les tentatives ainsi que l'évaluation
+			for(Entry<String, Object> entry : sauvegardeExerciceRealise.entrySet()) {
+				String idPrimaire = entry.getKey();
+				ExerciceRealise exo = (ExerciceRealise) entry.getValue();
+				if(idPrimaire != null){ // Si on a un résultat
+					resultSet = statement.executeQuery("SELECT IDEVALUATION from EVALUATION where IDEXERCICEREALISE="
+													+Integer.parseInt(idPrimaire));
+					while(resultSet.next())  // Tant que l'on a des résultats
+					{
+						for(Entry<String, Object> entry2 : sauvegardeEvaluation.entrySet()) {
+							if(entry2.getKey().equals(Integer.toString(resultSet.getInt("IDEVALUATION")))){
+								Evaluation eval = (Evaluation) entry2.getValue();
+								exo.corriger(eval);
+							}
+						}
+					}
+					
+					resultSet = statement.executeQuery("SELECT IDTENTATIVE from TENTATIVES where IDEXERCICEREALISE="
+							+Integer.parseInt(idPrimaire));
+					while(resultSet.next())  // Tant que l'on a des résultats
+					{
+						for(Entry<String, Object> entry2 : sauvegardeTentative.entrySet()) {
+							if(entry2.getKey().equals(Integer.toString(resultSet.getInt("IDTENTATIVE")))){
+								Tentative tent = (Tentative) entry2.getValue();
+								exo.addTentative(tent);
+							}
+						}
+					}
+				}
+			}
+			
+			// On assigne les actions aux tentatives
+			for(Entry<String, Object> entry : sauvegardeExerciceRealise.entrySet()) {
+				String idPrimaire = entry.getKey();
+				ExerciceRealise exoR = (ExerciceRealise) entry.getValue();
+				if(idPrimaire != null){ // Si on a un résultat
+					resultSet = statement.executeQuery("SELECT IDTENTATIVE from TENTATIVES where IDEXERCICEREALISE="
+													+Integer.parseInt(idPrimaire)); // On recupère l'id des exercices liés
+					while(resultSet.next())  // Tant que l'on a des résultats
+					{
+						for(Entry<String, Object> entry2 : sauvegardeTentative.entrySet()) {
+							if(entry2.getKey().equals(Integer.toString(resultSet.getInt("IDTENTATIVE")))){
+								Tentative tent = (Tentative) entry2.getValue();
+								exoR.addTentative(tent);
+							}
+						}
+					}
+				}
+			}
+			
+			
 		}
 		catch(SQLException e){  System.err.println(e.getMessage()); }       
 		finally {         

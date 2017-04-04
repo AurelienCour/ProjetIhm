@@ -13,6 +13,7 @@ public class ExerciceRealise {
 	private ArrayList<Tentative> listeTentatives; // la liste des tentatives effectué sur l'exercice
 	private boolean correct;	// Booleen permettant de savoir si l'exercice à été corrigé
 	private Evaluation resultat;	// L'évaluation de l'exercice si elle a été corrigé
+	
 	private Exercice exerciceFait;	// L'exercice qui a été effectué
 	
 	/**
@@ -66,6 +67,7 @@ public class ExerciceRealise {
 	 * @param resultat L'evaluation de l'exercice
 	 */
 	public void corriger(Evaluation resultat) {
+		this.setCorrect(true);
 		this.resultat = resultat;
 	}
 
