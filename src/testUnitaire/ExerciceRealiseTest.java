@@ -4,11 +4,9 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import com.sun.org.apache.xpath.internal.operations.String;
 
 import edu.ihm.noyau_fonctionnel.*;
@@ -31,9 +29,9 @@ public class ExerciceRealiseTest {
 	@Before
     public void setUp(){
 		exerciceFait = new Exercice("nomExercice", "leType", "leModele");
-		exerciceRealise = new ExerciceRealise(exerciceFait);
 		resultat = new Evaluation("note","commentaire");
 		listeTentatives = new ArrayList<Tentative>();
+		exerciceRealise = new ExerciceRealise(exerciceFait);		
 		
     }
 
@@ -69,7 +67,6 @@ public class ExerciceRealiseTest {
 
     @Test
     public void testIsEmpty() {
-    	listeTentatives = new ArrayList<Tentative>();
     	assertEquals(null,exerciceRealise.getListeTentatives());
     }
     
