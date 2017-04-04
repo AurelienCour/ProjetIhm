@@ -21,7 +21,7 @@ public class Tentative {
 	
 	/**
 	 * Permet de recuperer la liste d'action
-	 * @return
+	 * @return La liste des actions
 	 */
 	public ArrayList<Action> getListeAction() 
 	{
@@ -31,11 +31,14 @@ public class Tentative {
 	/**
 	 * Permet de rajouter une action à la liste des actions
 	 * si cette derniesre n'existe pas dans la liste
-	 * @param arg0 L'action à ajouter, true si l'action a ete ajouter, false sinon
+	 * @param act L'action à ajouter, true si l'action a ete ajouter, false sinon
 	 */
-	public boolean addAction(Action arg0)
+	public boolean addAction(Action act)
 	{
-		return this.listeAction.add(arg0);
+		if(this.listeAction.contains(act))
+			return false;
+		else
+			return this.listeAction.add(act);
 	}
 
 	/**
@@ -49,17 +52,15 @@ public class Tentative {
 
 	/**
 	 * Permet de supprimer une action de la liste
-	 * @param arg0	L'action a supprimer de la liste
+	 * @param act	L'action a supprimer de la liste
 	 * @return true si l'action a ete supprimer
 	 */
-	public boolean removeAction(Action arg0) 
+	public boolean removeAction(Action act) 
 	{
-		if (this.isEmpty()==false) {
-			return this.listeAction.remove(arg0);
-		}
-		else{
-			return(false);
-		}
+		if (!this.isEmpty() && this.listeAction.contains(act))
+			return this.listeAction.remove(act);
+		else
+			return false;
 	}
 
 	/**

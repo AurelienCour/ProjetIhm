@@ -2,47 +2,55 @@ package testUnitaire;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import edu.ihm.noyau_fonctionnel.Action;
 import edu.ihm.noyau_fonctionnel.Tentative;
+import edu.ihm.tortue.TortueG;
 
 public class TentativeTest {
 
-	
-	private ArrayList<Action> listeAction;
-	private Action action;
 	private Tentative tentative;
-	
+	private Action act;
 		
 	
 	@Before
 	public void setUp(){
-		tentative.addAction(action);
-		listeAction = new ArrayList<Action>();
-		listeAction.add(action);
-		
+		tentative = new Tentative();
+		act = new Action(new TortueG(), "toto");
 	}
 
 	@After
 	public void tearDown(){
 		
 	}
-	    
+	
 	@Test
-	public void testRemoveActionEmpty(){
-		tentative.removeAction(action);
-		assertEquals(false,tentative.removeAction(action));
-		
+	public void testAddActionInexistante(){
+		assertEquals(true,tentative.addAction(act));
+		assertEquals(true,tentative.getListeAction().contains(act));
 	}
 	
 	@Test
-	public void testRemoveAction(){
-		assertEquals(true,tentative.removeAction(action));
-		
+	public void testAddActionExistante(){
+		tentative.addAction(act);
+		assertEquals(false,tentative.addAction(act));
+		assertEquals(true,tentative.getListeAction().contains(act));
 	}
+	    
+	@Test
+	public void testRemoveActionGood(){
+		tentative.addAction(act);
+		assertEquals(true,tentative.removeAction(act));
+		assertEquals(false,tentative.getListeAction().contains(act));
+	}
+	
+	@Test
+	public void testRemoveActionBad(){
+		assertEquals(false,tentative.getListeAction().contains(act));
+		assertEquals(false,tentative.removeAction(act));
+	}
+	
 }
