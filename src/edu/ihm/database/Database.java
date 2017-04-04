@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import edu.ihm.noyau_fonctionnel.Action;
 import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
@@ -22,6 +23,11 @@ public class Database
 	private Map<String,Object> sauvegardeExercice;
 	private Map<String,Object> sauvegardeEleve;
 	private Map<String,Object> sauvegardeClasse;
+	
+	private Map<String,Object> sauvegardeAction;
+	private Map<String,Object> sauvegardeEvaluation;
+	private Map<String,Object> sauvegardeExerciceRealise;
+	private Map<String,Object> sauvegardeTentative;
 
 	public Database(){
 		createDatabase();
@@ -29,6 +35,11 @@ public class Database
 		sauvegardeExercice = new HashMap<String,Object>();
 		sauvegardeEleve = new HashMap<String,Object>();
 		sauvegardeClasse = new HashMap<String,Object>();
+		
+		sauvegardeAction = new HashMap<String,Object>();
+		sauvegardeEvaluation = new HashMap<String,Object>();
+		sauvegardeExerciceRealise = new HashMap<String,Object>();
+		sauvegardeTentative = new HashMap<String,Object>();
 	}
 
 	public void createDatabase(){
@@ -241,7 +252,6 @@ public class Database
 			
 			
 			//PROFESSEUR
-			ArrayList<Object> listProf = new ArrayList<Object>();
 			ResultSet resultSet = statement.executeQuery("SELECT * from PROFESSEUR");
 			while(resultSet.next())
 			{
@@ -249,7 +259,6 @@ public class Database
 									resultSet.getString("MOTDEPASSE"),
 									resultSet.getString("NOM"),
 									resultSet.getString("PRENOM")); 
-				listProf.add(prof);
 				sauvegardeProfesseur.put(Integer.toString(resultSet.getInt("IDPROFESSEUR")),prof);
 			}
 			
@@ -293,6 +302,13 @@ public class Database
 				sauvegardeClasse.put(Integer.toString(resultSet.getInt("IDCLASSE")),cla);
 			}
 			
+			//ACTION
+			resultSet = statement.executeQuery("SELECT * from ACTION");
+			while(resultSet.next())
+			{
+				Action action = new Action(null, action);
+				sauvegardeProfesseur.put(Integer.toString(resultSet.getInt("IDPROFESSEUR")),prof);
+			}
 			
 			
 			// On fait les liaison des objets

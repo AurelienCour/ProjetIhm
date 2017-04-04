@@ -21,8 +21,8 @@ public class Action {
 	 * @param action : l'action qui a été effectuée
 	 */
 	public Action(TortueG tortue, String action){
-		setTortue(tortue);
-		setAction(action);
+		this.tortue = tortue;
+		this.action = action;
 	}
 	
 	/**
