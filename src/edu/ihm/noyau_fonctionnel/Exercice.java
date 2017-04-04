@@ -83,8 +83,8 @@ public class Exercice {
 	 * Permet de modifier l’image de l’exercice.
 	 * @param modele URL du nouveau modele de l'exercice
 	 */
-	public void setModele(URL modele){
-		this.modele = modele;
+	public void setModele(String newUrl){
+		this.modele = Exercice.class.getResource(newUrl);
 	}
 	
 }
