@@ -2,13 +2,12 @@ package edu.ihm.liste_eleve_prof;
 
 
 import java.awt.GridLayout;
+import java.net.URL;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionListener;
-
 import edu.ihm.acceuil.AcceuilProf;
 import edu.ihm.noyau_fonctionnel.Professeur;
 
@@ -44,6 +43,9 @@ public class PanelListeEleveProf extends JPanel{
 	private void initJTable(){
 		this.tableEleve = new JTable(modeleTable);
 		tableEleve.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tableEleve.setRowHeight(70);
+		tableEleve.setDefaultRenderer(URL.class, new ImageCellRenderer());
+		//tableEleve.setDefaultRenderer(URL.class, new DefaultTableCellRenderer());
 		ListSelectionModel listSelectionModel = tableEleve.getSelectionModel();        
 		listSelectionModel.addListSelectionListener(new ControlerListeEleve(tableEleve, acceuil));
 	}

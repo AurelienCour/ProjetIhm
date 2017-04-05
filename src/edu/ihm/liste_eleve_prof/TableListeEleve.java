@@ -1,7 +1,10 @@
 package edu.ihm.liste_eleve_prof;
 
+import java.awt.Image;
+import java.net.URL;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.table.AbstractTableModel;
 
 import edu.ihm.noyau_fonctionnel.Classes;
@@ -63,7 +66,7 @@ public class TableListeEleve extends AbstractTableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch(columnIndex){
 		case 0:
-			return "";
+			return donnees.get(rowIndex).getPhoto();
 		case 1:
 			return donnees.get(rowIndex).getNom();
 		case 2:
@@ -80,37 +83,11 @@ public class TableListeEleve extends AbstractTableModel {
 	
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-	    if(aValue != null){
-	        Eleve eleve = donnees.get(rowIndex);
-	 
-	        switch(columnIndex){
-	            case 1:
-	            	/*eleve.changeInfo((String)aValue, eleve.getPrenom(), eleve.getAge());
-	            	fenetreInfo.getPanelInfo().changeLabelEnfant(eleve);
-	            	fenetreInfo.updateTree();*/
-	                break;
-	            case 2:
-	            	/*eleve.changeInfo(eleve.getNom(), (String)aValue, eleve.getAge());
-	            	fenetreInfo.getPanelInfo().changeLabelEnfant(eleve);
-	            	fenetreInfo.updateTree();*/
-	                break;
-	            case 4:
-	            	/*eleve.changeInfo(eleve.getNom(), eleve.getPrenom(), Integer.parseInt((String)aValue));
-	            	fenetreInfo.getPanelInfo().changeLabelEnfant(eleve);
-	            	fenetreInfo.updateTree();*/
-	                break;
-	        }
-	    }
 	}
 	
 	@Override
 	public Class getColumnClass(int columnIndex){
-		switch(columnIndex){
-			case 3:
-				return Boolean.class;
-			default:
-				return Object.class;
-		}
+		return getValueAt(0, columnIndex).getClass();
 	}
 
 	/**

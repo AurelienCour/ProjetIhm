@@ -2,8 +2,10 @@ package edu.ihm.fiche_enfant_prof;
 
 
 import java.awt.GridLayout;
+import java.awt.Image;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -23,7 +25,7 @@ public class PanelFicheEnfantProf extends JPanel{
 	
 	public PanelFicheEnfantProf(Eleve eleve){
 		this.eleve = eleve;
-		this.setLayout(new GridLayout(2,1));
+		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		JLabel nom = new JLabel(eleve.getNom()+" "+eleve.getPrenom());
 		JPanel exercice = new JPanel();
 		exercice.setLayout(new BoxLayout(exercice,BoxLayout.Y_AXIS));
@@ -46,7 +48,7 @@ public class PanelFicheEnfantProf extends JPanel{
 				panelExo.add(new JLabel("A FAIRE"));
 			exercice.add(panelExo);
 		}
-		
+		this.add(new JLabel(new ImageIcon(new ImageIcon(eleve.getPhoto()).getImage())));
 		this.add(nom);
 		this.add(exercice);
 	}

@@ -1,8 +1,17 @@
 package edu.ihm.fiche_exercice_prof;
 
-import javax.swing.JButton;
+import java.awt.Image;
+
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import edu.ihm.noyau_fonctionnel.Classes;
+import edu.ihm.noyau_fonctionnel.Eleve;
+import edu.ihm.noyau_fonctionnel.Exercice;
+import edu.ihm.noyau_fonctionnel.ExerciceRealise;
+import edu.ihm.noyau_fonctionnel.Professeur;
 
 /**
  * Panel permettant de visualiser la fiche d'un exercice pour un professeur
@@ -12,9 +21,30 @@ import javax.swing.JPanel;
  */
 public class PanelFicheExerciceProf extends JPanel{
 	
-	public PanelFicheExerciceProf(){
-		this.add(new JLabel("FicheExerciceProf"));
-		this.add(new JButton("Retour"));
+	private Exercice exercice;
+	
+	public PanelFicheExerciceProf(Exercice exercice, Professeur user){
+		this.exercice = exercice;
+		/**
+		 * Model exercice
+		 * Nom exercice
+		 * Type exercice
+		 * Liste des enfants ayant fait l'exercice
+		 **/
+		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+		this.add(new JLabel(new ImageIcon(new ImageIcon(exercice.getModele()).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT))));
+		this.add(new JLabel(exercice.getNomEx()));
+		this.add(new JLabel(exercice.getTypeEx()));
+		this.add(new JLabel("Liste des enfants ayant réalisé l'exercice :"));
+		for (Classes classes : user.getClasses()) {
+			for (Eleve eleve : classes.getEleves()) {
+				for (ExerciceRealise exoR : eleve.getExerciceRealise()) {
+					if(exoR.getExerciceFait().equals(exercice)){
+						this.add(new JLabel(eleve.getNom()));
+					}
+				}
+			}
+		}
 	}
 
 }

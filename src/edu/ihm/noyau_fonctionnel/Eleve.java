@@ -44,7 +44,7 @@ public class Eleve extends Utilisateur{
 			Classes classe, String photo) {
 		super(identifiant, motDePasse, nom, prenom);
 		this.classe = classe;
-		this.photo = Eleve.class.getResource(photo);
+		this.photo = Eleve.class.getResource("Image/"+photo);
 		this.exerciceRealise = new ArrayList<ExerciceRealise>();
 	}
 

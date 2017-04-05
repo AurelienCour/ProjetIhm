@@ -1,4 +1,4 @@
-package etu.ihm.Main;
+package edu.ihm.Main;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -261,9 +261,17 @@ public class Database
 			resultSet = statement.executeQuery("SELECT * from EXERCICE");
 			while(resultSet.next())
 			{
-				Exercice exo = new Exercice(resultSet.getString("NOMEXERCICE"),
-									resultSet.getString("NOMEXERCICE"),
-									resultSet.getString("MODELE"));
+				Exercice exo;
+				int nombreAleatoire = 1 + (int)(Math.random() * ((2 - 1) + 1));
+				if(nombreAleatoire == 1){
+					exo = new Exercice(resultSet.getString("NOMEXERCICE"),
+										resultSet.getString("NOMEXERCICE"),
+										"ImageExercice.JPG");
+				}else{
+					exo = new Exercice(resultSet.getString("NOMEXERCICE"),
+							resultSet.getString("NOMEXERCICE"),
+							"ImageExercice2.JPG");
+				}
 				sauvegardeExercice.put(Integer.toString(resultSet.getInt("IDEXERCICE")),exo);
 			}
 			
@@ -272,12 +280,37 @@ public class Database
 			resultSet = statement.executeQuery("SELECT * from ELEVE");
 			while(resultSet.next())
 			{
-				Eleve eleve = new Eleve(resultSet.getString("IDENTIFIANT"),
-									resultSet.getString("MOTDEPASSE"),
-									resultSet.getString("NOM"),
-									resultSet.getString("PRENOM"),
-									null,
-									"");
+				Eleve eleve;
+				int nombreAleatoire = 1 + (int)(Math.random() * ((4 - 1) + 1)); //photoEnfant1.jpg
+				if(nombreAleatoire == 1){
+					eleve = new Eleve(resultSet.getString("IDENTIFIANT"),
+							resultSet.getString("MOTDEPASSE"),
+							resultSet.getString("NOM"),
+							resultSet.getString("PRENOM"),
+							null,
+							"photoEnfant1.jpg");
+				}else if(nombreAleatoire == 2){
+					eleve = new Eleve(resultSet.getString("IDENTIFIANT"),
+							resultSet.getString("MOTDEPASSE"),
+							resultSet.getString("NOM"),
+							resultSet.getString("PRENOM"),
+							null,
+							"photoEnfant2.jpg");
+				}else if(nombreAleatoire == 3){
+					eleve = new Eleve(resultSet.getString("IDENTIFIANT"),
+							resultSet.getString("MOTDEPASSE"),
+							resultSet.getString("NOM"),
+							resultSet.getString("PRENOM"),
+							null,
+							"photoEnfant3.jpg");
+				}else{
+					eleve = new Eleve(resultSet.getString("IDENTIFIANT"),
+							resultSet.getString("MOTDEPASSE"),
+							resultSet.getString("NOM"),
+							resultSet.getString("PRENOM"),
+							null,
+							"photoEnfant4.jpg");
+				}
 				sauvegardeEleve.put(Integer.toString(resultSet.getInt("IDELEVE")), eleve);
 			}
 

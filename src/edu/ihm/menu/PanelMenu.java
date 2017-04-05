@@ -4,7 +4,7 @@ package edu.ihm.menu;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
-
+import edu.ihm.acceuil.Acceuil;
 import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
@@ -19,18 +19,19 @@ import edu.ihm.noyau_fonctionnel.Utilisateur;
  */
 public class PanelMenu{
 	
-	private Utilisateur user;
+	private Acceuil acceuil;
 	private JTree tree;
 
-	public PanelMenu(Utilisateur user){
-		this.user = user;
+	public PanelMenu(Acceuil acceuil){
+		this.acceuil = acceuil;
 		buildTree();
 	}
 
 	public void buildTree() {
-		if(user instanceof Professeur){
-			Professeur pr = (Professeur) user;
-			DefaultMutableTreeNode racine = new DefaultMutableTreeNode("Classes");
+		DefaultMutableTreeNode racine;
+		if(acceuil.getUser() instanceof Professeur){
+			Professeur pr = (Professeur) acceuil.getUser();
+			racine = new DefaultMutableTreeNode("Classes");
 			for (Classes cl : pr.getClasses()) {
 				DefaultMutableTreeNode classe = new DefaultMutableTreeNode(cl);
 				DefaultMutableTreeNode eleves = new DefaultMutableTreeNode("Eleves");
@@ -48,25 +49,24 @@ public class PanelMenu{
 				classe.add(exercices);
 				racine.add(classe);
 			}
-			
-			tree = new JTree(racine);
-			tree.setRootVisible(true);
-			tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-			tree.setCellRenderer(new TreeRenderer());
 		}
-		else if(user instanceof Eleve){
-			Eleve el = (Eleve) user;
-			DefaultMutableTreeNode racine = new DefaultMutableTreeNode("Exercice");
+		else{
+			Eleve el = (Eleve) acceuil.getUser();
+			racine = new DefaultMutableTreeNode("Exercice");
 			for(Exercice ex : el.getClasse().getExercices()){
 				DefaultMutableTreeNode exo = new DefaultMutableTreeNode(ex);
 				racine.add(exo);
 			}
-			
-			tree = new JTree(racine);
-			tree.setRootVisible(true);
-			tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-			tree.setCellRenderer(new TreeRenderer());
 		}
+		tree = new JTree(racine);
+		tree.setRootVisible(true);
+		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+		tree.setCellRenderer(new TreeRenderer());
+		tree.addTreeSelectionListener(new ControlerMenu(this));
+	}
+	
+	public Acceuil getAcceuil(){
+		return this.acceuil;
 	}
 	
 	public JTree getJTree(){

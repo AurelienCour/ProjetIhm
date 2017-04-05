@@ -1,4 +1,4 @@
-package etu.ihm.Main;
+package edu.ihm.Main;
 
 import java.util.Map;
 import java.util.Map.Entry;
