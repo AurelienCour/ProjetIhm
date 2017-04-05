@@ -36,7 +36,7 @@ public class ControlerMenu implements TreeSelectionListener{
 		}
 		else if(nodeInfo instanceof Classes){
 			AcceuilProf acceuilProf = (AcceuilProf) tree.getAcceuil();
-			//acceuilProf.goFicheEleve((Eleve) nodeInfo);
+			acceuilProf.goListeEleve();
 		}
 		else if(nodeInfo instanceof Exercice){
 			if(tree.getAcceuil().getUser() instanceof Eleve){

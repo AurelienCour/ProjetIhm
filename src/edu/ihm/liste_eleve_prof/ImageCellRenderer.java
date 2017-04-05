@@ -18,7 +18,7 @@ public class ImageCellRenderer extends DefaultTableCellRenderer {
         super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
         URL ur = (URL) value;
         setText("");
-        ImageIcon ic = new ImageIcon(new ImageIcon(ur).getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+        ImageIcon ic = new ImageIcon(new ImageIcon(ur).getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
         setIcon(ic);
         return this;
     }

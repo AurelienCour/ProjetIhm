@@ -35,8 +35,14 @@ public class AcceuilProf extends Acceuil{
 		super(user);
 		panelInfo = new JPanel();
 		panelInfo.setLayout(new GridLayout());
-		panelInfo.add(new PanelListeEleveProf(this));
+		goListeEleve();
 		this.add(panelInfo,BorderLayout.CENTER);
+	}
+	
+	public void goListeEleve(){
+		panelInfo.removeAll();
+		panelInfo.add(new PanelListeEleveProf(this));
+		panelInfo.revalidate();
 	}
 
 	public void goFicheEleve(Eleve eleve){
