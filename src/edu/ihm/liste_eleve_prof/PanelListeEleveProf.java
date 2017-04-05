@@ -7,7 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionListener;
 
+import edu.ihm.acceuil.AcceuilProf;
 import edu.ihm.noyau_fonctionnel.Professeur;
 
 /**
@@ -19,11 +21,13 @@ import edu.ihm.noyau_fonctionnel.Professeur;
 public class PanelListeEleveProf extends JPanel{
 	
 	private Professeur prof;
+	private AcceuilProf acceuil;
 	private JTable tableEleve;
 	private TableListeEleve modeleTable;
 	
-	public PanelListeEleveProf(Professeur prof){
-		this.prof = prof;
+	public PanelListeEleveProf(AcceuilProf acceuil){
+		this.prof = (Professeur) acceuil.getUser();
+		this.acceuil = acceuil;
 		this.setLayout(new GridLayout());
 		initcomposant();
 	}
@@ -39,10 +43,9 @@ public class PanelListeEleveProf extends JPanel{
 	 */
 	private void initJTable(){
 		this.tableEleve = new JTable(modeleTable);
-		/*tableEleve.setDefaultRenderer(Boolean.class, new SexeCellRenderer());*/
 		tableEleve.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		/*ListSelectionModel listSelectionModel = tableClasse.getSelectionModel();        
-		listSelectionModel.addListSelectionListener(new JTableControler(tableEleve, this));*/
+		ListSelectionModel listSelectionModel = tableEleve.getSelectionModel();        
+		listSelectionModel.addListSelectionListener(new ControlerListeEleve(tableEleve, acceuil));
 	}
 
 }

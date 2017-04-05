@@ -75,8 +75,6 @@ public class TableListeEleve extends AbstractTableModel {
 	
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		if(columnIndex == 1 || columnIndex == 2 || columnIndex == 4)
-			return true; //Toutes les cellules éditables
 		return false;
 	}
 	
@@ -124,10 +122,19 @@ public class TableListeEleve extends AbstractTableModel {
 		fireTableRowsInserted(donnees.size() -1, donnees.size() -1);
 	}
 	
+	/**
+	 * Permet de récupérer l'objet d'une ligne
+	 * @param rowIndex
+	 * @return
+	 */
 	public Eleve getEleveRow(int rowIndex){
 		return donnees.get(rowIndex);
 	}
 
+	/**
+	 * Supprime l'eleve de la table
+	 * @param rowIndex
+	 */
 	public void removeEleve(int rowIndex) {
 		donnees.remove(rowIndex);
 		fireTableRowsDeleted(rowIndex, rowIndex);

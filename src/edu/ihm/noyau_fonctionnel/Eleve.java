@@ -63,9 +63,9 @@ public class Eleve extends Utilisateur{
 	/**
 	 * 
 	 */
-	public ExerciceRealise getExerciceRealise(int index)
+	public ArrayList<ExerciceRealise> getExerciceRealise()
 	{
-		return this.exerciceRealise.get(index);
+		return this.exerciceRealise;
 	}
 	
 	/**

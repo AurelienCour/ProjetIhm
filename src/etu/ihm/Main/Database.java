@@ -258,20 +258,17 @@ public class Database
 			
 			
 			//EXERCICE
-			ArrayList<Object> listExercice = new ArrayList<Object>();
 			resultSet = statement.executeQuery("SELECT * from EXERCICE");
 			while(resultSet.next())
 			{
 				Exercice exo = new Exercice(resultSet.getString("NOMEXERCICE"),
 									resultSet.getString("NOMEXERCICE"),
 									resultSet.getString("MODELE"));
-				listExercice.add(exo);
 				sauvegardeExercice.put(Integer.toString(resultSet.getInt("IDEXERCICE")),exo);
 			}
 			
 
 			//ELEVE
-			ArrayList<Object> listEleve = new ArrayList<Object>();
 			resultSet = statement.executeQuery("SELECT * from ELEVE");
 			while(resultSet.next())
 			{
@@ -281,17 +278,14 @@ public class Database
 									resultSet.getString("PRENOM"),
 									null,
 									"");
-				listEleve.add(eleve);
 				sauvegardeEleve.put(Integer.toString(resultSet.getInt("IDELEVE")), eleve);
 			}
 
 			//CLASSE
-			ArrayList<Object> listClasse = new ArrayList<Object>();
 			resultSet = statement.executeQuery("SELECT * from CLASSE");
 			while(resultSet.next())
 			{
 				Classes cla = new Classes(resultSet.getString("NOMCLASSE"));
-				listClasse.add(cla);
 				sauvegardeClasse.put(Integer.toString(resultSet.getInt("IDCLASSE")),cla);
 			}
 			

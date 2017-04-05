@@ -3,7 +3,7 @@ package etu.ihm.Main;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import edu.ihm.acceuil.Acceuil;
+import edu.ihm.acceuil.AcceuilProf;
 import edu.ihm.noyau_fonctionnel.Professeur;
 
 public class MainClass {
@@ -17,8 +17,7 @@ public class MainClass {
 		int i = 0;
 		for(Entry<String, Object> entry2 : professeurs.entrySet()) {
 			Professeur test = (Professeur) entry2.getValue();
-			//Eleve test = (Eleve) entry2.getValue();
-			Acceuil a = new Acceuil(test);
+			AcceuilProf a = new AcceuilProf(test);
 		}
 	}
 }
