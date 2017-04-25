@@ -54,7 +54,7 @@ public class EleveTest {
 	public void testAddExerciceRealise()
 	{ 
 		eleve.addExerciceRealise(exerciceRealise);
-		assertEquals(exerciceRealise,eleve.getExerciceRealise(0));
+		assertEquals(1,eleve.getExerciceRealise().size());
 	}
 
 	/**

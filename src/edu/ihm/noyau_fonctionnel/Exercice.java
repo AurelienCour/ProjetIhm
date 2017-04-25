@@ -1,6 +1,10 @@
 package edu.ihm.noyau_fonctionnel;
 
+import java.awt.Image;
 import java.net.URL;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  * Cette classe représente les exercices que doivent effectuer les élèves.
@@ -38,7 +42,13 @@ public class Exercice {
 	public Exercice(String nomExercice, String typeExercice, String nomImage){
 		this.nomExercice = nomExercice;
 		this.typeExercice = typeExercice;
-		this.modele = Exercice.class.getResource("Image/"+nomImage);
+		try{
+			this.modele = Exercice.class.getResource("Image/"+nomImage);
+			ImageIcon ic = new ImageIcon(new ImageIcon(this.modele).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+		}
+		catch(NullPointerException e){
+			this.modele = Exercice.class.getResource("Image/no-image-found.gif");
+		}
 	}
 	
 	/**

@@ -1,4 +1,4 @@
-package edu.ihm.liste_eleve_prof;
+package edu.ihm.renderer;
 
 import java.awt.Component;
 import java.awt.Image;
@@ -16,10 +16,12 @@ public class ImageCellRenderer extends DefaultTableCellRenderer {
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-        URL ur = (URL) value;
-        setText("");
-        ImageIcon ic = new ImageIcon(new ImageIcon(ur).getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
-        setIcon(ic);
+        if(value instanceof URL){
+        	URL url = (URL) value;
+            setText("");
+            ImageIcon ic = new ImageIcon(new ImageIcon(url).getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
+            setIcon(ic);
+        }
         return this;
     }
 }

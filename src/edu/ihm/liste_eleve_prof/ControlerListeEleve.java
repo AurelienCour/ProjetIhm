@@ -8,11 +8,21 @@ import javax.swing.event.ListSelectionListener;
 import edu.ihm.acceuil.AcceuilProf;
 import edu.ihm.noyau_fonctionnel.Eleve;
 
+/**
+ * Class permettant la gestion des intéractions entre l'utilisateur et lla liste des élèves
+ * @author Aurelien
+ *
+ */
 public class ControlerListeEleve implements ListSelectionListener{
 	
 	private JTable tableEleve;
 	private AcceuilProf acceuil;
 
+	/**
+	 * Le constructeur de notre classe
+	 * @param tableEleve La table concerné
+	 * @param acceuil L'acceuil de notre application
+	 */
 	public ControlerListeEleve(JTable tableEleve, AcceuilProf acceuil) {
 		this.tableEleve = tableEleve;
 		this.acceuil = acceuil;

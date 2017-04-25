@@ -116,5 +116,17 @@ public class Classes {
 		return this.eleves;
 	}
 	
+	/**
+	 * Fonction permettant de connaitre le nombre d'élèves présent dans la classe
+	 * @return Le nombre d'élève présent dans la classe
+	 */
+	public int getNombreEleve(){
+		return this.eleves.size();
+	}
+	
+	public boolean containExercice (Exercice e){
+		return this.exercices.contains(e);
+	}
+	
 	
 }

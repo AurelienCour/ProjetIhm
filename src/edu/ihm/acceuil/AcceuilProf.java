@@ -2,24 +2,19 @@ package edu.ihm.acceuil;
 
 
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.Iterator;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
+import edu.ihm.creation_exercice.PanelCreationExercice;
 import edu.ihm.fiche_enfant_prof.PanelFicheEnfantProf;
 import edu.ihm.fiche_exercice_prof.PanelFicheExerciceProf;
 import edu.ihm.liste_eleve_prof.PanelListeEleveProf;
-import edu.ihm.liste_exercice_eleve.PanelListeExerciceEleve;
-import edu.ihm.menu.PanelMenu;
+import edu.ihm.liste_exercice_prof.PanelListeExerciceProf;
+import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
 import edu.ihm.noyau_fonctionnel.Professeur;
-import edu.ihm.noyau_fonctionnel.Utilisateur;
 
 /**
  * La Jframe principal de l'application
@@ -44,6 +39,12 @@ public class AcceuilProf extends Acceuil{
 		panelInfo.add(new PanelListeEleveProf(this));
 		panelInfo.revalidate();
 	}
+	
+	public void goListeExercice(Classes cl){
+		panelInfo.removeAll();
+		panelInfo.add(new PanelListeExerciceProf(cl, this));
+		panelInfo.revalidate();
+	}
 
 	public void goFicheEleve(Eleve eleve){
 		panelInfo.removeAll();
@@ -54,6 +55,18 @@ public class AcceuilProf extends Acceuil{
 	public void goFicheExercice(Exercice exercice){
 		panelInfo.removeAll();
 		panelInfo.add(new PanelFicheExerciceProf(exercice,(Professeur) this.getUser()));
+		panelInfo.revalidate();
+	}
+
+	public void goListeEleve(Classes nodeInfo) {
+		panelInfo.removeAll();
+		panelInfo.add(new PanelListeEleveProf(this, nodeInfo));
+		panelInfo.revalidate();
+	}
+
+	public void goCreationExercice(Classes cl) {
+		panelInfo.removeAll();
+		panelInfo.add(new PanelCreationExercice(this, cl));
 		panelInfo.revalidate();
 	}
 

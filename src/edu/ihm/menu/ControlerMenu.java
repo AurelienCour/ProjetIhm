@@ -36,7 +36,7 @@ public class ControlerMenu implements TreeSelectionListener{
 		}
 		else if(nodeInfo instanceof Classes){
 			AcceuilProf acceuilProf = (AcceuilProf) tree.getAcceuil();
-			acceuilProf.goListeEleve();
+			acceuilProf.goListeEleve((Classes) nodeInfo);
 		}
 		else if(nodeInfo instanceof Exercice){
 			if(tree.getAcceuil().getUser() instanceof Eleve){
@@ -44,6 +44,35 @@ public class ControlerMenu implements TreeSelectionListener{
 			}else if(tree.getAcceuil().getUser() instanceof Professeur){
 				AcceuilProf acceuilProf = (AcceuilProf) tree.getAcceuil();
 				acceuilProf.goFicheExercice((Exercice) nodeInfo);
+			}
+		}
+		else if(nodeInfo instanceof String){
+			String noeud = nodeInfo.toString();
+			if(noeud.equals("Exercices")){
+				if(tree.getAcceuil().getUser() instanceof Eleve){
+					
+				}else if(tree.getAcceuil().getUser() instanceof Professeur){
+					AcceuilProf acceuilProf = (AcceuilProf) tree.getAcceuil();
+					if(node.getParent() != null){
+						Object nodeInfo2 = ((DefaultMutableTreeNode) node.getParent()).getUserObject();
+						if(nodeInfo2 instanceof Classes){
+							acceuilProf.goListeExercice((Classes) nodeInfo2);
+						}
+					}
+				}
+			}
+			else if(noeud.equals("Classes")){
+				AcceuilProf acceuilProf = (AcceuilProf) tree.getAcceuil();
+				acceuilProf.goListeEleve();
+			}
+			else if(noeud.equals("Eleves")){
+				AcceuilProf acceuilProf = (AcceuilProf) tree.getAcceuil();
+				if(node.getParent() != null){
+					Object nodeInfo2 = ((DefaultMutableTreeNode) node.getParent()).getUserObject();
+					if(nodeInfo2 instanceof Classes){
+						acceuilProf.goListeEleve((Classes) nodeInfo2);
+					}
+				}
 			}
 		}
 	}

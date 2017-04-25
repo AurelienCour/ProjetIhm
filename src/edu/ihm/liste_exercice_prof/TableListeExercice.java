@@ -1,53 +1,31 @@
-package edu.ihm.liste_eleve_prof;
+package edu.ihm.liste_exercice_prof;
 
-import java.awt.Image;
-import java.net.URL;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
 import javax.swing.table.AbstractTableModel;
 
 import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Eleve;
+import edu.ihm.noyau_fonctionnel.Exercice;
+import edu.ihm.noyau_fonctionnel.ExerciceRealise;
 import edu.ihm.noyau_fonctionnel.Professeur;
+import edu.ihm.noyau_fonctionnel.Utilisateur;
 
-public class TableListeEleve extends AbstractTableModel {
+public class TableListeExercice extends AbstractTableModel {
 
-	private ArrayList<Eleve> donnees;
-	private Professeur prof;
+	private ArrayList<Exercice> donnees;
 	private Classes cl;
-	private final String[] entetes = {"Icone", "Nom", "Prenom"};
+	private final String[] entetes = {"Nom", "Modele", "Statut"};
 
 	/**
 	 * Le constructeur de notre classe
-	 * @param model Le model contenant nos données
-	 * @param fenetreInfo 
+	 * @param cl l'Utilisateur de l'application
 	 */
-	public TableListeEleve(Professeur prof) {
-		super();
-		this.prof = prof;
-		this.donnees = new ArrayList<Eleve>();
-		initDonnees();
-	}
-
-	public TableListeEleve(Classes cl) {
+	public TableListeExercice(Classes cl) {
 		super();
 		this.cl = cl;
-		this.donnees = new ArrayList<Eleve>();
-		initDonneesClasse();
-	}
-
-	/**
-	 * Initialise les données de la table si une classe précise est choisis
-	 * @param cl La classe a importer au sein de la table
-	 */
-	private void initDonneesClasse() {
-		if(!donnees.isEmpty())
-			donnees.removeAll(donnees);
-		for(Eleve el : cl.getEleves()){
-			donnees.add(el);
-		}
-		reload();
+		this.donnees = new ArrayList<Exercice>();
+		initDonnees();
 	}
 
 	/**
@@ -57,10 +35,8 @@ public class TableListeEleve extends AbstractTableModel {
 	public void initDonnees(){
 		if(!donnees.isEmpty())
 			donnees.removeAll(donnees);
-		for (Classes cl : prof.getClasses()) {
-			for(Eleve el : cl.getEleves()){
-				donnees.add(el);
-			}
+		for(Exercice exo : cl.getExercices()){
+			donnees.add(exo);
 		}
 		reload();
 	}
@@ -87,11 +63,25 @@ public class TableListeEleve extends AbstractTableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch(columnIndex){
 		case 0:
-			return donnees.get(rowIndex).getPhoto();
+			return donnees.get(rowIndex).getNomEx();
 		case 1:
-			return donnees.get(rowIndex).getNom();
+			return donnees.get(rowIndex).getModele();
 		case 2:
-			return donnees.get(rowIndex).getPrenom();
+			int nombEleveTot = 0;
+			int nombEleveFait = 0;
+			if(cl.containExercice(donnees.get(rowIndex))){
+				nombEleveTot += cl.getNombreEleve();
+				for(Eleve el : cl.getEleves()){
+					for(ExerciceRealise exoR : el.getExerciceRealise()){
+						if(exoR.getExerciceFait().equals(donnees.get(rowIndex)))
+							nombEleveFait += 1;
+					}
+				}
+			}
+			if(nombEleveFait != 0)
+				return nombEleveFait+"/"+nombEleveTot;
+			else
+				return nombEleveFait+"/"+nombEleveTot+"                  Modifiable";
 		default:
 			return null; //Ne devrait jamais arriver
 		}
@@ -115,8 +105,8 @@ public class TableListeEleve extends AbstractTableModel {
 	 * Permet d'ajouter un élève à notre table
 	 * @param eleve
 	 */
-	public void addEleve(Eleve eleve) {
-		donnees.add(eleve);
+	public void addExercice(Exercice exo) {
+		donnees.add(exo);
 		fireTableRowsInserted(donnees.size() -1, donnees.size() -1);
 	}
 
@@ -125,7 +115,7 @@ public class TableListeEleve extends AbstractTableModel {
 	 * @param rowIndex
 	 * @return
 	 */
-	public Eleve getEleveRow(int rowIndex){
+	public Exercice getExerciceRow(int rowIndex){
 		return donnees.get(rowIndex);
 	}
 
@@ -133,7 +123,7 @@ public class TableListeEleve extends AbstractTableModel {
 	 * Supprime l'eleve de la table
 	 * @param rowIndex
 	 */
-	public void removeEleve(int rowIndex) {
+	public void removeExercice(int rowIndex) {
 		donnees.remove(rowIndex);
 		fireTableRowsDeleted(rowIndex, rowIndex);
 	}

@@ -1,7 +1,10 @@
 package edu.ihm.noyau_fonctionnel;
 
+import java.awt.Image;
 import java.net.URL;
 import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
 
 /**
  * Classe héritant d’Utilisateur. Cette classe permet de représenter un élève
@@ -44,7 +47,13 @@ public class Eleve extends Utilisateur{
 			Classes classe, String photo) {
 		super(identifiant, motDePasse, nom, prenom);
 		this.classe = classe;
-		this.photo = Eleve.class.getResource("Image/"+photo);
+		try{
+			this.photo = Eleve.class.getResource("Image/"+photo);
+			ImageIcon ic = new ImageIcon(new ImageIcon(this.photo).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+		}
+		catch(NullPointerException e){
+			this.photo = Eleve.class.getResource("Image/no-image-found.gif");
+		}
 		this.exerciceRealise = new ArrayList<ExerciceRealise>();
 	}
 

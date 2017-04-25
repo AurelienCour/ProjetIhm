@@ -3,6 +3,7 @@ package edu.ihm.menu;
 
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeSelectionModel;
 import edu.ihm.acceuil.Acceuil;
 import edu.ihm.noyau_fonctionnel.Classes;
