@@ -53,7 +53,7 @@ public class PanelMenu{
 		}
 		else{
 			Eleve el = (Eleve) acceuil.getUser();
-			racine = new DefaultMutableTreeNode("Exercice");
+			racine = new DefaultMutableTreeNode("Exercices");
 			for(Exercice ex : el.getClasse().getExercices()){
 				DefaultMutableTreeNode exo = new DefaultMutableTreeNode(ex);
 				racine.add(exo);

@@ -4,6 +4,7 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import edu.ihm.acceuil.AcceuilEleve;
 import edu.ihm.acceuil.AcceuilProf;
 import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Eleve;
@@ -40,7 +41,8 @@ public class ControlerMenu implements TreeSelectionListener{
 		}
 		else if(nodeInfo instanceof Exercice){
 			if(tree.getAcceuil().getUser() instanceof Eleve){
-				
+				AcceuilEleve acceuilEleve = (AcceuilEleve) tree.getAcceuil();
+				acceuilEleve.goFicheExercice((Exercice) nodeInfo);
 			}else if(tree.getAcceuil().getUser() instanceof Professeur){
 				AcceuilProf acceuilProf = (AcceuilProf) tree.getAcceuil();
 				acceuilProf.goFicheExercice((Exercice) nodeInfo);
@@ -50,7 +52,8 @@ public class ControlerMenu implements TreeSelectionListener{
 			String noeud = nodeInfo.toString();
 			if(noeud.equals("Exercices")){
 				if(tree.getAcceuil().getUser() instanceof Eleve){
-					
+					AcceuilEleve acceuilEleve = (AcceuilEleve) tree.getAcceuil();
+					acceuilEleve.goListeExercice();
 				}else if(tree.getAcceuil().getUser() instanceof Professeur){
 					AcceuilProf acceuilProf = (AcceuilProf) tree.getAcceuil();
 					if(node.getParent() != null){

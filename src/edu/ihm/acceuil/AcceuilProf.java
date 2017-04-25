@@ -29,7 +29,7 @@ public class AcceuilProf extends Acceuil{
 	public AcceuilProf (Professeur user){
 		super(user);
 		panelInfo = new JPanel();
-		panelInfo.setLayout(new GridLayout());
+		panelInfo.setLayout(new BorderLayout());
 		goListeEleve();
 		this.add(panelInfo,BorderLayout.CENTER);
 	}
