@@ -24,6 +24,7 @@ public class ExerciceRealise {
 	
 	public ExerciceRealise(Exercice exerciceFait) {
 		this.exerciceFait = exerciceFait;
+		this.listeTentatives = new ArrayList<Tentative>();
 	}
 
 	/**

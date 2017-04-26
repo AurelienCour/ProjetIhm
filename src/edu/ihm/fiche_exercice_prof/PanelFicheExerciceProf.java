@@ -25,12 +25,6 @@ public class PanelFicheExerciceProf extends JPanel{
 	
 	public PanelFicheExerciceProf(Exercice exercice, Professeur user){
 		this.exercice = exercice;
-		/**
-		 * Model exercice
-		 * Nom exercice
-		 * Type exercice
-		 * Liste des enfants ayant fait l'exercice
-		 **/
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		this.add(new JLabel(new ImageIcon(new ImageIcon(exercice.getModele()).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT))));
 		this.add(new JLabel(exercice.getNomEx()));

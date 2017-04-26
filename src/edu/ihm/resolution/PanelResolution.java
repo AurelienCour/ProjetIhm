@@ -1,11 +1,14 @@
 package edu.ihm.resolution;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import edu.ihm.construction_exercice.ConstructionExercice;
+import edu.ihm.noyau_fonctionnel.Exercice;
+import edu.ihm.tortue.TortueG;
 
 /**
  * Panel comportant les boutons pour resoudre un exercice
@@ -16,36 +19,43 @@ import javax.swing.JPanel;
  */
 public class PanelResolution extends JPanel{
 	
-	private PanelCouleur panelCouleur;
-	private PanelVitesse panelVitesse;
+	private Exercice exercice;
+	private TortueG myTurtle;
+	private ConstructionExercice constructionExercice;
 
-	public PanelResolution(){
-		this.panelCouleur = new PanelCouleur();
-		this.panelVitesse = new PanelVitesse();
-		
+	public PanelResolution(Exercice exercice, TortueG myTurtle, ConstructionExercice constructionExercice){
+		this.exercice = exercice;
+		this.myTurtle = myTurtle;
+		this.constructionExercice = constructionExercice;
 		this.setLayout(new BorderLayout());
 		
 		
 		JPanel boutonBase = new JPanel();
 		boutonBase.setLayout(new GridLayout(2,2));
-		boutonBase.add(new JButton("AVANCER"));
-		boutonBase.add(new JButton("TRACER"));
-		boutonBase.add(new JButton("TOURNER"));
-		boutonBase.add(new JButton("RETOUR"));
 		
-		JPanel boutonBaseTermine = new JPanel();
-		boutonBaseTermine.setLayout(new FlowLayout());
-		boutonBaseTermine.add(boutonBase);
-		boutonBaseTermine.add(new JButton("TERMINE !"));
+		JButton bAvance = new JButton("AVANCER");
+		bAvance.addActionListener(new ControlerResolution(this,"avance",myTurtle));
 		
-		this.add(boutonBaseTermine, BorderLayout.CENTER);
+		JButton bTrace = new JButton("TRACER");
+		bTrace.addActionListener(new ControlerResolution(this,"trace",myTurtle));
+		
+		JButton bTourne = new JButton("TOURNER");
+		bTourne.addActionListener(new ControlerResolution(this,"tourne",myTurtle));
+		
+		JButton bRetour = new JButton("RETOUR");
+		bRetour.addActionListener(new ControlerResolution(this,"retour",myTurtle));
+		
+		boutonBase.add(bAvance);
+		boutonBase.add(bTrace);
+		boutonBase.add(bTourne);
+		boutonBase.add(bRetour);
+
+		this.add(new PanelModele(exercice),BorderLayout.WEST);
+		this.add(boutonBase,BorderLayout.CENTER);
+		this.add(new JButton("TERMINE !"),BorderLayout.EAST);
 	}
-	
-	public void addPanelCouleur(){
-		this.add(panelCouleur,BorderLayout.WEST);
-	}
-	
-	public void addPanelVitesse(){
-		this.add(panelVitesse,BorderLayout.WEST);
+
+	public void addAction(String newAction) {
+		constructionExercice.addActionEffectue(newAction);
 	}
 }

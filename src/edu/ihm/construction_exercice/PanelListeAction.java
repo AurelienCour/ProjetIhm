@@ -1,7 +1,12 @@
 package edu.ihm.construction_exercice;
 
 
+import java.awt.Color;
+
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  * Panel permettant de visualiser la liste des actions en cours
@@ -10,5 +15,31 @@ import javax.swing.JPanel;
  * @version 30/03/2017
  */
 public class PanelListeAction extends JPanel{
+	
+	private JLabel actionEffectue;
+	private String lesActions;
+	private String lastAction;
+	private String debut;
+	private String fin;
+	
+	public PanelListeAction(){
+		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+		debut = "<html><h1>Liste des actions</h1><br>";
+		lesActions = "<ul>";
+		fin = "</ul></html>";
+		actionEffectue = new JLabel(debut+lesActions+fin);
+		this.add(actionEffectue);
+		
+	}
+	
+	public void addAction(String newAction){
+		lastAction = "<li>"+newAction+"</li>";
+		lesActions += lastAction;
+		actionEffectue.setText(debut+lesActions+fin);
+	}
+	
+	private String deleteLast(String text, String regex) {
+        return text.replaceFirst("(?s)(.*)" + regex, "$1" + "");
+    }
 
 }
