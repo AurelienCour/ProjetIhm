@@ -18,6 +18,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import edu.ihm.Main.Database;
 import edu.ihm.acceuil.AcceuilEleve;
 import edu.ihm.acceuil.AcceuilProf;
 import edu.ihm.noyau_fonctionnel.Eleve;
@@ -33,7 +34,7 @@ public class LoginDialog extends JDialog {
     private JButton btnCancel;
     private boolean succeeded;
  
-    public LoginDialog(Map<String, Object> professeurs, Map<String, Object> eleves) {
+    public LoginDialog(Database db) {
     	this.setUndecorated(true);
     	this.setTitle("Login");
     	JPanel panel = new JPanel(new GridBagLayout());
@@ -71,20 +72,20 @@ public class LoginDialog extends JDialog {
         btnLogin.addActionListener(new ActionListener() {
  
             public void actionPerformed(ActionEvent e) {
-            	for(Entry<String, Object> entry2 : professeurs.entrySet()) {
+            	for(Entry<String, Object> entry2 : db.getProfesseur().entrySet()) {
         			Professeur prof = (Professeur) entry2.getValue();
         			if(prof.getIdentifiant().equals(getUsername()) && prof.getMotDePasse().equals(getPassword())){
         				succeeded = true;
         				dispose();
-        				AcceuilProf a = new AcceuilProf(prof);
+        				AcceuilProf a = new AcceuilProf(prof,db);
         			}
         		}
-            	for(Entry<String, Object> entry2 : eleves.entrySet()) {
+            	for(Entry<String, Object> entry2 : db.getEleves().entrySet()) {
     				Eleve eleve = (Eleve) entry2.getValue();
     				if(eleve.getIdentifiant().equals(getUsername()) && eleve.getMotDePasse().equals(getPassword())){
         				succeeded = true;
         				dispose();
-        				AcceuilEleve a = new AcceuilEleve(eleve);
+        				AcceuilEleve a = new AcceuilEleve(eleve,db);
         			}
         		}
             	if(!succeeded){
@@ -115,6 +116,10 @@ public class LoginDialog extends JDialog {
         setResizable(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+	}
+
+	public LoginDialog() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getUsername() {

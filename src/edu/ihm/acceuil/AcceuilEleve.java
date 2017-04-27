@@ -1,7 +1,11 @@
 package edu.ihm.acceuil;
 
 import java.awt.BorderLayout;
+import java.util.Map;
+
 import javax.swing.JPanel;
+
+import edu.ihm.Main.Database;
 import edu.ihm.fiche_exercice_eleve.PanelFicheExerciceEleve;
 import edu.ihm.liste_exercice_eleve.PanelListeExerciceEleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
@@ -11,8 +15,8 @@ public class AcceuilEleve extends Acceuil{
 
 	private JPanel panelInfo;
 	
-	public AcceuilEleve(Utilisateur user) {
-		super(user);
+	public AcceuilEleve(Utilisateur user, Database db) {
+		super(user, db);
 		panelInfo = new JPanel();
 		panelInfo.setLayout(new BorderLayout());
 		goListeExercice();

@@ -1,11 +1,11 @@
 package edu.ihm.Main;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -59,7 +59,7 @@ public class Database
 		try
 		{
 			// create a database connection
-			connection = DriverManager.getConnection("jdbc:sqlite:bddIHM.db");
+			connection = DriverManager.getConnection("jdbc:sqlite:src/edu/ihm/Main/bddIHM.db");
 
 			Statement statement = connection.createStatement();
 			statement.setQueryTimeout(30);  // set timeout to 30 sec.
@@ -179,7 +179,7 @@ public class Database
 		try
 		{
 			// create a database connection
-			connection = DriverManager.getConnection("jdbc:sqlite:bddIHM.db");
+			connection = DriverManager.getConnection("jdbc:sqlite:src/edu/ihm/Main/bddIHM.db");
 
 			Statement statement = connection.createStatement();
 			statement.setQueryTimeout(30);  // set timeout to 30 sec.
@@ -246,7 +246,7 @@ public class Database
 		try
 		{
 			// create a database connection
-			connection = DriverManager.getConnection("jdbc:sqlite:bddIHM.db");
+			connection = DriverManager.getConnection("jdbc:sqlite:src/edu/ihm/Main/bddIHM.db");
 
 			Statement statement = connection.createStatement();
 			statement.setQueryTimeout(30);  // set timeout to 30 sec.
@@ -483,5 +483,254 @@ public class Database
 	
 	public Map<String,Object> getEleves(){
 		return sauvegardeEleve;
+	}
+
+	public void save() {
+		// load the sqlite-JDBC driver using the current class loader
+		try
+		{
+			Class.forName("org.sqlite.JDBC");
+		}
+		catch(ClassNotFoundException e){
+			System.out.println("Impossible de charger le driver");
+		}
+
+		Connection connection = null;
+		try
+		{
+
+			File fichier = new File("src/edu/ihm/Main/bddIHM.db");
+			if(fichier.delete())
+			{
+				System.out.print("Suppresion");
+			}
+			// create a database connection
+			connection = DriverManager.getConnection("jdbc:sqlite:src/edu/ihm/Main/bddIHM.db");
+			Statement statement = connection.createStatement();
+			statement.setQueryTimeout(30);  // set timeout to 30 sec.
+			
+			statement.executeUpdate("create table if not exists ACTION"
+					+"("
+					+"   IDACTION             INTEGER PRIMARY KEY AUTOINCREMENT,"
+					+"   ACTIONFAITE          char(25) not null"
+					+")");
+
+			statement.executeUpdate("create table if not exists PROFESSEUR"
+							+"("
+							+   "IDPROFESSEUR         INTEGER PRIMARY KEY AUTOINCREMENT,"
+							+   "IDENTIFIANT          char(25) not null,"
+							+   "MOTDEPASSE           char(25) not null,"
+							+   "NOM                  char(50) not null,"
+							+   "PRENOM               char(50) not null"
+							+")");
+			
+			statement.executeUpdate("create table if not exists EXERCICE"
+							+"("
+							+   "IDEXERCICE           INTEGER PRIMARY KEY AUTOINCREMENT,"
+							+   "NOMEXERCICE          char(50) not null,"
+							+   "TYPEEXERCICE         char(10) not null,"
+							+   "MODELE               char(50) not null"
+							+")");
+			
+			
+			statement.executeUpdate("create table if not exists CLASSE"
+							+"("
+							+   "IDCLASSE             INTEGER PRIMARY KEY AUTOINCREMENT,"
+							+   "IDPROFESSEUR         INTEGER not null,"
+							+ 	"NOMCLASSE			  char(50) not null,"
+							+	"FOREIGN KEY(IDPROFESSEUR) REFERENCES PROFESSEUR(IDPROFESSEUR)"
+							+")");
+			
+			statement.executeUpdate("create table if not exists AVOIR"
+							+"("
+							+   "IDCLASSE             INTEGER,"
+							+   "IDEXERCICE           INTEGER,"
+							+	"FOREIGN KEY(IDCLASSE) REFERENCES CLASSE(IDCLASSE),"
+							+	"FOREIGN KEY(IDEXERCICE) REFERENCES EXERCICE(IDEXERCICE)"
+							+")");
+			
+			statement.executeUpdate("create table if not exists ELEVE"
+							+"("
+							+   "IDELEVE             INTEGER PRIMARY KEY AUTOINCREMENT,"
+							+   "IDCLASSE             INTEGER not null,"
+							+   "IDENTIFIANT          char(25) not null,"
+							+   "MOTDEPASSE           char(25) not null,"
+							+   "NOM                  char(50) not null,"
+							+   "PRENOM               char(50) not null,"
+							+   "PHOTO                char(50),"
+							+	"FOREIGN KEY(IDCLASSE) REFERENCES CLASSE(IDCLASSE)"
+							+")");
+			
+			statement.executeUpdate("create table if not exists EVALUATION"
+							+"("
+							+   "IDEVALUATION         INTEGER PRIMARY KEY AUTOINCREMENT,"
+							+   "IDEXERCICEREALISE    INTEGER not null,"
+							+   "NOTE                 char(20) not null,"
+							+   "COMMENTAIRE          text not null,"
+							+	"FOREIGN KEY(IDEXERCICEREALISE) REFERENCES EXERCICEREALISEE(IDEXERCICEREALISE)"
+							+")");
+			
+			statement.executeUpdate("create table if not exists EXERCICEREALISEE"
+							+"("
+							+   "IDEXERCICEREALISE    INTEGER PRIMARY KEY AUTOINCREMENT,"
+							+   "IDEXERCICE           INTEGER not null,"
+							+   "IDEVALUATION         INTEGER,"
+							+   "IDELEVE              INTEGER not null,"
+							+	"FOREIGN KEY(IDEXERCICE) REFERENCES EXERCICE(IDEXERCICE),"
+							+	"FOREIGN KEY(IDEVALUATION) REFERENCES EVALUATION(IDEVALUATION)"
+							+	"FOREIGN KEY(IDELEVE) REFERENCES ENFANT(IDELEVE)"
+							+")");
+			
+			statement.executeUpdate("create table if not exists CONTENIR"
+							+"("
+							+   "IDTENTATIVE          INTEGER,"
+							+   "IDACTION             INTEGER,"
+							+	"FOREIGN KEY(IDACTION) REFERENCES ACTION(IDACTION),"
+							+	"FOREIGN KEY(IDTENTATIVE) REFERENCES TENTATIVES(IDTENTATIVE)"
+							+")");
+			
+			statement.executeUpdate("create table if not exists TENTATIVES"
+							+"("
+							+   "IDTENTATIVE          INTEGER PRIMARY KEY AUTOINCREMENT,"
+							+   "IDEXERCICEREALISE    INTEGER not null,"
+							+	"FOREIGN KEY(IDEXERCICEREALISE) REFERENCES EXERCICEREALISEE(IDEXERCICEREALISE)"
+							+")");
+			
+			HashMap<String,Object> sauvegardeProfesseur2 = new HashMap<String,Object>();
+			HashMap<String,Object> sauvegardeExercice2 = new HashMap<String,Object>();
+			HashMap<String,Object> sauvegardeEleve2 = new HashMap<String,Object>();
+			HashMap<String,Object> sauvegardeClasse2 = new HashMap<String,Object>();
+			HashMap<String,Object> sauvegardeExerciceRealise2 = new HashMap<String,Object>();
+			HashMap<String,Object> sauvegardeTentative2 = new HashMap<String,Object>();
+			
+			int idClasse = 1;
+			int idProf = 1;
+			int idExercice = 1;
+			int idEleve = 1;
+			for(Entry<String, Object> entry2 : getProfesseur().entrySet()) {
+    			Professeur prof = (Professeur) entry2.getValue();
+    			statement.executeUpdate("INSERT INTO PROFESSEUR values"
+    					+ "("+idProf+""
+    					+ ",'"+prof.getIdentifiant()+"'"
+						+ ",'"+prof.getMotDePasse()+"'"
+						+ ",'"+prof.getNom()+"'"
+						+ ",'"+prof.getPrenom()+"')");
+    			sauvegardeProfesseur2.put(Integer.toString(idProf), prof);
+    			for (Classes cl : prof.getClasses()) {
+    				statement.executeUpdate("INSERT INTO CLASSE VALUES ("+idClasse+","+idProf+",'"+cl.getNomClasse()+"')");
+    				sauvegardeClasse2.put(Integer.toString(idClasse), cl);
+    				for (Eleve el : cl.getEleves()) {
+    					statement.executeUpdate("INSERT INTO ELEVE values"
+    					+ "("+idEleve+""
+						+ ","+idClasse+""
+    					+ ",'"+el.getIdentifiant()+"'"
+						+ ",'"+el.getMotDePasse()+"'"
+						+ ",'"+el.getNom()+"'"
+						+ ",'"+el.getPrenom()+"'"
+						+ ",'"+el.getNomPhoto()+"')");
+    					sauvegardeEleve2.put(Integer.toString(idEleve), el);
+    					idEleve++;
+					}
+    				for(Exercice ex : cl.getExercices()){
+    					boolean exist = false;
+    					for(Entry<String, Object> entry : sauvegardeExercice2.entrySet()) {
+    						String idPrimaire = entry.getKey();
+    						Exercice exer = (Exercice) entry.getValue();
+    						if(exer.equals(ex)){
+    							exist = true;
+    							statement.executeUpdate("INSERT INTO AVOIR VALUES ("+idClasse+","+Integer.parseInt(idPrimaire)+")");
+    						}
+    					}
+    					if(!exist){
+    						statement.executeUpdate("INSERT INTO EXERCICE VALUES ("+idExercice+",'"+ex.getNomEx()+"'"
+        							+ ",'"+ex.getTypeEx()+"'"
+    								+ ",'"+ex.getNomImage()+"')");
+        					statement.executeUpdate("INSERT INTO AVOIR VALUES ("+idClasse+","+idExercice+")");
+        					sauvegardeExercice2.put(Integer.toString(idExercice), ex);
+        					idExercice++;
+    					}
+    				}
+    				idClasse++;
+				}
+    			idProf ++;
+    		}
+			
+			int idExoR = 1;
+			for(Entry<String, Object> entry : sauvegardeEleve2.entrySet()) {
+				String idEl = entry.getKey();
+				Eleve elev = (Eleve) entry.getValue();
+				for (ExerciceRealise exoR : elev.getExerciceRealise()) {
+					for(Entry<String, Object> entry2 : sauvegardeExercice2.entrySet()) {
+						String idEx = entry.getKey();
+						Exercice exo = (Exercice) entry2.getValue();
+						if(exo.equals(exoR.getExerciceFait())){
+							statement.executeUpdate("INSERT INTO EXERCICEREALISEE values"
+							+ "("+idExoR+""
+							+ ","+Integer.parseInt(idEx)+""
+							+ ",null"
+							+ ","+Integer.parseInt(idEl)+")");
+							sauvegardeExerciceRealise2.put(Integer.toString(idExoR), exoR);
+							idExoR++;
+						}
+					}
+				}
+			}
+			
+			int idEvaluation = 1;
+			for(Entry<String, Object> entry : sauvegardeExerciceRealise2.entrySet()) {
+				String idExR = entry.getKey();
+				ExerciceRealise exoR = (ExerciceRealise) entry.getValue();
+				if(exoR.isCorrect()){
+					statement.executeUpdate("INSERT INTO EVALUATION values"
+					+ "("+idEvaluation+""
+					+ ","+Integer.parseInt(idExR)+""
+					+ ",'"+exoR.getResultat().getNote()+"'"
+					+ ",'"+exoR.getResultat().getCommentaire()+"')");
+					statement.executeUpdate("UPDATE EXERCICEREALISEE SET IDEVALUATION="+idEvaluation+" WHERE IDEXERCICEREALISE="+Integer.parseInt(idExR)+"");
+					idEvaluation++;
+				}
+			}
+			
+			// Création des tentatives en fonction des ExerciceRealise
+			int idTentative = 1;
+			for(Entry<String, Object> entry : sauvegardeExerciceRealise2.entrySet()) {
+				String idExR = entry.getKey();
+				ExerciceRealise exoR = (ExerciceRealise) entry.getValue();
+				for (Tentative tent : exoR.getListeTentatives()) {
+					statement.executeUpdate("INSERT INTO TENTATIVES values"
+					+ "("+idTentative+""
+					+ ","+Integer.parseInt(idExR)+")");
+					sauvegardeTentative2.put(Integer.toString(idTentative), tent);
+					idTentative++;
+				}
+			}
+			
+			// Création des actions
+			int idAction = 1;
+			for(Entry<String, Object> entry : sauvegardeTentative2.entrySet()) {
+				String idTent = entry.getKey();
+				Tentative tent = (Tentative) entry.getValue();
+				for (Action act : tent.getListeAction()) {
+					statement.executeUpdate("INSERT INTO ACTION values"
+					+ "("+idAction+""
+					+ ",'"+act.getAction()+"')");
+					
+					statement.executeUpdate("INSERT INTO CONTENIR values"
+					+ "("+Integer.parseInt(idTent)+""
+					+ ","+idAction+")");
+					idAction++;
+				}
+			}
+		}
+		catch(SQLException e){  System.err.println(e.getMessage()); }       
+		finally {         
+			try {
+				if(connection != null)
+					connection.close();
+			}
+			catch(SQLException e) {  // Use SQLException class instead.          
+				System.err.println(e); 
+			}
+		}
 	}
 }

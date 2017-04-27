@@ -3,9 +3,11 @@ package edu.ihm.acceuil;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.util.Map;
 
 import javax.swing.JPanel;
 
+import edu.ihm.Main.Database;
 import edu.ihm.creation_exercice.PanelCreationExercice;
 import edu.ihm.fiche_enfant_prof.PanelFicheEnfantProf;
 import edu.ihm.fiche_exercice_prof.PanelFicheExerciceProf;
@@ -26,14 +28,14 @@ public class AcceuilProf extends Acceuil{
 	
 	private JPanel panelInfo;
 	
-	public AcceuilProf (Professeur user){
-		super(user);
+	public AcceuilProf (Professeur user, Database db){
+		super(user,db);
 		panelInfo = new JPanel();
 		panelInfo.setLayout(new BorderLayout());
 		goListeEleve();
 		this.add(panelInfo,BorderLayout.CENTER);
 	}
-	
+
 	public void goListeEleve(){
 		panelInfo.removeAll();
 		panelInfo.add(new PanelListeEleveProf(this));

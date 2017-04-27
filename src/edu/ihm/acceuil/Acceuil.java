@@ -2,8 +2,15 @@ package edu.ihm.acceuil;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.util.Map;
+
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+
+import edu.ihm.Main.Database;
 import edu.ihm.menu.PanelMenu;
 import edu.ihm.noyau_fonctionnel.Utilisateur;
 
@@ -12,9 +19,13 @@ public abstract class Acceuil extends JFrame{
 	private Utilisateur user;
 	private PanelMenu menu;
 	private JScrollPane j;
+	private Database db;
+	/*private Map<String, Object> professeurs;
+	private Map<String, Object> eleves;*/
 	
-	public Acceuil (Utilisateur user){
+	public Acceuil (Utilisateur user, Database db){
 		this.user = user;
+		this.db = db;
 		this.menu = new PanelMenu(this);
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,8 +35,19 @@ public abstract class Acceuil extends JFrame{
 		this.setVisible(true);
 		this.setSize(new Dimension(500,500));
 		this.setLocationRelativeTo(null);
+		this.addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent e){
+				dispose();
+				Acceuil.this.sauvegardeBdd();
+				System.exit(0);
+			}
+		});
 	}
 	
+	private void sauvegardeBdd() {
+		db.save();
+	}
+
 	public Utilisateur getUser(){
 		return this.user;
 	}

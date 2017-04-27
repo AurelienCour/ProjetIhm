@@ -30,6 +30,11 @@ public class Exercice {
 	private URL modele;
 	
 	/**
+	 * le modèle est une image. Cette image représente l’exercice que doit réaliser les enfants.
+	 */
+	private String nomImage;
+	
+	/**
 	 * Constructeur de la classe Exercice
 	 * prend en paramètres 2 attributs de type String,
 	 * si null alors on initialise avec les valeurs "Exercice 0" pour nomExercice
@@ -40,6 +45,7 @@ public class Exercice {
 	 * @param modele : le modele de l'exercice
 	 */
 	public Exercice(String nomExercice, String typeExercice, String nomImage){
+		this.nomImage = nomImage;
 		this.nomExercice = nomExercice;
 		this.typeExercice = typeExercice;
 		try{
@@ -49,6 +55,10 @@ public class Exercice {
 		catch(NullPointerException e){
 			this.modele = Exercice.class.getResource("Image/no-image-found.gif");
 		}
+	}
+	
+	public String getNomImage(){
+		return this.nomImage;
 	}
 	
 	/**

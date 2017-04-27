@@ -27,6 +27,8 @@ public class Eleve extends Utilisateur{
 	 * Photo de l’élève. 
 	 */
 	private URL photo;
+
+	private String nomPhoto;
 	
 	/**
 	 * Constructeur de la classe Eleve
@@ -47,6 +49,7 @@ public class Eleve extends Utilisateur{
 			Classes classe, String photo) {
 		super(identifiant, motDePasse, nom, prenom);
 		this.classe = classe;
+		this.nomPhoto = photo;
 		try{
 			this.photo = Eleve.class.getResource("Image/"+photo);
 			ImageIcon ic = new ImageIcon(new ImageIcon(this.photo).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
@@ -55,6 +58,10 @@ public class Eleve extends Utilisateur{
 			this.photo = Eleve.class.getResource("Image/no-image-found.gif");
 		}
 		this.exerciceRealise = new ArrayList<ExerciceRealise>();
+	}
+	
+	public String getNomPhoto(){
+		return this.nomPhoto;
 	}
 
 	

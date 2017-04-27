@@ -15,23 +15,6 @@ public class MainClass {
 		Database db = new Database();
 		//db.peuplement();
 		db.chargementDonnees();
-		
-		Map<String,Object> professeurs = db.getProfesseur();
-		Map<String,Object> eleves = db.getEleves();
-
-		new LoginDialog(professeurs,eleves);
-		
-		//int i = 0;
-		/*for(Entry<String, Object> entry2 : professeurs.entrySet()) {
-			Professeur test = (Professeur) entry2.getValue();
-			AcceuilProf a = new AcceuilProf(test);
-		}*/
-		/*for(Entry<String, Object> entry2 : eleves.entrySet()) {
-			if(i==1){
-				Eleve test = (Eleve) entry2.getValue();
-				AcceuilEleve a = new AcceuilEleve(test);
-			}
-			i++;
-		}*/
+		new LoginDialog(db);
 	}
 }
