@@ -23,6 +23,7 @@ public abstract class Acceuil extends JFrame{
 		this.add(j,BorderLayout.WEST);
 		this.setVisible(true);
 		this.setSize(new Dimension(500,500));
+		this.setLocationRelativeTo(null);
 	}
 	
 	public Utilisateur getUser(){

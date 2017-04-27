@@ -10,11 +10,30 @@ import edu.ihm.noyau_fonctionnel.Utilisateur;
 public class ModelConstructionExercice {
 
 	private Utilisateur user;
-	private ExerciceRealise exerciceReal;
+	private Exercice exercice;
 	private Tentative tentative;
+	private Action lastAction;
 
 	public ModelConstructionExercice(Utilisateur user, Exercice exercice) {
 		this.user = user;
+		this.exercice = exercice;
+		tentative = new Tentative();
+	}
+	
+	public void addActionTentative(String action){
+		lastAction = new Action(action);
+		tentative.addAction(lastAction);
+	}
+	
+	public void removeLastAction(){
+		if(lastAction != null){
+			tentative.removeAction(lastAction);
+			lastAction = null;
+		}
+	}
+	
+	public void finExercice(){
+		ExerciceRealise exerciceReal = null;
 		if(user instanceof Eleve){
 			for (ExerciceRealise exoR : ((Eleve) user).getExerciceRealise()) {
 				if(exoR.getExerciceFait().equals(exercice)){
@@ -25,13 +44,8 @@ public class ModelConstructionExercice {
 	    		exerciceReal = new ExerciceRealise(exercice);
 	    		((Eleve) user).addExerciceRealise(exerciceReal);
 	    	}
-	    	tentative = new Tentative();
 	    	exerciceReal.addTentative(tentative);
 		}
-	}
-	
-	public void addActionTentative(String action){
-		tentative.addAction(new Action(action));
 	}
 
 }

@@ -57,10 +57,16 @@ public class PanelResolution extends JPanel{
 		
 		this.add(new PanelModele(exercice),BorderLayout.WEST);
 		this.add(commande,BorderLayout.CENTER);
-		this.add(new JButton("TERMINE !"),BorderLayout.EAST);
+		JButton bTermine = new JButton("TERMINE !");
+		bTermine.addActionListener(new ControlerResolution(this,"fin",myTurtle));
+		this.add(bTermine,BorderLayout.EAST);
 	}
 
 	public void addAction(String newAction) {
 		constructionExercice.addActionEffectue(newAction);
+	}
+	
+	public void finExercice() {
+		constructionExercice.finExercice();
 	}
 }

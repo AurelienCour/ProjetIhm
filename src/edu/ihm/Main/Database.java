@@ -184,7 +184,14 @@ public class Database
 			Statement statement = connection.createStatement();
 			statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-			// 4 prof
+			statement.executeUpdate("INSERT INTO PROFESSEUR(IDENTIFIANT,MOTDEPASSE,NOM,PRENOM) values('Girard','pg','Girard','Patrick'),('Genniet','ag','Genniet','Annie')");
+			
+			statement.executeUpdate("INSERT INTO CLASSE (IDPROFESSEUR,NOMCLASSE) VALUES (1,'Master1'),(2,'Licence3')");
+			
+			statement.executeUpdate("INSERT INTO ELEVE (IDCLASSE,IDENTIFIANT,MOTDEPASSE,NOM,PRENOM,PHOTO) values (1,'aurelien','Acourtillat','Courtillat','Aurelien','Aurelien.jpg'),(1,'mathias','Mantunes','Antunes','Mathias','Mathias.jpg')");
+			statement.executeUpdate("INSERT INTO ELEVE (IDCLASSE,IDENTIFIANT,MOTDEPASSE,NOM,PRENOM,PHOTO) values (2,'audrey','Amartin','Martin','Audrey','Audrey.jpg'),(2,'marin','Mconrady','Conrady','Marin','Marin.jpg')");
+			
+			/*// 4 prof
 			statement.executeUpdate("INSERT INTO PROFESSEUR(IDENTIFIANT,MOTDEPASSE,NOM,PRENOM) values('prof1','prof1','Girard','Patrick')");
 			statement.executeUpdate("INSERT INTO PROFESSEUR(IDENTIFIANT,MOTDEPASSE,NOM,PRENOM) values('prof2','prof2','Genniet','Annie')");
 			statement.executeUpdate("INSERT INTO PROFESSEUR(IDENTIFIANT,MOTDEPASSE,NOM,PRENOM) values('prof3','prof3','Courtillat','Pascal')");
@@ -210,7 +217,7 @@ public class Database
 			statement.executeUpdate("INSERT INTO AVOIR (IDCLASSE,IDEXERCICE) VALUES (6,12),(8,30),(5,7),(8,28),(6,15),(9,33),(9,20),(11,17),(5,5),(18,22),(20,9),(8,40),(6,22),(11,29),(8,34),(7,2),(4,29),(2,33),(18,30),(11,33)");
 			statement.executeUpdate("INSERT INTO AVOIR (IDCLASSE,IDEXERCICE) VALUES (6,20),(14,15),(12,20),(14,21),(10,34),(18,34),(11,32),(19,33),(6,10),(7,28),(5,30),(15,12),(17,2),(5,31),(18,19),(5,36),(3,22),(9,22),(9,24),(16,20)");
 			statement.executeUpdate("INSERT INTO AVOIR (IDCLASSE,IDEXERCICE) VALUES (2,29),(9,21),(9,14),(3,4),(6,24),(14,32),(1,4),(5,29),(1,17),(7,24),(20,35),(20,10),(6,40),(16,3),(1,21),(6,23),(16,19),(3,8),(17,24),(9,16)");
-
+			*/
 
 		}
 		catch(SQLException e){  System.err.println(e.getMessage()); }       
@@ -261,17 +268,9 @@ public class Database
 			resultSet = statement.executeQuery("SELECT * from EXERCICE");
 			while(resultSet.next())
 			{
-				Exercice exo;
-				int nombreAleatoire = 1 + (int)(Math.random() * ((2 - 1) + 1));
-				if(nombreAleatoire == 1){
-					exo = new Exercice(resultSet.getString("NOMEXERCICE"),
-										resultSet.getString("TYPEEXERCICE"),
-										"ImageExercice.JPG");
-				}else{
-					exo = new Exercice(resultSet.getString("NOMEXERCICE"),
-							resultSet.getString("TYPEEXERCICE"),
-							"ImageExercice2.JPG");
-				}
+				Exercice exo = new Exercice(resultSet.getString("NOMEXERCICE"),
+									resultSet.getString("TYPEEXERCICE"),
+									resultSet.getString("MODELE"));
 				sauvegardeExercice.put(Integer.toString(resultSet.getInt("IDEXERCICE")),exo);
 			}
 			
@@ -280,37 +279,12 @@ public class Database
 			resultSet = statement.executeQuery("SELECT * from ELEVE");
 			while(resultSet.next())
 			{
-				Eleve eleve;
-				int nombreAleatoire = 1 + (int)(Math.random() * ((4 - 1) + 1)); //photoEnfant1.jpg
-				if(nombreAleatoire == 1){
-					eleve = new Eleve(resultSet.getString("IDENTIFIANT"),
+				Eleve eleve = new Eleve(resultSet.getString("IDENTIFIANT"),
 							resultSet.getString("MOTDEPASSE"),
 							resultSet.getString("NOM"),
 							resultSet.getString("PRENOM"),
 							null,
-							"photoEnfant1.jpg");
-				}else if(nombreAleatoire == 2){
-					eleve = new Eleve(resultSet.getString("IDENTIFIANT"),
-							resultSet.getString("MOTDEPASSE"),
-							resultSet.getString("NOM"),
-							resultSet.getString("PRENOM"),
-							null,
-							"photoEnfant2.jpg");
-				}else if(nombreAleatoire == 3){
-					eleve = new Eleve(resultSet.getString("IDENTIFIANT"),
-							resultSet.getString("MOTDEPASSE"),
-							resultSet.getString("NOM"),
-							resultSet.getString("PRENOM"),
-							null,
-							"photoEnfant3.jpg");
-				}else{
-					eleve = new Eleve(resultSet.getString("IDENTIFIANT"),
-							resultSet.getString("MOTDEPASSE"),
-							resultSet.getString("NOM"),
-							resultSet.getString("PRENOM"),
-							null,
-							"photoEnfant4.jpg");
-				}
+							resultSet.getString("PHOTO"));
 				sauvegardeEleve.put(Integer.toString(resultSet.getInt("IDELEVE")), eleve);
 			}
 

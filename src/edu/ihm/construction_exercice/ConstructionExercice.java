@@ -35,7 +35,7 @@ public class ConstructionExercice extends JFrame{
 			myTurtle = new TortueRapide();
 		}
 		else{
-			myTurtle = new TortueG(); // Default
+			myTurtle = new TortueG();
 		}
         this.add(Canvas.getCanvasPanel(), BorderLayout.CENTER);
 		this.add(new PanelResolution(exercice,myTurtle, this), BorderLayout.NORTH);
@@ -43,10 +43,16 @@ public class ConstructionExercice extends JFrame{
 		this.setTitle("Réalisation de "+exercice.getNomEx());
 		this.setVisible(true);
 		this.setSize(800, 800);
+		this.setLocationRelativeTo(null);
 	}
 
 	public void addActionEffectue(String newAction) {
 		listeAction.addAction(newAction);
 		model.addActionTentative(newAction);
+	}
+	
+	public void finExercice(){
+		this.dispose();
+		model.finExercice();
 	}
 }

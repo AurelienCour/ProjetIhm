@@ -69,6 +69,9 @@ public class ControlerResolution implements ActionListener {
 				panelResolution.addAction("Ralenti");
 			}
 		}
+		else if(idAction.equals("fin")){
+			panelResolution.finExercice();
+		}
 		else if(panelCouleur != null){
 			((TortueCouleur) myTurtle).setCouleur(idAction);
 			panelCouleur.changeCouleur(idAction);
