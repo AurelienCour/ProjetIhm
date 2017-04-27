@@ -19,7 +19,7 @@ public class TentativeTest {
 	@Before
 	public void setUp(){
 		tentative = new Tentative();
-		act = new Action(new TortueG(), "toto");
+		act = new Action("toto");
 	}
 
 	@After

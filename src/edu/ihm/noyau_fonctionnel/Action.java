@@ -19,11 +19,9 @@ public class Action {
 	 * si null alors on initialise avec une tortueG,
 	 * et un attribut de type String,
 	 * si null alors on initialise avec la valeur "avancer"
-	 * @param tortue : la tortue sur laquelle va être effectué l'action
 	 * @param action : l'action qui a été effectuée
 	 */
-	public Action(TortueG tortue, String action){
-		this.tortue = tortue;
+	public Action(String action){
 		this.action = action;
 	}
 	

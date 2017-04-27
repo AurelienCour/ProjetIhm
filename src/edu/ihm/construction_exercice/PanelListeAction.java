@@ -1,12 +1,12 @@
 package edu.ihm.construction_exercice;
 
 
-import java.awt.Color;
+import java.awt.BorderLayout;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
 
 /**
  * Panel permettant de visualiser la liste des actions en cours
@@ -23,19 +23,23 @@ public class PanelListeAction extends JPanel{
 	private String fin;
 	
 	public PanelListeAction(){
-		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+		this.setLayout(new BorderLayout());
+		JPanel test = new JPanel();
+		test.setLayout(new BoxLayout(test,BoxLayout.Y_AXIS));
 		debut = "<html><h1>Liste des actions</h1><br>";
 		lesActions = "<ul>";
 		fin = "</ul></html>";
 		actionEffectue = new JLabel(debut+lesActions+fin);
-		this.add(actionEffectue);
-		
+		test.add(actionEffectue);
+		JScrollPane test2 = new JScrollPane(test);
+		this.add(test2,BorderLayout.CENTER);
 	}
 	
 	public void addAction(String newAction){
 		lastAction = "<li>"+newAction+"</li>";
 		lesActions += lastAction;
 		actionEffectue.setText(debut+lesActions+fin);
+		
 	}
 	
 	private String deleteLast(String text, String regex) {

@@ -191,8 +191,8 @@ public class Database
 			statement.executeUpdate("INSERT INTO PROFESSEUR(IDENTIFIANT,MOTDEPASSE,NOM,PRENOM) values('prof4','prof4','Jacson','Lucien')");
 
 			//40 Exercices
-			statement.executeUpdate("INSERT INTO EXERCICE (NOMEXERCICE,TYPEEXERCICE,MODELE) VALUES ('Nolan','Lorem Consulting','Quis Lectus Corp.'),('David','Donec Felis Industries','At Limited'),('Salvador','Arcu Vestibulum Ltd','Tellus Justo Sit LLP'),('Prescott','Eu Associates','Arcu LLP'),('Xavier','Vivamus Limited','Nec Leo Morbi LLP'),('Oscar','Ut Mi Duis Institute','Vulputate Associates'),('Aquila','In Institute','Nunc Mauris Consulting'),('Leroy','Venenatis Associates','Commodo Tincidunt Nibh LLC'),('Jarrod','Mauris Ltd','Amet Massa Associates'),('Malik','Pharetra PC','Magnis Dis Parturient Associates'),('Nolan','Eu Consulting','Velit Ltd'),('Troy','Pede Et Inc.','Vulputate Associates'),('Ali','Montes Nascetur Ltd','In Lobortis Tellus Corporation'),('Jacob','Facilisis Vitae Associates','Est Ac Facilisis Limited'),('Holmes','Molestie In Company','Sollicitudin A Corp.'),('Bert','Mauris Erat Institute','Pulvinar Arcu Institute'),('Thomas','Donec Nibh Industries','Ante Ipsum Associates'),('Axel','Vel Associates','Adipiscing Elit Curabitur LLC'),('Wesley','Ut Molestie Associates','Viverra Incorporated'),('Denton','Diam Proin Dolor LLC','Nulla Facilisi Sed PC')");
-			statement.executeUpdate("INSERT INTO EXERCICE (NOMEXERCICE,TYPEEXERCICE,MODELE) VALUES ('Clark','Aenean Industries','Lacus LLC'),('Donovan','Dolor Egestas Rhoncus Corp.','Luctus Curabitur LLC'),('Quamar','Phasellus Fermentum Convallis Associates','Montes Nascetur Consulting'),('Grant','Enim Industries','Mollis Nec Consulting'),('Baker','Auctor LLP','Maecenas Corporation'),('Wesley','Dolor Vitae Dolor LLC','Risus Limited'),('Hakeem','Pharetra Nibh Inc.','Enim Curabitur Institute'),('Scott','Duis At Lacus Inc.','Neque Sed Sem Limited'),('Hedley','Justo PC','Mollis Integer Tincidunt Incorporated'),('Malik','Taciti Industries','Ornare Tortor At Incorporated'),('Ross','Ornare Tortor Limited','Porttitor Scelerisque Neque Corp.'),('Logan','Luctus Consulting','Nunc LLP'),('Asher','Non Massa Non Associates','Magna Phasellus Industries'),('Chase','Penatibus Et Magnis Industries','Fermentum Foundation'),('Graiden','Amet Incorporated','Etiam LLP'),('Graiden','Aliquam Incorporated','Erat Consulting'),('Cedric','Ultrices Iaculis Ltd','Cras PC'),('Laith','Pellentesque A LLP','At Velit Incorporated'),('Baxter','Magna Ltd','Donec Elementum Consulting'),('Barrett','Mauris Erat LLP','Tincidunt Pede Ac Corporation')");
+			statement.executeUpdate("INSERT INTO EXERCICE (NOMEXERCICE,TYPEEXERCICE,MODELE) VALUES ('Nolan','Lorem Consulting','Quis Lectus Corp.'),('David','Donec Felis Industries','At Limited'),('Salvador','Arcu Vestibulum Ltd','Tellus Justo Sit LLP'),('Prescott','Eu Associates','Arcu LLP'),('Xavier','Vivamus Limited','Nec Leo Morbi LLP'),('Oscar','Ut Mi Duis Institute','Vulputate Associates'),('Aquila','In Institute','Nunc Mauris Consulting'),('Leroy','Venenatis Associates','Commodo Tincidunt Nibh LLC'),('Jarrod','Mauris Ltd','Amet Massa Associates'),('Malik','Rapide','Magnis Dis Parturient Associates'),('Nolan','Eu Consulting','Velit Ltd'),('Troy','Pede Et Inc.','Vulputate Associates'),('Ali','Montes Nascetur Ltd','In Lobortis Tellus Corporation'),('Jacob','Facilisis Vitae Associates','Est Ac Facilisis Limited'),('Holmes','Couleur','Sollicitudin A Corp.'),('Bert','Mauris Erat Institute','Pulvinar Arcu Institute'),('Thomas','Donec Nibh Industries','Ante Ipsum Associates'),('Axel','Vel Associates','Adipiscing Elit Curabitur LLC'),('Wesley','Ut Molestie Associates','Viverra Incorporated'),('Denton','Diam Proin Dolor LLC','Nulla Facilisi Sed PC')");
+			statement.executeUpdate("INSERT INTO EXERCICE (NOMEXERCICE,TYPEEXERCICE,MODELE) VALUES ('Clark','Aenean Industries','Lacus LLC'),('Donovan','Couleur','Luctus Curabitur LLC'),('Quamar','Phasellus Fermentum Convallis Associates','Montes Nascetur Consulting'),('Grant','Enim Industries','Mollis Nec Consulting'),('Baker','Auctor LLP','Maecenas Corporation'),('Wesley','Dolor Vitae Dolor LLC','Risus Limited'),('Hakeem','Pharetra Nibh Inc.','Enim Curabitur Institute'),('Scott','Duis At Lacus Inc.','Neque Sed Sem Limited'),('Hedley','Justo PC','Mollis Integer Tincidunt Incorporated'),('Malik','Rapide','Ornare Tortor At Incorporated'),('Ross','Ornare Tortor Limited','Porttitor Scelerisque Neque Corp.'),('Logan','Luctus Consulting','Nunc LLP'),('Asher','Non Massa Non Associates','Magna Phasellus Industries'),('Chase','Penatibus Et Magnis Industries','Fermentum Foundation'),('Graiden','Amet Incorporated','Etiam LLP'),('Graiden','Aliquam Incorporated','Erat Consulting'),('Cedric','Ultrices Iaculis Ltd','Cras PC'),('Laith','Pellentesque A LLP','At Velit Incorporated'),('Baxter','Magna Ltd','Donec Elementum Consulting'),('Barrett','Mauris Erat LLP','Tincidunt Pede Ac Corporation')");
 
 
 
@@ -265,11 +265,11 @@ public class Database
 				int nombreAleatoire = 1 + (int)(Math.random() * ((2 - 1) + 1));
 				if(nombreAleatoire == 1){
 					exo = new Exercice(resultSet.getString("NOMEXERCICE"),
-										resultSet.getString("NOMEXERCICE"),
+										resultSet.getString("TYPEEXERCICE"),
 										"ImageExercice.JPG");
 				}else{
 					exo = new Exercice(resultSet.getString("NOMEXERCICE"),
-							resultSet.getString("NOMEXERCICE"),
+							resultSet.getString("TYPEEXERCICE"),
 							"ImageExercice2.JPG");
 				}
 				sauvegardeExercice.put(Integer.toString(resultSet.getInt("IDEXERCICE")),exo);
@@ -326,7 +326,7 @@ public class Database
 			resultSet = statement.executeQuery("SELECT * from ACTION");
 			while(resultSet.next())
 			{
-				Action action = new Action(null, resultSet.getString("ACTIONFAITE"));
+				Action action = new Action(resultSet.getString("ACTIONFAITE"));
 				sauvegardeAction.put(Integer.toString(resultSet.getInt("IDACTION")),action);
 			}
 			

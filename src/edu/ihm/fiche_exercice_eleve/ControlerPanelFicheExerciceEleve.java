@@ -19,7 +19,7 @@ public class ControlerPanelFicheExerciceEleve implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		new ConstructionExercice(user, exercice, "resolution");
+		new ConstructionExercice(user, exercice);
 	}
 
 }
