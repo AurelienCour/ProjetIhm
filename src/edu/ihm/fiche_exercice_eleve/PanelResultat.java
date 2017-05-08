@@ -1,5 +1,6 @@
 package edu.ihm.fiche_exercice_eleve;
 
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -14,7 +15,11 @@ import edu.ihm.noyau_fonctionnel.ExerciceRealise;
 public class PanelResultat extends JPanel{
 
 	public PanelResultat(ExerciceRealise exerciceR) {
+		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+		exerciceR.getResultat().getNote();
 		this.add(new JLabel("RESULTAT"));
+		this.add(new JLabel(exerciceR.getResultat().getNote()));
+		this.add(new JLabel(exerciceR.getResultat().getCommentaire()));
 	}
 
 }

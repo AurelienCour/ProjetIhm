@@ -4,6 +4,7 @@ import java.awt.Image;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -34,7 +35,20 @@ public class PanelFicheExerciceProf extends JPanel{
 			for (Eleve eleve : classes.getEleves()) {
 				for (ExerciceRealise exoR : eleve.getExerciceRealise()) {
 					if(exoR.getExerciceFait().equals(exercice)){
-						this.add(new JLabel(eleve.getNom()));
+						JPanel info = new JPanel();
+						info.add(new JLabel(eleve.getNom()));
+						if(exoR.isCorrect()){
+							JButton voir = new JButton("Voir");
+							voir.addActionListener(new ControlerFicheExerciceProf(exoR,"Voir"));
+							info.add(voir);
+							info.add(new JLabel("Corrigé"));
+						}
+						else{
+							JButton voir = new JButton("Corriger");
+							voir.addActionListener(new ControlerFicheExerciceProf(exoR,"Corriger"));
+							info.add(voir);
+						}
+						this.add(info);
 					}
 				}
 			}

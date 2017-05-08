@@ -3,7 +3,9 @@ package edu.ihm.construction_exercice;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
+import edu.ihm.evaluation.PanelEvaluation;
 import edu.ihm.noyau_fonctionnel.Exercice;
 import edu.ihm.noyau_fonctionnel.ExerciceRealise;
 import edu.ihm.noyau_fonctionnel.Tentative;
@@ -74,10 +76,64 @@ public class ConstructionExercice extends JFrame{
 		this.setLocationRelativeTo(null);
 	}
 
+	public ConstructionExercice(ExerciceRealise exoR, boolean correct) {
+		Tentative tent = exoR.getListeTentatives().get(exoR.getListeTentatives().size()-1);
+		if(correct){
+			this.setLayout(new BorderLayout());
+			listeAction = new PanelListeAction(tent);
+	        this.add(listeAction, BorderLayout.EAST);
+	        TortueG myTurtle;
+			if(exoR.getExerciceFait().getTypeEx().equals("Couleur")){
+				myTurtle = new TortueCouleur();
+			}
+			else if(exoR.getExerciceFait().getTypeEx().equals("Rapide")){
+				myTurtle = new TortueRapide();
+			}
+			else{
+				myTurtle = new TortueG();
+			}
+	        this.add(Canvas.getCanvasPanel(), BorderLayout.CENTER);
+	        this.add(new PanelCommandeReplay(myTurtle,tent), BorderLayout.SOUTH);
+			this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			this.setTitle("Réalisation de "+exoR.getExerciceFait().getNomEx());
+			this.setVisible(true);
+			this.setSize(800, 800);
+			this.setLocationRelativeTo(null);
+		}
+		else{
+			this.setLayout(new BorderLayout());
+			PanelEvaluation evaluation = new PanelEvaluation(exoR,this);
+			listeAction = new PanelListeAction(tent);
+			JPanel est = new JPanel();
+			est.setLayout(new BorderLayout());
+			est.add(evaluation, BorderLayout.NORTH);
+			est.add(listeAction, BorderLayout.CENTER);
+	        this.add(est, BorderLayout.EAST);
+	        TortueG myTurtle;
+			if(exoR.getExerciceFait().getTypeEx().equals("Couleur")){
+				myTurtle = new TortueCouleur();
+			}
+			else if(exoR.getExerciceFait().getTypeEx().equals("Rapide")){
+				myTurtle = new TortueRapide();
+			}
+			else{
+				myTurtle = new TortueG();
+			}
+	        this.add(Canvas.getCanvasPanel(), BorderLayout.CENTER);
+	        this.add(new PanelCommandeReplay(myTurtle,tent), BorderLayout.SOUTH);
+			this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			this.setTitle("Réalisation de "+exoR.getExerciceFait().getNomEx());
+			this.setVisible(true);
+			this.setSize(800, 800);
+			this.setLocationRelativeTo(null);
+		}
+	}
+
 	public void addActionEffectue(String newAction) {
 		listeAction.addAction(newAction);
 		model.addActionTentative(newAction);
 	}
+	
 	
 	public void finExercice(){
 		this.dispose();
