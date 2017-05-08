@@ -166,7 +166,7 @@ public class Canvas extends JFrame
      * used when producing animations.
      * @param  milliseconds  the number 
      */
-    public void wait(int milliseconds)
+    public static void wait(int milliseconds)
     {
         try
         {

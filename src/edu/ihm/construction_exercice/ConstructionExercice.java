@@ -1,9 +1,14 @@
 package edu.ihm.construction_exercice;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
+
 import edu.ihm.noyau_fonctionnel.Exercice;
+import edu.ihm.noyau_fonctionnel.ExerciceRealise;
+import edu.ihm.noyau_fonctionnel.Tentative;
 import edu.ihm.noyau_fonctionnel.Utilisateur;
+import edu.ihm.replay.PanelCommandeReplay;
 import edu.ihm.resolution.PanelResolution;
 import edu.ihm.tortue.Canvas;
 import edu.ihm.tortue.TortueCouleur;
@@ -41,6 +46,29 @@ public class ConstructionExercice extends JFrame{
 		this.add(new PanelResolution(exercice,myTurtle, this), BorderLayout.NORTH);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setTitle("Réalisation de "+exercice.getNomEx());
+		this.setVisible(true);
+		this.setSize(800, 800);
+		this.setLocationRelativeTo(null);
+	}
+
+	public ConstructionExercice(Tentative tentative, ExerciceRealise exoR) {
+		this.setLayout(new BorderLayout());
+		listeAction = new PanelListeAction(tentative);
+        this.add(listeAction, BorderLayout.EAST);
+        TortueG myTurtle;
+		if(exoR.getExerciceFait().getTypeEx().equals("Couleur")){
+			myTurtle = new TortueCouleur();
+		}
+		else if(exoR.getExerciceFait().getTypeEx().equals("Rapide")){
+			myTurtle = new TortueRapide();
+		}
+		else{
+			myTurtle = new TortueG();
+		}
+        this.add(Canvas.getCanvasPanel(), BorderLayout.CENTER);
+        this.add(new PanelCommandeReplay(myTurtle,tentative), BorderLayout.SOUTH);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setTitle("Réalisation de "+exoR.getExerciceFait().getNomEx());
 		this.setVisible(true);
 		this.setSize(800, 800);
 		this.setLocationRelativeTo(null);

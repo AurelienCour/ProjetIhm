@@ -5,6 +5,11 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import edu.ihm.noyau_fonctionnel.Tentative;
+import edu.ihm.tortue.TortueCouleur;
+import edu.ihm.tortue.TortueG;
+import edu.ihm.tortue.TortueRapide;
+
 /**
  * Panel composer de toutes les commandes utilisées pour la visualisation d'une tentative
  * Va utiliser l'objet ExerciceRealise
@@ -13,12 +18,18 @@ import javax.swing.JPanel;
  */
 public class PanelCommandeReplay extends JPanel{
 	
-	public PanelCommandeReplay(){
+	public PanelCommandeReplay(TortueG myTurtle, Tentative tentative){
 		this.setLayout(new GridLayout(1,4));
-		this.add(new JButton("LECTURE"));
-		this.add(new JButton("PAUSE"));
-		this.add(new JButton("ACTION SUIVANTE"));
-		this.add(new JButton("RETOUR"));
+		JButton lect = new JButton("LECTURE");
+		lect.addActionListener(new ControlerReplay(myTurtle,tentative,"lecture"));
+		JButton pause = new JButton("PAUSE");
+		JButton actS = new JButton("ACTION SUIVANTE");
+		JButton ret = new JButton("RETOUR");
+		
+		this.add(lect);
+		this.add(pause);
+		this.add(actS);
+		this.add(ret);
 	}
 
 }

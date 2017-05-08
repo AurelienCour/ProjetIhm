@@ -6,20 +6,33 @@ import java.awt.event.ActionListener;
 import edu.ihm.construction_exercice.ConstructionExercice;
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
+import edu.ihm.noyau_fonctionnel.ExerciceRealise;
+import edu.ihm.noyau_fonctionnel.Tentative;
 
 public class ControlerPanelFicheExerciceEleve implements ActionListener {
 	
 	private Exercice exercice;
+	private ExerciceRealise exoR;
 	private Eleve user;
+	private Tentative tentative;
 
 	public ControlerPanelFicheExerciceEleve(Exercice exercice, Eleve user) {
 		this.exercice = exercice;
 		this.user = user;
 	}
 
+	public ControlerPanelFicheExerciceEleve(ExerciceRealise exoR, Tentative tenta) {
+		this.tentative = tenta;
+		this.exoR = exoR;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		new ConstructionExercice(user, exercice);
+		if(tentative != null){
+			new ConstructionExercice(tentative,exoR);
+		}
+		else
+			new ConstructionExercice(user, exercice);
 	}
 
 }

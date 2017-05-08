@@ -22,13 +22,18 @@ public class PanelTentative extends JPanel{
 
 	public PanelTentative(ExerciceRealise exerciceR) {
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+		JLabel titre = new JLabel("<html><h1>Liste des tentatives :</h1></html>");
+		this.add(titre);
 		int compteur = 1;
-		String liste = "<html><ul>";
 		for (Tentative tenta : exerciceR.getListeTentatives()) {
-			liste += "<li>Tentative"+compteur+"</li>";
+			JPanel panelTentative = new JPanel();
+			panelTentative.add(new JLabel("Tentative"+compteur));
+			JButton visualiser = new JButton("Voir");
+			visualiser.addActionListener(new ControlerPanelFicheExerciceEleve(exerciceR, tenta));
+			panelTentative.add(visualiser);
+			this.add(panelTentative);
 			compteur++;
 		}
-		liste += "</ul></html>";
-		this.add(new JLabel(liste));
+		
 	}
 }
