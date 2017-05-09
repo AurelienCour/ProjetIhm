@@ -1,13 +1,17 @@
 package edu.ihm.fiche_enfant_prof;
 
 
-import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Image;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
@@ -25,32 +29,40 @@ public class PanelFicheEnfantProf extends JPanel{
 	
 	public PanelFicheEnfantProf(Eleve eleve){
 		this.eleve = eleve;
-		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-		JLabel nom = new JLabel(eleve.getNom()+" "+eleve.getPrenom());
-		JPanel exercice = new JPanel();
-		exercice.setLayout(new BoxLayout(exercice,BoxLayout.Y_AXIS));
-		boolean toto = false;
+		this.setLayout(new BorderLayout());
+		
+		JPanel nord = new JPanel();
+		nord.setLayout(new BorderLayout());
+		JLabel nom = new JLabel("        "+eleve.getNom()+" "+eleve.getPrenom());
+		nom.setFont(new Font("Arial", Font.PLAIN, 20));
+		
+		nord.add(nom,BorderLayout.WEST);
+		nord.add(new JLabel(new ImageIcon(new ImageIcon(eleve.getPhoto()).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT))),BorderLayout.EAST);
+		
+		String debutListe = "<html><body><h1 style=\"text-decoration: underline;margin:15px\">Liste des exercices :</h1><ul>";
+		String finListe="</ul></body></html>";
+		String corp="";
+		boolean fait;
 		for (Exercice exo : eleve.getClasse().getExercices()) {
-			JPanel panelExo = new JPanel();
-			panelExo.setLayout(new GridLayout(1,2));
-			panelExo.add(new JLabel(exo.getNomEx()));
+			fait = false;
+			corp += "<li>"+exo.getNomEx();
 			if(!eleve.getExerciceRealise().isEmpty()){
 				for (ExerciceRealise exoR : eleve.getExerciceRealise()) {
 					if(exoR.getExerciceFait().equals(exo)){
-						panelExo.add(new JLabel("FAIT"));
-						toto = true;
+						corp += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FAIT</li>";
+						fait = true;
+						break;
 					}
-					else
-						toto = false;
 				}
 			}
-			if(!toto)
-				panelExo.add(new JLabel("A FAIRE"));
-			exercice.add(panelExo);
+			if(!fait)
+				corp += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A FAIRE</li>";
 		}
-		this.add(new JLabel(new ImageIcon(new ImageIcon(eleve.getPhoto()).getImage())));
-		this.add(nom);
-		this.add(exercice);
+		JLabel listeExo = new JLabel(debutListe+corp+finListe);
+		listeExo.setVerticalAlignment(SwingConstants.TOP);
+		listeExo.setFont(new Font("Arial", Font.PLAIN, 20));
+		this.add(nord, BorderLayout.NORTH);
+		this.add(listeExo, BorderLayout.CENTER);
 	}
 
 }

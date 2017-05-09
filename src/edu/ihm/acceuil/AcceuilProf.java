@@ -56,7 +56,7 @@ public class AcceuilProf extends Acceuil{
 	
 	public void goFicheExercice(Exercice exercice){
 		panelInfo.removeAll();
-		panelInfo.add(new PanelFicheExerciceProf(exercice,(Professeur) this.getUser()));
+		panelInfo.add(new PanelFicheExerciceProf(exercice,(Professeur) this.getUser(),this));
 		panelInfo.revalidate();
 	}
 

@@ -1,10 +1,13 @@
 package edu.ihm.construction_exercice;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import edu.ihm.acceuil.Acceuil;
+import edu.ihm.acceuil.AcceuilEleve;
 import edu.ihm.evaluation.PanelEvaluation;
 import edu.ihm.noyau_fonctionnel.Exercice;
 import edu.ihm.noyau_fonctionnel.ExerciceRealise;
@@ -28,8 +31,10 @@ public class ConstructionExercice extends JFrame{
 	
 	private PanelListeAction listeAction;
 	private ModelConstructionExercice model;
+	private Acceuil acceuil;
 
-	public ConstructionExercice(Utilisateur user, Exercice exercice){
+	public ConstructionExercice(Utilisateur user, Exercice exercice, Acceuil acceuil){
+		this.acceuil = acceuil;
 		this.model = new ModelConstructionExercice(user,exercice);
 		this.setLayout(new BorderLayout());
 		listeAction = new PanelListeAction();
@@ -49,7 +54,9 @@ public class ConstructionExercice extends JFrame{
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setTitle("Réalisation de "+exercice.getNomEx());
 		this.setVisible(true);
-		this.setSize(800, 800);
+		Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		int height = (int) size.getHeight();
+		this.setSize(new Dimension(800, height-22));
 		this.setLocationRelativeTo(null);
 	}
 
@@ -70,13 +77,15 @@ public class ConstructionExercice extends JFrame{
         this.add(Canvas.getCanvasPanel(), BorderLayout.CENTER);
         this.add(new PanelCommandeReplay(myTurtle,tentative), BorderLayout.SOUTH);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setTitle("Réalisation de "+exoR.getExerciceFait().getNomEx());
+		this.setTitle("Visualisation de "+exoR.getExerciceFait().getNomEx());
 		this.setVisible(true);
-		this.setSize(800, 800);
+		Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		int height = (int) size.getHeight();
+		this.setSize(new Dimension(800, height-75));
 		this.setLocationRelativeTo(null);
 	}
 
-	public ConstructionExercice(ExerciceRealise exoR, boolean correct) {
+	public ConstructionExercice(ExerciceRealise exoR, boolean correct, Acceuil acceuil) {
 		Tentative tent = exoR.getListeTentatives().get(exoR.getListeTentatives().size()-1);
 		if(correct){
 			this.setLayout(new BorderLayout());
@@ -95,14 +104,16 @@ public class ConstructionExercice extends JFrame{
 	        this.add(Canvas.getCanvasPanel(), BorderLayout.CENTER);
 	        this.add(new PanelCommandeReplay(myTurtle,tent), BorderLayout.SOUTH);
 			this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			this.setTitle("Réalisation de "+exoR.getExerciceFait().getNomEx());
+			this.setTitle("Correction de "+exoR.getExerciceFait().getNomEx());
 			this.setVisible(true);
-			this.setSize(800, 800);
+			Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+			int height = (int) size.getHeight();
+			this.setSize(new Dimension(800, height-75));
 			this.setLocationRelativeTo(null);
 		}
 		else{
 			this.setLayout(new BorderLayout());
-			PanelEvaluation evaluation = new PanelEvaluation(exoR,this);
+			PanelEvaluation evaluation = new PanelEvaluation(exoR,this,acceuil);
 			listeAction = new PanelListeAction(tent);
 			JPanel est = new JPanel();
 			est.setLayout(new BorderLayout());
@@ -122,9 +133,11 @@ public class ConstructionExercice extends JFrame{
 	        this.add(Canvas.getCanvasPanel(), BorderLayout.CENTER);
 	        this.add(new PanelCommandeReplay(myTurtle,tent), BorderLayout.SOUTH);
 			this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			this.setTitle("Réalisation de "+exoR.getExerciceFait().getNomEx());
+			this.setTitle("Correction de "+exoR.getExerciceFait().getNomEx());
 			this.setVisible(true);
-			this.setSize(800, 800);
+			Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+			int height = (int) size.getHeight();
+			this.setSize(new Dimension(800, height-75));
 			this.setLocationRelativeTo(null);
 		}
 	}
@@ -137,6 +150,8 @@ public class ConstructionExercice extends JFrame{
 	
 	public void finExercice(){
 		this.dispose();
-		model.finExercice();
+		if(acceuil instanceof AcceuilEleve){
+			model.finExercice(acceuil);
+		}
 	}
 }

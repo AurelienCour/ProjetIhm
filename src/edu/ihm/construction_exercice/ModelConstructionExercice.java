@@ -1,5 +1,7 @@
 package edu.ihm.construction_exercice;
 
+import edu.ihm.acceuil.Acceuil;
+import edu.ihm.acceuil.AcceuilEleve;
 import edu.ihm.noyau_fonctionnel.Action;
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
@@ -32,9 +34,10 @@ public class ModelConstructionExercice {
 		}
 	}
 	
-	public void finExercice(){
+	public void finExercice(Acceuil acceuil){
 		ExerciceRealise exerciceReal = null;
 		if(user instanceof Eleve){
+			AcceuilEleve trans = (AcceuilEleve) acceuil;
 			for (ExerciceRealise exoR : ((Eleve) user).getExerciceRealise()) {
 				if(exoR.getExerciceFait().equals(exercice)){
 					exerciceReal = exoR;
@@ -45,6 +48,7 @@ public class ModelConstructionExercice {
 	    		((Eleve) user).addExerciceRealise(exerciceReal);
 	    	}
 	    	exerciceReal.addTentative(tentative);
+	    	trans.goFicheExercice(exerciceReal.getExerciceFait());
 		}
 	}
 

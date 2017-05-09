@@ -64,6 +64,7 @@ public class PanelMenu{
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.setCellRenderer(new TreeRenderer());
 		tree.addTreeSelectionListener(new ControlerMenu(this));
+		
 	}
 	
 	public Acceuil getAcceuil(){

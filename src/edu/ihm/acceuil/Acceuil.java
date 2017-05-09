@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -31,9 +29,13 @@ public abstract class Acceuil extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle(user.getNom());
 		j = new JScrollPane(this.menu.getJTree());
+		j.setPreferredSize(new Dimension(180,150));
 		this.add(j,BorderLayout.WEST);
 		this.setVisible(true);
-		this.setSize(new Dimension(500,500));
+		Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+		int width = (int) size.getWidth();
+		int height = (int) size.getHeight();
+		this.setSize(new Dimension(width, height-22));
 		this.setLocationRelativeTo(null);
 		this.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
@@ -56,6 +58,7 @@ public abstract class Acceuil extends JFrame{
 		this.remove(j);
 		menu = new PanelMenu(this);
 		j = new JScrollPane(menu.getJTree());
+		j.setPreferredSize(new Dimension(180,150));
 		this.add(j,BorderLayout.WEST);
 	}
 

@@ -1,9 +1,13 @@
 package edu.ihm.creation_exercice;
 
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -38,18 +42,28 @@ public class PanelCreationExercice extends JPanel{
 	public PanelCreationExercice(AcceuilProf acceuilProf, Classes cl) {
 		this.acceuil = acceuilProf;
 		this.cl = cl;
-		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+		//this.setLayout(new FlowLayout(FlowLayout.LEFT));
+		this.setLayout(new GridBagLayout());
+		
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = 0;
+		gbc.gridy = GridBagConstraints.RELATIVE;
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.insets = new Insets(0, 0, 0, 0);
+		
 		JPanel nomEx = new JPanel();
-		nomEx.setLayout(new GridLayout(1,2));
+		nomEx.setLayout(new FlowLayout(FlowLayout.LEFT));
 		nomEx.add(new JLabel("Nom exercice :"));
 		nom = new JTextField();
+		nom.setPreferredSize(new Dimension(150,25));
 		nomEx.add(nom);
 		
 		
 		JPanel nomMod = new JPanel();
-		nomMod.setLayout(new GridLayout(1,2));
+		nomMod.setLayout(new FlowLayout(FlowLayout.LEFT));
 		nomMod.add(new JLabel("Nom image :"));
 		nomModel = new JTextField();
+		nomModel.setPreferredSize(new Dimension(150,25));
 		nomMod.add(nomModel);
 		
 		
@@ -69,23 +83,11 @@ public class PanelCreationExercice extends JPanel{
 	    
 	    JButton validate = new JButton("creer");
 	    validate.addActionListener(new ControlerCreationExercice(this, acceuilProf.getUser()));
-	    /*validate.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				if(PanelCreationExercice.this.check1.isSelected())
-					System.out.println(PanelCreationExercice.this.check1.getText());
-				else if(PanelCreationExercice.this.check2.isSelected())
-					System.out.println(PanelCreationExercice.this.check2.getText());
-				else if(PanelCreationExercice.this.check3.isSelected())
-					System.out.println(PanelCreationExercice.this.check3.getText());
-			}
-	    	
-	    });*/
-	    this.add(nomEx);
-	    this.add(nomMod);
-	    this.add(radioB);
-	    this.add(validate);
+	    
+	    this.add(nomEx,gbc);
+	    this.add(nomMod,gbc);
+	    this.add(radioB,gbc);
+	    this.add(validate,gbc);
 	}
 	
 	public JTextField getFieldNom(){

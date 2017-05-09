@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import edu.ihm.acceuil.Acceuil;
+import edu.ihm.acceuil.AcceuilProf;
 import edu.ihm.construction_exercice.ConstructionExercice;
 import edu.ihm.noyau_fonctionnel.Evaluation;
 import edu.ihm.noyau_fonctionnel.ExerciceRealise;
@@ -27,9 +29,11 @@ public class PanelEvaluation extends JPanel{
 	private JTextField comment;
 	private ExerciceRealise exoR;
 	private ConstructionExercice constructionExercice;
+	private AcceuilProf acceuil;
 	
-	public PanelEvaluation(ExerciceRealise exoR, ConstructionExercice constructionExercice){
+	public PanelEvaluation(ExerciceRealise exoR, ConstructionExercice constructionExercice, Acceuil acceuil){
 		this.exoR = exoR;
+		this.acceuil = (AcceuilProf) acceuil;
 		this.constructionExercice = constructionExercice;
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		
@@ -64,6 +68,7 @@ public class PanelEvaluation extends JPanel{
 		Evaluation eval = new Evaluation(combo.getSelectedItem().toString(), comment.getText());
 		exoR.corriger(eval);
 		constructionExercice.dispose();
+		acceuil.goFicheExercice(exoR.getExerciceFait());
 	}
 
 }

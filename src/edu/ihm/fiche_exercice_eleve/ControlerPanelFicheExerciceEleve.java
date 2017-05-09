@@ -3,6 +3,7 @@ package edu.ihm.fiche_exercice_eleve;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import edu.ihm.acceuil.AcceuilEleve;
 import edu.ihm.construction_exercice.ConstructionExercice;
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
@@ -14,11 +15,13 @@ public class ControlerPanelFicheExerciceEleve implements ActionListener {
 	private Exercice exercice;
 	private ExerciceRealise exoR;
 	private Eleve user;
+	private AcceuilEleve acceuilEleve;
 	private Tentative tentative;
 
-	public ControlerPanelFicheExerciceEleve(Exercice exercice, Eleve user) {
+	public ControlerPanelFicheExerciceEleve(Exercice exercice, Eleve user, AcceuilEleve acceuilEleve) {
 		this.exercice = exercice;
 		this.user = user;
+		this.acceuilEleve = acceuilEleve;
 	}
 
 	public ControlerPanelFicheExerciceEleve(ExerciceRealise exoR, Tentative tenta) {
@@ -32,7 +35,7 @@ public class ControlerPanelFicheExerciceEleve implements ActionListener {
 			new ConstructionExercice(tentative,exoR);
 		}
 		else
-			new ConstructionExercice(user, exercice);
+			new ConstructionExercice(user, exercice,acceuilEleve);
 	}
 
 }

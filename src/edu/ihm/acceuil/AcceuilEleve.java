@@ -31,7 +31,7 @@ public class AcceuilEleve extends Acceuil{
 	
 	public void goFicheExercice(Exercice exercice){
 		panelInfo.removeAll();
-		panelInfo.add(new PanelFicheExerciceEleve(exercice, this.getUser()));
+		panelInfo.add(new PanelFicheExerciceEleve(exercice, this.getUser(), this));
 		panelInfo.revalidate();
 	}
 }

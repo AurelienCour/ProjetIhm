@@ -1,5 +1,9 @@
 package edu.ihm.fiche_exercice_eleve;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
 
 import javax.swing.BoxLayout;
@@ -8,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import edu.ihm.acceuil.AcceuilEleve;
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
 import edu.ihm.noyau_fonctionnel.ExerciceRealise;
@@ -23,34 +28,48 @@ public class PanelFicheExerciceEleve extends JPanel{
 	
 	private Exercice exercice;
 	private Eleve user;
-	public PanelFicheExerciceEleve(Exercice exercice, Utilisateur user){
+	public PanelFicheExerciceEleve(Exercice exercice, Utilisateur user, AcceuilEleve acceuilEleve){
 		this.exercice = exercice;
 		this.user = (Eleve) user;
-		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-		this.add(new JLabel(new ImageIcon(new ImageIcon(exercice.getModele()).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT))));
-		this.add(new JLabel(exercice.getNomEx()));
-		this.add(new JLabel(exercice.getTypeEx()));
+		
+		this.setLayout(new BorderLayout());
+		
+		JPanel nord = new JPanel();
+		nord.setLayout(new BorderLayout());
+		JPanel description = new JPanel();
+		description.setLayout(new GridLayout(2, 1));
+		JLabel nom = new JLabel("        Nom : "+exercice.getNomEx());
+		nom.setFont(new Font("Arial", Font.PLAIN, 20));
+		JLabel type = new JLabel("        Type : "+exercice.getTypeEx());
+		type.setFont(new Font("Arial", Font.PLAIN, 20));
+		description.add(nom);
+		description.add(type);
+		nord.add(description,BorderLayout.WEST);
+		nord.add(new JLabel(new ImageIcon(new ImageIcon(exercice.getModele()).getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT))),BorderLayout.EAST);
+		this.add(nord,BorderLayout.NORTH);
+		
+		JPanel corp = new JPanel();
+		corp.setLayout(new BoxLayout(corp,BoxLayout.Y_AXIS));
 		boolean exerciceFait = false;
 		JButton faire = new JButton("Faire");
 		for (ExerciceRealise exerciceR : this.user.getExerciceRealise()) {
 			if(exerciceR.getExerciceFait().equals(exercice)){
 				exerciceFait = true;
 				if(exerciceR.getResultat() != null){
-					this.add(new PanelResultat(exerciceR));
-					this.add(faire);
+					corp.add(new PanelResultat(exerciceR));
 				}
 				else{
-					this.add(new PanelTentative(exerciceR));
-					this.add(faire);
+					corp.add(new PanelTentative(exerciceR));
 				}
 				break;
 			}
 		}
 		if(!exerciceFait){
-			this.add(new JLabel("Exercice a faire"));
-			this.add(faire);
+			corp.add(new JLabel("Exercice a faire"));
 		}
-		faire.addActionListener(new ControlerPanelFicheExerciceEleve(exercice,this.user));
+		corp.add(faire);
+		faire.addActionListener(new ControlerPanelFicheExerciceEleve(exercice,this.user,acceuilEleve));
+		this.add(corp,BorderLayout.CENTER);
 	}
 
 }
