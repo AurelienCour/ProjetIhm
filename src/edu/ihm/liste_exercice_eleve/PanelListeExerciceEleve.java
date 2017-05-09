@@ -50,6 +50,7 @@ public class PanelListeExerciceEleve extends JPanel{
 		tableExercice.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tableExercice.setRowHeight(70);
 		tableExercice.setDefaultRenderer(URL.class, new ImageCellRenderer());
+		tableExercice.setDefaultRenderer(String.class, new ImageCellRenderer());
 		ListSelectionModel listSelectionModel = tableExercice.getSelectionModel();        
 		listSelectionModel.addListSelectionListener(new ControlerListeExerciceEleve(tableExercice, acceuil));
 	}
