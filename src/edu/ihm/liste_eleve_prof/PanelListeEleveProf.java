@@ -1,6 +1,7 @@
 package edu.ihm.liste_eleve_prof;
 
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.net.URL;
 
@@ -33,6 +34,9 @@ public class PanelListeEleveProf extends JPanel{
 	 * @param acceuil L'acceuil de notre application
 	 */
 	public PanelListeEleveProf(AcceuilProf acceuil, Classes cl){
+		this.setBackground(new Color(225, 206, 154));
+		
+		
 		this.cl = cl;
 		this.acceuil = acceuil;
 		this.setLayout(new GridLayout());

@@ -2,6 +2,7 @@ package edu.ihm.liste_exercice_prof;
 
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -38,6 +39,9 @@ public class PanelListeExerciceProf extends JPanel{
 	 * @param acceuil L'acceuil de notre application
 	 */
 	public PanelListeExerciceProf(Classes cl, AcceuilProf acceuil){
+		this.setBackground(new Color(225, 206, 154));
+		
+		
 		this.acceuil = acceuil;
 		this.cl = cl;
 		this.setLayout(new BorderLayout());

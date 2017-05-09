@@ -1,8 +1,11 @@
 package edu.ihm.evaluation;
 
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -13,6 +16,7 @@ import javax.swing.JTextField;
 import edu.ihm.acceuil.Acceuil;
 import edu.ihm.acceuil.AcceuilProf;
 import edu.ihm.construction_exercice.ConstructionExercice;
+import edu.ihm.construction_exercice.PanelModele;
 import edu.ihm.noyau_fonctionnel.Evaluation;
 import edu.ihm.noyau_fonctionnel.ExerciceRealise;
 
@@ -32,10 +36,15 @@ public class PanelEvaluation extends JPanel{
 	private AcceuilProf acceuil;
 	
 	public PanelEvaluation(ExerciceRealise exoR, ConstructionExercice constructionExercice, Acceuil acceuil){
+		
 		this.exoR = exoR;
 		this.acceuil = (AcceuilProf) acceuil;
 		this.constructionExercice = constructionExercice;
-		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+		this.setLayout(new GridLayout(2, 1));
+		
+		JPanel eval = new JPanel();
+		eval.setLayout(new BoxLayout(eval,BoxLayout.Y_AXIS));
+		eval.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		JLabel title = new JLabel("Evaluation");
 		
@@ -57,11 +66,13 @@ public class PanelEvaluation extends JPanel{
 	    JButton valider = new JButton("Valider");
 	    valider.addActionListener(new ControlerEvaluation(this));
 	    
-	    this.add(title);
-	    this.add(panelChoix);
-	    this.add(commentaire);
-	    this.add(comment);
-	    this.add(valider);
+	    eval.add(title);
+	    eval.add(panelChoix);
+	    eval.add(commentaire);
+	    eval.add(comment);
+	    eval.add(valider);
+	    this.add(new PanelModele(exoR.getExerciceFait()));
+	    this.add(eval);
 	}
 	
 	public void correct (){

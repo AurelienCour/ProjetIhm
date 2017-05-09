@@ -41,6 +41,9 @@ public class ModelConstructionExercice {
 			for (ExerciceRealise exoR : ((Eleve) user).getExerciceRealise()) {
 				if(exoR.getExerciceFait().equals(exercice)){
 					exerciceReal = exoR;
+					if(exoR.isCorrect()){
+						exoR.setCorrect(false);
+					}
 				}
 			}
 	    	if(exerciceReal == null){

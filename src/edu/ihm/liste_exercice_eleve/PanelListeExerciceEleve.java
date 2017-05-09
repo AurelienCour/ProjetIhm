@@ -1,6 +1,7 @@
 package edu.ihm.liste_exercice_eleve;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.net.URL;
 
 import javax.swing.JPanel;
@@ -30,6 +31,7 @@ public class PanelListeExerciceEleve extends JPanel{
 	public PanelListeExerciceEleve(AcceuilEleve acceuil){
 		this.acceuil = acceuil;
 		this.setLayout(new BorderLayout());
+		this.setBackground(new Color(225, 206, 154));
 		initComposant();
 	}
 	

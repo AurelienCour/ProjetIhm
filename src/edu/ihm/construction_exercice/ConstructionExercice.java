@@ -81,7 +81,7 @@ public class ConstructionExercice extends JFrame{
 		this.setVisible(true);
 		Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		int height = (int) size.getHeight();
-		this.setSize(new Dimension(800, height-75));
+		this.setSize(new Dimension(830, 655));
 		this.setLocationRelativeTo(null);
 	}
 
@@ -108,7 +108,7 @@ public class ConstructionExercice extends JFrame{
 			this.setVisible(true);
 			Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 			int height = (int) size.getHeight();
-			this.setSize(new Dimension(800, height-75));
+			this.setSize(new Dimension(830, 655));
 			this.setLocationRelativeTo(null);
 		}
 		else{
@@ -137,7 +137,7 @@ public class ConstructionExercice extends JFrame{
 			this.setVisible(true);
 			Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 			int height = (int) size.getHeight();
-			this.setSize(new Dimension(800, height-75));
+			this.setSize(new Dimension(830, 655));
 			this.setLocationRelativeTo(null);
 		}
 	}
@@ -152,6 +152,7 @@ public class ConstructionExercice extends JFrame{
 		this.dispose();
 		if(acceuil instanceof AcceuilEleve){
 			model.finExercice(acceuil);
+			acceuil.reloadTree();
 		}
 	}
 	

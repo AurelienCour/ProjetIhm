@@ -2,6 +2,8 @@ package edu.ihm.construction_exercice;
 
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -26,6 +28,7 @@ public class PanelListeAction extends JPanel{
 	private String fin;
 	
 	public PanelListeAction(){
+		this.setBackground(new Color(225, 206, 154));
 		this.setLayout(new BorderLayout());
 		JPanel test = new JPanel();
 		test.setLayout(new BoxLayout(test,BoxLayout.Y_AXIS));
@@ -44,7 +47,7 @@ public class PanelListeAction extends JPanel{
 		test.setLayout(new BoxLayout(test,BoxLayout.Y_AXIS));
 		debut = "<html><h1>Liste des actions</h1><br>";
 		lesActions = "<ul>";
-		fin = "</ul></html>";
+		fin = "<li style=\"margin-top:10px;\">Nombres d'actions : "+tentative.getListeAction().size()+"</li></ul></html>";
 		actionEffectue = new JLabel(debut+lesActions+fin);
 		for (Action act : tentative.getListeAction()) {
 			addAction(act.getAction());
@@ -52,6 +55,7 @@ public class PanelListeAction extends JPanel{
 		test.add(actionEffectue);
 		JScrollPane test2 = new JScrollPane(test);
 		this.add(test2,BorderLayout.CENTER);
+		this.setPreferredSize(new Dimension(230, 1));
 	}
 
 	public void addAction(String newAction){

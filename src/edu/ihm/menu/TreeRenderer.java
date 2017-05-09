@@ -27,7 +27,7 @@ public class TreeRenderer implements TreeCellRenderer{
 		backgroundSelectionColor = defaultRenderer.getBackgroundSelectionColor();
 	    backgroundNonSelectionColor = defaultRenderer.getBackgroundNonSelectionColor();
 		renderer.add(name);
-		renderer.setBackground(Color.WHITE);
+		renderer.setBackground(backgroundNonSelectionColor);
 	}
 
 	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected,

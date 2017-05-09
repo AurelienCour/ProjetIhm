@@ -1,12 +1,15 @@
 package edu.ihm.resolution;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import edu.ihm.construction_exercice.ConstructionExercice;
+import edu.ihm.construction_exercice.PanelModele;
 import edu.ihm.noyau_fonctionnel.Action;
 import edu.ihm.noyau_fonctionnel.Exercice;
 import edu.ihm.tortue.TortueCouleur;
@@ -38,6 +41,7 @@ public class PanelResolution extends JPanel{
 		JPanel boutonBase = new JPanel();
 		boutonBase.setLayout(new GridLayout(2,2));
 		JButton bAvance = new JButton("AVANCER");
+		bAvance.setPreferredSize(new Dimension(55,55));
 		bAvance.addActionListener(new ControlerResolution(this,"avance",myTurtle));
 		JButton bTrace = new JButton("TRACER");
 		bTrace.addActionListener(new ControlerResolution(this,"trace",myTurtle));

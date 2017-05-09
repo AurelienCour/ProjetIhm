@@ -1,5 +1,6 @@
 package edu.ihm.creation_exercice;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -40,6 +41,8 @@ public class PanelCreationExercice extends JPanel{
 	private JCheckBox check3;
 	
 	public PanelCreationExercice(AcceuilProf acceuilProf, Classes cl) {
+		this.setBackground(new Color(225, 206, 154));
+		
 		this.acceuil = acceuilProf;
 		this.cl = cl;
 		//this.setLayout(new FlowLayout(FlowLayout.LEFT));

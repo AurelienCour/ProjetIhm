@@ -33,6 +33,9 @@ public class PanelFicheExerciceProf extends JPanel{
 	private Exercice exercice;
 	
 	public PanelFicheExerciceProf(Exercice exercice, Professeur user, AcceuilProf acceuilProf){
+		this.setBackground(new Color(225, 206, 154));
+		
+		
 		this.exercice = exercice;
 		this.setLayout(new BorderLayout());
 		

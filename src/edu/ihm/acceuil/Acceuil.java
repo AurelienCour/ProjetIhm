@@ -1,6 +1,7 @@
 package edu.ihm.acceuil;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -29,6 +30,7 @@ public abstract class Acceuil extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle(user.getNom());
 		j = new JScrollPane(this.menu.getJTree());
+		j.setBackground(new Color(225, 206, 154));
 		j.setPreferredSize(new Dimension(180,150));
 		this.add(j,BorderLayout.WEST);
 		this.setVisible(true);

@@ -33,6 +33,8 @@ public class PanelFicheEnfantProf extends JPanel{
 	private Eleve eleve;
 	
 	public PanelFicheEnfantProf(Eleve eleve, AcceuilProf acceuilProf){
+		this.setBackground(new Color(225, 206, 154));
+		
 		this.eleve = eleve;
 		this.setLayout(new BorderLayout());
 		

@@ -1,6 +1,7 @@
 package edu.ihm.resolution;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
