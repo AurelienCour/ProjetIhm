@@ -15,7 +15,7 @@ public class TableListeExercice extends AbstractTableModel {
 
 	private ArrayList<Exercice> donnees;
 	private Classes cl;
-	private final String[] entetes = {"Nom", "Modele", "Statut"};
+	private final String[] entetes = {"Nom", "Modele", "Nombre élève"};
 
 	/**
 	 * Le constructeur de notre classe

@@ -65,4 +65,10 @@ public class PanelListeAction extends JPanel{
         return text.replaceFirst("(?s)(.*)" + regex, "$1" + "");
     }
 
+	public void removeLastAction() {
+		lesActions = deleteLast(lesActions,lastAction);
+		actionEffectue.setText(deleteLast(actionEffectue.getText(),lastAction));
+		lastAction="";
+	}
+
 }

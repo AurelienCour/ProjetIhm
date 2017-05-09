@@ -2,18 +2,21 @@ package edu.ihm.renderer;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.Image;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class ImageCellRenderer extends DefaultTableCellRenderer {
  
     public ImageCellRenderer() {
         super();
+        this.setHorizontalAlignment(SwingConstants.CENTER);
     }
  
     @Override
@@ -22,10 +25,12 @@ public class ImageCellRenderer extends DefaultTableCellRenderer {
         if(value instanceof URL){
         	URL url = (URL) value;
             setText("");
-            ImageIcon ic = new ImageIcon(new ImageIcon(url).getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
+            ImageIcon ic = new ImageIcon(new ImageIcon(url).getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
             setIcon(ic);
+            setBackground(Color.lightGray);
         }
         else if(value instanceof String){
+        	this.setFont(new Font("Arial", Font.PLAIN, 20));
         	if(value.toString().equals("Corrigé")){
         		setForeground(Color.blue);
         	}

@@ -74,8 +74,9 @@ public class PanelListeEleveProf extends JPanel{
 	private void initJTable(){
 		this.tableEleve = new JTable(modeleTable);
 		tableEleve.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tableEleve.setRowHeight(70);
+		tableEleve.setRowHeight(80);
 		tableEleve.setDefaultRenderer(URL.class, new ImageCellRenderer());
+		tableEleve.setDefaultRenderer(String.class, new ImageCellRenderer());
 		ListSelectionModel listSelectionModel = tableEleve.getSelectionModel();        
 		listSelectionModel.addListSelectionListener(new ControlerListeEleve(tableEleve, acceuil));
 	}

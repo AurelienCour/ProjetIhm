@@ -51,5 +51,9 @@ public class ModelConstructionExercice {
 	    	trans.goFicheExercice(exerciceReal.getExerciceFait());
 		}
 	}
+	
+	public Tentative getTentative(){
+		return tentative;
+	}
 
 }

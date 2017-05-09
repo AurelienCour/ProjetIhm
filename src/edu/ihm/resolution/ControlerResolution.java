@@ -39,6 +39,7 @@ public class ControlerResolution implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		panelResolution.changeBouton(true);
 		if(idAction.equals("avance")){
 			myTurtle.avancer();
 			panelResolution.addAction("Avance");
@@ -71,6 +72,21 @@ public class ControlerResolution implements ActionListener {
 		}
 		else if(idAction.equals("fin")){
 			panelResolution.finExercice();
+		}
+		else if(idAction.equals("retour")){
+			panelResolution.changeBouton(false);
+			myTurtle.reset();
+			if(myTurtle instanceof TortueCouleur){
+				((TortueCouleur) myTurtle).setCouleur("black");
+				panelResolution.removeLastAction();
+			}
+			else if(myTurtle instanceof TortueRapide){
+				((TortueRapide) myTurtle).setVitesse(1);
+				panelResolution.removeLastAction();
+			}
+			else{
+				panelResolution.removeLastAction();
+			}
 		}
 		else if(panelCouleur != null){
 			((TortueCouleur) myTurtle).setCouleur(idAction);

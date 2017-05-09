@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import edu.ihm.construction_exercice.ConstructionExercice;
+import edu.ihm.noyau_fonctionnel.Action;
 import edu.ihm.noyau_fonctionnel.Exercice;
 import edu.ihm.tortue.TortueCouleur;
 import edu.ihm.tortue.TortueG;
@@ -24,6 +25,9 @@ public class PanelResolution extends JPanel{
 	private Exercice exercice;
 	private TortueG myTurtle;
 	private ConstructionExercice constructionExercice;
+	private PanelCouleur panelCouleur;
+	private PanelVitesse panelVitesse;
+	private JButton bRetour;
 
 	public PanelResolution(Exercice exercice, TortueG myTurtle, ConstructionExercice constructionExercice){
 		this.exercice = exercice;
@@ -39,7 +43,7 @@ public class PanelResolution extends JPanel{
 		bTrace.addActionListener(new ControlerResolution(this,"trace",myTurtle));
 		JButton bTourne = new JButton("TOURNER");
 		bTourne.addActionListener(new ControlerResolution(this,"tourne",myTurtle));
-		JButton bRetour = new JButton("RETOUR");
+		bRetour = new JButton("RETOUR");
 		bRetour.addActionListener(new ControlerResolution(this,"retour",myTurtle));
 		boutonBase.add(bAvance);
 		boutonBase.add(bTrace);
@@ -50,11 +54,14 @@ public class PanelResolution extends JPanel{
 		commande.setLayout(new BorderLayout());
 		commande.add(boutonBase, BorderLayout.CENTER);
 		
-		if(myTurtle instanceof TortueCouleur)
-			commande.add(new PanelCouleur((TortueCouleur) myTurtle, this),BorderLayout.WEST);
-		else if(myTurtle instanceof TortueRapide)
-			commande.add(new PanelVitesse((TortueRapide) myTurtle,this),BorderLayout.WEST);
-		
+		if(myTurtle instanceof TortueCouleur){
+			panelCouleur = new PanelCouleur((TortueCouleur) myTurtle, this);
+			commande.add(panelCouleur,BorderLayout.WEST);
+		}
+		else if(myTurtle instanceof TortueRapide){
+			panelVitesse = new PanelVitesse((TortueRapide) myTurtle,this);
+			commande.add(panelVitesse,BorderLayout.WEST);
+		}
 		this.add(new PanelModele(exercice),BorderLayout.WEST);
 		this.add(commande,BorderLayout.CENTER);
 		JButton bTermine = new JButton("TERMINE !");
@@ -68,5 +75,84 @@ public class PanelResolution extends JPanel{
 	
 	public void finExercice() {
 		constructionExercice.finExercice();
+	}
+	
+	public void changeBouton(boolean etat){
+		bRetour.setEnabled(etat);
+	}
+
+	public void removeLastAction() {
+		constructionExercice.removeLastAction();
+		if(myTurtle instanceof TortueCouleur){
+			TortueCouleur turtle = (TortueCouleur) myTurtle;
+			for (Action act : constructionExercice.getModel().getTentative().getListeAction()) {
+				switch (act.getAction()) {
+				case "Avance":
+					turtle.avancer();
+					break;
+				case "Ne trace plus":
+					turtle.tracer(false);
+					break;
+				case "Trace":
+					turtle.tracer(true);
+					break;
+				case "Tourne":
+					turtle.tourner();
+					break;
+				default:
+					turtle.setCouleur(act.getAction());
+					break;
+				}
+			}
+			panelCouleur.changeCouleur(turtle.getCouleur());
+		}
+		else if(myTurtle instanceof TortueRapide){
+			TortueRapide turtle = (TortueRapide) myTurtle;
+			for (Action act : constructionExercice.getModel().getTentative().getListeAction()) {
+				switch (act.getAction()) {
+				case "Avance":
+					turtle.avancer();
+					break;
+				case "Ne trace plus":
+					turtle.tracer(false);
+					break;
+				case "Trace":
+					turtle.tracer(true);
+					break;
+				case "Tourne":
+					turtle.tourner();
+					break;
+				case "Accelere":
+					turtle.accelerer();
+					break;
+				case "Ralenti":
+					turtle.ralentir();
+					break;
+				default:
+					break;
+				}
+			}
+			panelVitesse.changeVitesse(Integer.toString(turtle.getVitesse()));
+		}
+		else{
+			for (Action act : constructionExercice.getModel().getTentative().getListeAction()) {
+				switch (act.getAction()) {
+				case "Avance":
+					myTurtle.avancer();
+					break;
+				case "Ne trace plus":
+					myTurtle.tracer(false);
+					break;
+				case "Trace":
+					myTurtle.tracer(true);
+					break;
+				case "Tourne":
+					myTurtle.tourner();
+					break;
+				default:
+					break;
+				}
+			}
+		}
 	}
 }

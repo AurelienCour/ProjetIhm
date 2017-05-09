@@ -154,4 +154,13 @@ public class ConstructionExercice extends JFrame{
 			model.finExercice(acceuil);
 		}
 	}
+	
+	public ModelConstructionExercice getModel(){
+		return this.model;
+	}
+
+	public void removeLastAction() {
+		listeAction.removeLastAction();
+		model.removeLastAction();
+	}
 }

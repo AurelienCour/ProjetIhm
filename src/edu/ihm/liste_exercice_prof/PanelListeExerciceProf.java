@@ -69,8 +69,9 @@ public class PanelListeExerciceProf extends JPanel{
 	private void initJTable(){
 		this.tableExercice = new JTable(modeleTable);
 		tableExercice.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tableExercice.setRowHeight(70);
+		tableExercice.setRowHeight(80);
 		tableExercice.setDefaultRenderer(URL.class, new ImageCellRenderer());
+		tableExercice.setDefaultRenderer(String.class, new ImageCellRenderer());
 		ListSelectionModel listSelectionModel = tableExercice.getSelectionModel();        
 		listSelectionModel.addListSelectionListener(new ControlerListeExerciceProf(tableExercice, acceuil));
 	}

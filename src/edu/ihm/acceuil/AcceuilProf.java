@@ -50,7 +50,7 @@ public class AcceuilProf extends Acceuil{
 
 	public void goFicheEleve(Eleve eleve){
 		panelInfo.removeAll();
-		panelInfo.add(new PanelFicheEnfantProf(eleve));
+		panelInfo.add(new PanelFicheEnfantProf(eleve,this));
 		panelInfo.revalidate();
 	}
 	
