@@ -3,6 +3,8 @@ package edu.ihm.liste_exercice_prof;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -15,8 +17,6 @@ import javax.swing.ListSelectionModel;
 
 import edu.ihm.acceuil.AcceuilProf;
 import edu.ihm.noyau_fonctionnel.Classes;
-import edu.ihm.noyau_fonctionnel.Professeur;
-import edu.ihm.noyau_fonctionnel.Utilisateur;
 import edu.ihm.renderer.ImageCellRenderer;
 
 /**
@@ -39,13 +39,13 @@ public class PanelListeExerciceProf extends JPanel{
 	 * @param acceuil L'acceuil de notre application
 	 */
 	public PanelListeExerciceProf(Classes cl, AcceuilProf acceuil){
-		this.setBackground(new Color(225, 206, 154));
-		
-		
 		this.acceuil = acceuil;
 		this.cl = cl;
 		this.setLayout(new BorderLayout());
 		JButton boutonCreation = new JButton("Creer un exercice");
+		boutonCreation.setFont(new Font("Arial", Font.BOLD, 17));
+		boutonCreation.setBackground(Color.lightGray);
+		boutonCreation.setPreferredSize(new Dimension(2,40));
 		boutonCreation.addActionListener(new ActionListener(){
 
 			@Override

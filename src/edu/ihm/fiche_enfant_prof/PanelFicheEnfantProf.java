@@ -62,7 +62,7 @@ public class PanelFicheEnfantProf extends JPanel{
 			JPanel info = new JPanel();
 			info.setLayout(new FlowLayout(FlowLayout.LEFT,30,30));
 			JLabel name = new JLabel("                -   "+exo.getNomEx());
-			name.setFont(new Font("Arial", Font.PLAIN, 15));
+			name.setFont(new Font("Arial", Font.BOLD, 15));
 			info.add(name);
 			for (ExerciceRealise exoR : eleve.getExerciceRealise()) {
 				if(exoR.getExerciceFait().equals(exo)){
@@ -71,7 +71,7 @@ public class PanelFicheEnfantProf extends JPanel{
 						JButton voir = new JButton("Voir");
 						voir.addActionListener(new ControlerFicheExerciceProf(exoR,"Voir", acceuilProf));
 						info.add(voir);
-						JLabel statut = new JLabel("Corrigé");
+						JLabel statut = new JLabel("Corrigé : "+exoR.getResultat().getNote());
 						statut.setFont(new Font("Arial", Font.BOLD, 15));
 						statut.setForeground(Color.RED);
 						info.add(statut);

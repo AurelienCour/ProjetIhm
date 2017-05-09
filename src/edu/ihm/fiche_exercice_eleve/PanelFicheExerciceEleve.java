@@ -33,12 +33,9 @@ public class PanelFicheExerciceEleve extends JPanel{
 	public PanelFicheExerciceEleve(Exercice exercice, Utilisateur user, AcceuilEleve acceuilEleve){
 		this.exercice = exercice;
 		this.user = (Eleve) user;
-		
 		this.setLayout(new BorderLayout());
-		
 		JPanel nord = new JPanel();
 		nord.setLayout(new BorderLayout());
-		
 		JPanel description = new JPanel();
 		boolean acquis = false;
 		for (ExerciceRealise exoR : this.user.getExerciceRealise()) {
@@ -92,7 +89,9 @@ public class PanelFicheExerciceEleve extends JPanel{
 			}
 		}
 		if(!exerciceFait){
-			corp.add(new JLabel("Exercice a faire"));
+			JLabel mauvais = new JLabel("    Exercice à faire");
+			mauvais.setFont(new Font("Arial", Font.PLAIN, 30));
+			corp.add(mauvais);
 		}
 		this.add(corp,BorderLayout.CENTER);
 	}

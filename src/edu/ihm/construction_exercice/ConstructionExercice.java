@@ -62,8 +62,13 @@ public class ConstructionExercice extends JFrame{
 
 	public ConstructionExercice(Tentative tentative, ExerciceRealise exoR) {
 		this.setLayout(new BorderLayout());
+		PanelModele mod = new PanelModele(exoR.getExerciceFait());
 		listeAction = new PanelListeAction(tentative);
-        this.add(listeAction, BorderLayout.EAST);
+		JPanel est = new JPanel();
+		est.setLayout(new BorderLayout());
+		est.add(mod, BorderLayout.NORTH);
+		est.add(listeAction, BorderLayout.CENTER);
+        this.add(est, BorderLayout.EAST);
         TortueG myTurtle;
 		if(exoR.getExerciceFait().getTypeEx().equals("Couleur")){
 			myTurtle = new TortueCouleur();
@@ -89,8 +94,13 @@ public class ConstructionExercice extends JFrame{
 		Tentative tent = exoR.getListeTentatives().get(exoR.getListeTentatives().size()-1);
 		if(correct){
 			this.setLayout(new BorderLayout());
+			PanelModele mod = new PanelModele(exoR.getExerciceFait());
 			listeAction = new PanelListeAction(tent);
-	        this.add(listeAction, BorderLayout.EAST);
+			JPanel est = new JPanel();
+			est.setLayout(new BorderLayout());
+			est.add(mod, BorderLayout.NORTH);
+			est.add(listeAction, BorderLayout.CENTER);
+	        this.add(est, BorderLayout.EAST);
 	        TortueG myTurtle;
 			if(exoR.getExerciceFait().getTypeEx().equals("Couleur")){
 				myTurtle = new TortueCouleur();

@@ -69,19 +69,25 @@ public class TableListeExercice extends AbstractTableModel {
 		case 2:
 			int nombEleveTot = 0;
 			int nombEleveFait = 0;
+			int nombAFaire = 0;
 			if(cl.containExercice(donnees.get(rowIndex))){
 				nombEleveTot += cl.getNombreEleve();
 				for(Eleve el : cl.getEleves()){
 					for(ExerciceRealise exoR : el.getExerciceRealise()){
-						if(exoR.getExerciceFait().equals(donnees.get(rowIndex)))
+						if(exoR.getExerciceFait().equals(donnees.get(rowIndex))){
 							nombEleveFait += 1;
+							if(!exoR.isCorrect())
+								nombAFaire += 1;
+						}
 					}
 				}
 			}
-			if(nombEleveFait != 0)
-				return nombEleveFait+"/"+nombEleveTot;
+			if(nombEleveFait != 0 && nombAFaire != 0)
+				return "<html>"+nombEleveFait+"/"+nombEleveTot+"  <span style=\"color:red\">("+nombAFaire+" à corriger)</span></html>";
+			else if(nombEleveFait != 0)
+				return "<html>"+nombEleveFait+"/"+nombEleveTot+"  <span style=\"color:blue\">(Aucune correction)</span></html>";
 			else
-				return nombEleveFait+"/"+nombEleveTot+"                  Modifiable";
+				return "<html>"+nombEleveFait+"/"+nombEleveTot+"  <span style=\"color:green\">Modifiable</span></html>";
 		default:
 			return null; //Ne devrait jamais arriver
 		}

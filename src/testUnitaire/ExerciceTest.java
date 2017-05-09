@@ -13,8 +13,8 @@ public class ExerciceTest {
 	
 	/**
 	 * Partie qui s'execute avant chaque test
-	 * Ici permet donc de réinitialiser l'objet exercice avant chaque test
-	 * Il faut créer un objet correct ici
+	 * Ici permet donc de rï¿½initialiser l'objet exercice avant chaque test
+	 * Il faut crï¿½er un objet correct ici
 	 */
     @Before
     public void setUp(){
@@ -44,11 +44,5 @@ public class ExerciceTest {
 	public void testSetTypeExercice() {
 		exercice.setTypeEx("type2");
 		assertEquals("type2",exercice.getTypeEx());
-	}
-	
-	@Test
-	public void testSetModele(){
-		exercice.setModele("testModel");
-		assertEquals(Exercice.class.getResource("testModel"),exercice.getModele());
 	}
 }

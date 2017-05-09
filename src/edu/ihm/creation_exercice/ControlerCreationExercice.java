@@ -22,20 +22,26 @@ public class ControlerCreationExercice implements ActionListener {
 		this.prof = (Professeur) prof;
 	}
 	
+	public ControlerCreationExercice(PanelCreationExercice panelCreationExercice, Utilisateur user, Exercice exo) {
+		this.pane = panelCreationExercice;
+		this.prof = (Professeur) prof;
+		this.exo = exo;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		ArrayList<JCheckBox> test = new ArrayList<JCheckBox>();
-		test = pane.getCheckBox();
-		
-		for (JCheckBox jCheckBox : test) {
-			if(jCheckBox.isSelected()){
-				exo = new Exercice(pane.getFieldNom().getText(), jCheckBox.getText(), pane.getFieldModele().getText());
-				for (Classes cla : prof.getClasses()) {
-					cla.addExercice(exo);
-				}
-				pane.afterCreate(exo);
-				break;
+		if(exo == null){
+			Exercice exercice = new Exercice(pane.getFieldNom().getText(), pane.getCheckBoxSelected().getText(), pane.getFieldModele().getText());
+			for (Classes cla : prof.getClasses()) {
+				cla.addExercice(exercice);
 			}
+			pane.afterCreate(exercice);
+		}
+		else{
+			exo.setNomEx(pane.getFieldNom().getText());
+			exo.setTypeEx(pane.getCheckBoxSelected().getText());
+			exo.setNomImage(pane.getFieldModele().getText());
+			pane.afterCreate(exo);
 		}
 	}
 

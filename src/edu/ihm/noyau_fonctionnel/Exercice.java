@@ -76,6 +76,23 @@ public class Exercice {
 	public void setNomEx(String nomEx){
 		this.nomExercice = nomEx;
 	}
+	
+	/**
+	 * Permet de modifier le nom de l’image
+	 * @param nom Nouveau nom de l'exercice
+	 */
+	public void setNomImage(String nomImage){
+		this.nomImage = nomImage;
+		try{
+			this.modele = Exercice.class.getResource("Image/"+nomImage);
+			ImageIcon ic = new ImageIcon(new ImageIcon(this.modele).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+		}
+		catch(NullPointerException e){
+			this.modele = Exercice.class.getResource("Image/no-image-found.gif");
+		}
+		
+	}
+	
 	/**
 	 * Renvoie le type d’exercice
 	 * @return Le type d'exercice
@@ -103,8 +120,8 @@ public class Exercice {
 	 * Permet de modifier l’image de l’exercice.
 	 * @param modele URL du nouveau modele de l'exercice
 	 */
-	public void setModele(String newUrl){
-		this.modele = Exercice.class.getResource(newUrl);
+	public void setModele(URL newUrl){
+		this.modele = Exercice.class.getResource(newUrl.toString());
 	}
 	
 }

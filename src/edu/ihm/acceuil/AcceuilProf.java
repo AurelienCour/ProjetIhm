@@ -71,5 +71,11 @@ public class AcceuilProf extends Acceuil{
 		panelInfo.add(new PanelCreationExercice(this, cl));
 		panelInfo.revalidate();
 	}
+	
+	public void goModificationExercice (Exercice exo) {
+		panelInfo.removeAll();
+		panelInfo.add(new PanelCreationExercice(this, exo));
+		panelInfo.revalidate();
+	}
 
 }

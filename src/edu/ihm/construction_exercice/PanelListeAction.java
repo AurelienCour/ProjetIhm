@@ -28,7 +28,6 @@ public class PanelListeAction extends JPanel{
 	private String fin;
 	
 	public PanelListeAction(){
-		this.setBackground(new Color(225, 206, 154));
 		this.setLayout(new BorderLayout());
 		JPanel test = new JPanel();
 		test.setLayout(new BoxLayout(test,BoxLayout.Y_AXIS));
