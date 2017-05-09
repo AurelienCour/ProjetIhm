@@ -6,8 +6,7 @@ public class MainClass {
 
 	public static void main (String[] args){
 		Database db = new Database();
-		//db.peuplement();
-		db.chargementDonnees();
+		db.peupl();
 		new LoginDialog(db);
 	}
 }

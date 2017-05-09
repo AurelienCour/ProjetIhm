@@ -36,7 +36,6 @@ public class Database
 
 	public Database(){
 		linkDb = Database.class.getResource("/");
-		createDatabase();
 		sauvegardeProfesseur = new HashMap<String,Object>();
 		sauvegardeExercice = new HashMap<String,Object>();
 		sauvegardeEleve = new HashMap<String,Object>();
@@ -450,6 +449,17 @@ public class Database
 				System.err.println(e); 
 			}
 		}
+	}
+	
+	public void peupl(){
+		File fichier = new File(linkDb.getPath()+"BddIhm.db");
+		if(!fichier.exists()){
+			createDatabase();
+			peuplement();
+			chargementDonnees();
+		}
+		else
+			chargementDonnees();
 	}
 	
 	public Map<String,Object> getProfesseur(){
