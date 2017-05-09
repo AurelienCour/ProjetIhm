@@ -35,7 +35,6 @@ public class Database
 	private URL linkDb;
 
 	public Database(){
-		linkDb = Database.class.getResource("/");
 		sauvegardeProfesseur = new HashMap<String,Object>();
 		sauvegardeExercice = new HashMap<String,Object>();
 		sauvegardeEleve = new HashMap<String,Object>();
@@ -45,6 +44,16 @@ public class Database
 		sauvegardeEvaluation = new HashMap<String,Object>();
 		sauvegardeExerciceRealise = new HashMap<String,Object>();
 		sauvegardeTentative = new HashMap<String,Object>();
+		linkDb = Database.class.getResource("/Donnees_ProjetIhm_Aurelien/");
+		if(linkDb == null){
+			String dirName = Database.class.getResource("/").getPath()+"Donnees_ProjetIhm_Aurelien";
+			File dir = new File(dirName);
+			boolean isCreated = dir.mkdirs();
+			if(isCreated){
+				linkDb = Database.class.getResource("/Donnees_ProjetIhm_Aurelien/");
+				peupl();
+			}
+		}
 	}
 
 	public void createDatabase(){
@@ -190,8 +199,12 @@ public class Database
 			
 			statement.executeUpdate("INSERT INTO CLASSE (IDPROFESSEUR,NOMCLASSE) VALUES (1,'Master1'),(2,'Licence3')");
 			
-			statement.executeUpdate("INSERT INTO ELEVE (IDCLASSE,IDENTIFIANT,MOTDEPASSE,NOM,PRENOM,PHOTO) values (1,'aurelien','Acourtillat','Courtillat','Aurelien','Aurelien.jpg'),(1,'mathias','Mantunes','Antunes','Mathias','Mathias.jpg')");
-			statement.executeUpdate("INSERT INTO ELEVE (IDCLASSE,IDENTIFIANT,MOTDEPASSE,NOM,PRENOM,PHOTO) values (2,'audrey','Amartin','Martin','Audrey','Audrey.jpg'),(2,'marin','Mconrady','Conrady','Marin','Marin.jpg')");
+			statement.executeUpdate("INSERT INTO ELEVE (IDCLASSE,IDENTIFIANT,MOTDEPASSE,NOM,PRENOM,PHOTO) values (1,'aurelien','Acourtillat','Courtillat','Aurelien','Aurelien.jpg'),(1,'mathias','Mantunes','Antunes','Mathias','Mathias.jpg'),(1,'audrey','Amartin','Martin','Audrey','Audrey.jpg'),(1,'marin','Mconrady','Conrady','Marin','Marin.jpg')");
+		
+			statement.executeUpdate("INSERT INTO EXERCICE (NOMEXERCICE,TYPEEXERCICE,MODELE) values ('Exercice 1','Basique','IE.JPG'),('Exercice 2','Couleur','IE2.JPG'),('Exercice 3','Rapide','IE3.JPG'),('Exercice 4','Couleur','IE4.JPG'),('Exercice 5','Basique','IE5.JPG')");
+			
+			statement.executeUpdate("INSERT INTO AVOIR (IDCLASSE,IDEXERCICE) values (1,1),(1,2),(1,3),(1,4),(1,5)");
+			
 		}
 		catch(SQLException e){  System.err.println(e.getMessage()); }       
 		finally {         

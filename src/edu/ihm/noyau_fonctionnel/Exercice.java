@@ -6,6 +6,8 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import edu.ihm.Main.Database;
+
 /**
  * Cette classe représente les exercices que doivent effectuer les élèves.
  * Les exercices sont regroupés par noms et types. Ils sont listés dans la classe Classe.
@@ -53,7 +55,13 @@ public class Exercice {
 			ImageIcon ic = new ImageIcon(new ImageIcon(this.modele).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
 		}
 		catch(NullPointerException e){
-			this.modele = Exercice.class.getResource("Image/no-image-found.gif");
+			try{
+				this.modele = Database.class.getResource("/Donnees_ProjetIhm_Aurelien/"+nomImage);
+				ImageIcon ic = new ImageIcon(new ImageIcon(this.modele).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+			}
+			catch(NullPointerException i){
+				this.modele = Exercice.class.getResource("Image/no-image-found.gif");
+			}
 		}
 	}
 	
@@ -88,7 +96,13 @@ public class Exercice {
 			ImageIcon ic = new ImageIcon(new ImageIcon(this.modele).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
 		}
 		catch(NullPointerException e){
-			this.modele = Exercice.class.getResource("Image/no-image-found.gif");
+			try{
+				this.modele = Database.class.getResource("/Donnees_ProjetIhm_Aurelien/"+nomImage);
+				ImageIcon ic = new ImageIcon(new ImageIcon(this.modele).getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+			}
+			catch(NullPointerException i){
+				this.modele = Exercice.class.getResource("Image/no-image-found.gif");
+			}
 		}
 		
 	}

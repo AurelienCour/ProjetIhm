@@ -84,8 +84,11 @@ public class PanelCreationExercice extends JPanel{
 	    
 	    JButton validate = new JButton("creer");
 	    validate.addActionListener(new ControlerCreationExercice(this, acceuilProf.getUser()));
-	    
+	    JButton rechercheButton = new JButton("Recherche une image");
+	    rechercheButton.addActionListener(new ControlerCreationExercice(this));
+		
 	    this.add(nomEx,gbc);
+	    this.add(rechercheButton,gbc);
 	    this.add(nomMod,gbc);
 	    this.add(radioB,gbc);
 	    this.add(validate,gbc);
@@ -111,7 +114,6 @@ public class PanelCreationExercice extends JPanel{
 		nom.setPreferredSize(new Dimension(150,25));
 		nomEx.add(nom);
 		
-		
 		JPanel nomMod = new JPanel();
 		nomMod.setLayout(new FlowLayout(FlowLayout.LEFT));
 		nomMod.add(new JLabel("Nom image :"));
@@ -119,7 +121,6 @@ public class PanelCreationExercice extends JPanel{
 		nomModel.setText(exo.getNomImage());
 		nomModel.setPreferredSize(new Dimension(150,25));
 		nomMod.add(nomModel);
-		
 		
 	    ButtonGroup group = new ButtonGroup();
 	    check1 = new JCheckBox("Basique");
@@ -147,10 +148,13 @@ public class PanelCreationExercice extends JPanel{
 	    radioB.add(check2);
 	    radioB.add(check3);
 	    
-	    JButton validate = new JButton("creer");
+	    JButton validate = new JButton("Modifier");
 	    validate.addActionListener(new ControlerCreationExercice(this, acceuilProf.getUser(), exo));
-	    
-	    this.add(nomEx,gbc);
+	    JButton rechercheButton = new JButton("Recherche une image");
+	    rechercheButton.addActionListener(new ControlerCreationExercice(this));
+		
+		this.add(nomEx,gbc);
+	    this.add(rechercheButton,gbc);
 	    this.add(nomMod,gbc);
 	    this.add(radioB,gbc);
 	    this.add(validate,gbc);
@@ -171,6 +175,10 @@ public class PanelCreationExercice extends JPanel{
 			return check2;
 		else
 			return check3;
+	}
+	
+	public void setTextModel(String nomImage){
+		this.nomModel.setText(nomImage);
 	}
 	
 	public void afterCreate(Exercice exo){
