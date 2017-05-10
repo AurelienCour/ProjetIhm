@@ -17,26 +17,23 @@ import edu.ihm.renderer.ImageCellRenderer;
 
 /**
  * Panel permettant à un professeur de visualiser la liste des élèves
- * Va utiliser un objet de type Classe
- * @author Groupe8
- * @version 30/03/2017
+ * @author Aurelien
+ *
  */
 public class PanelListeEleveProf extends JPanel{
 	
-	private Professeur prof;
-	private Classes cl;
-	private AcceuilProf acceuil;
-	private JTable tableEleve;
-	private TableListeEleve modeleTable;
+	private Professeur prof; // Le professeur souhaitant la liste de ses élèves
+	private Classes cl; // La classe contenant les élèves
+	private AcceuilProf acceuil; // L'acceuil pour la redirection
+	private JTable tableEleve; // La table contenant la liste des différents élèves
+	private TableListeEleve modeleTable; // Le modele pour la structure de la table
 	
 	/**
-	 * Constructeur de la classe 
+	 * Constructeur de la classe
 	 * @param acceuil L'acceuil de notre application
+	 * @param cl la classe dont on souhaite les élèves
 	 */
 	public PanelListeEleveProf(AcceuilProf acceuil, Classes cl){
-		this.setBackground(new Color(225, 206, 154));
-		
-		
 		this.cl = cl;
 		this.acceuil = acceuil;
 		this.setLayout(new GridLayout());

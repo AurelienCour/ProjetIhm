@@ -20,20 +20,28 @@ import edu.ihm.noyau_fonctionnel.ExerciceRealise;
 import edu.ihm.noyau_fonctionnel.Professeur;
 import edu.ihm.noyau_fonctionnel.Tentative;
 
+/**
+ * Classe permettant la gestion de la base de données
+ * @author Aurelien
+ *
+ */
 public class Database
 {
 	
-	private Map<String,Object> sauvegardeProfesseur;
-	private Map<String,Object> sauvegardeExercice;
-	private Map<String,Object> sauvegardeEleve;
-	private Map<String,Object> sauvegardeClasse;
+	private Map<String,Object> sauvegardeProfesseur; // Liste liant l'id primaire et l'objet correspondant
+	private Map<String,Object> sauvegardeExercice; // Liste liant l'id primaire et l'objet correspondant
+	private Map<String,Object> sauvegardeEleve; // Liste liant l'id primaire et l'objet correspondant
+	private Map<String,Object> sauvegardeClasse; // Liste liant l'id primaire et l'objet correspondant
 	
-	private Map<String,Object> sauvegardeAction;
-	private Map<String,Object> sauvegardeEvaluation;
-	private Map<String,Object> sauvegardeExerciceRealise;
-	private Map<String,Object> sauvegardeTentative;
-	private URL linkDb;
+	private Map<String,Object> sauvegardeAction; // Liste liant l'id primaire et l'objet correspondant
+	private Map<String,Object> sauvegardeEvaluation; // Liste liant l'id primaire et l'objet correspondant
+	private Map<String,Object> sauvegardeExerciceRealise; // Liste liant l'id primaire et l'objet correspondant
+	private Map<String,Object> sauvegardeTentative; // Liste liant l'id primaire et l'objet correspondant
+	private URL linkDb; // Le lien faire le fichier .db
 
+	/**
+	 * Constructeur de la classe
+	 */
 	public Database(){
 		sauvegardeProfesseur = new HashMap<String,Object>();
 		sauvegardeExercice = new HashMap<String,Object>();
@@ -51,11 +59,30 @@ public class Database
 			boolean isCreated = dir.mkdirs();
 			if(isCreated){
 				linkDb = Database.class.getResource("/Donnees_ProjetIhm_Aurelien/");
-				peupl();
+				initialisation();
 			}
 		}
+		else
+			initialisation();
+	}
+	
+	/**
+	 * Fonction permettant l'initialisation de la database
+	 */
+	public void initialisation(){
+		File fichier = new File(linkDb.getPath()+"BddIhm.db");
+		if(!fichier.exists()){
+			createDatabase();
+			peuplement();
+			chargementDonnees();
+		}
+		else
+			chargementDonnees();
 	}
 
+	/**
+	 * Fonction permettant de générer les différentes tables
+	 */
 	public void createDatabase(){
 		// load the sqlite-JDBC driver using the current class loader
 		try
@@ -176,6 +203,9 @@ public class Database
 		}
 	}
 
+	/**
+	 * Fonction permettant de peupler la base de données
+	 */
 	public void peuplement(){
 		// load the sqlite-JDBC driver using the current class loader
 		try
@@ -218,6 +248,9 @@ public class Database
 		}
 	}
 	
+	/**
+	 * Fonction permettant de charger la database en objet
+	 */
 	public void chargementDonnees(){
 		// load the sqlite-JDBC driver using the current class loader
 		try
@@ -464,25 +497,25 @@ public class Database
 		}
 	}
 	
-	public void peupl(){
-		File fichier = new File(linkDb.getPath()+"BddIhm.db");
-		if(!fichier.exists()){
-			createDatabase();
-			peuplement();
-			chargementDonnees();
-		}
-		else
-			chargementDonnees();
-	}
-	
+	/**
+	 * Permet de récupérer la liste des professeurs
+	 * @return La liste des professeurs
+	 */
 	public Map<String,Object> getProfesseur(){
 		return sauvegardeProfesseur;
 	}
 	
+	/**
+	 * Permet de récupérer la liste des élèves
+	 * @return La liste des élèves
+	 */
 	public Map<String,Object> getEleves(){
 		return sauvegardeEleve;
 	}
 
+	/**
+	 * Permet de sauvegardé la bdd après fermeture de l'application
+	 */
 	public void save() {
 		// load the sqlite-JDBC driver using the current class loader
 		try

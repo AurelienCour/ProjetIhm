@@ -13,37 +13,22 @@ import javax.swing.ImageIcon;
  */
 public class Eleve extends Utilisateur{
 	
-	/**
-	 * Liste des exercices réalisés par un élève.
-	 */
-	private ArrayList<ExerciceRealise> exerciceRealise;
+	private ArrayList<ExerciceRealise> exerciceRealise; // Liste des exercices réalisés par un élève.
 	
-	/**
-	 * La classe de l’élève
-	 */
-	private Classes classe;
+	private Classes classe; // La classe de l’élève
 	
-	/**
-	 * Photo de l’élève. 
-	 */
-	private URL photo;
+	private URL photo; // Le chemin absolu menant à la photo
 
-	private String nomPhoto;
+	private String nomPhoto; // Le nom de l'image
 	
 	/**
-	 * Constructeur de la classe Eleve
-	 * Si l'identifiant est vide le remplace par "utilisateur" suivi du numero d'utilisateur
-	 * Si le mot de passe est vide le remplace par defaut par "***"
-	 * Si le nom est vide remplace le nom par defaut a "nom"
-	 * Si le prenom est vide remplace le prenom a "prenom"
-	 * Si le classe est vide, laisse "null"
-	 * Si photo est vide, photo par défault
-	 * @param identifiant L'identifiant de l'eleve, string
-	 * @param motDePasse  Le mot de passe de l'élève
-	 * @param nom		  Le nom de l'élève
-	 * @param prenom	  Le prenom de l'élève
-	 * @param classe	  La classe de l'élève
-	 * @param string		  La photo de l'élève
+	 * Constructeur de la classe eleve
+	 * @param identifiant L'identifiant de l'élève
+	 * @param motDePasse Le mot de passe de l'élève
+	 * @param nom Le nom de l'élève
+	 * @param prenom Le prénom de l'élève
+	 * @param classe La classe de l'élève
+	 * @param photo Le nom de la photo de l'élève
 	 */
 	public Eleve(String identifiant, String motDePasse, String nom, String prenom,
 			Classes classe, String photo) {
@@ -60,24 +45,26 @@ public class Eleve extends Utilisateur{
 		this.exerciceRealise = new ArrayList<ExerciceRealise>();
 	}
 	
+	/**
+	 * Permet de récupérer le nom de la photo
+	 * @return Le nom de la photo
+	 */
 	public String getNomPhoto(){
 		return this.nomPhoto;
 	}
 
-	
 	/**
-	 * Cette méthode permet d’ajouter un exercice réalisé dans la liste des exercices réalisés.
-	 * Méthode callable uniquement si il y a au moins un exercice et un enfant dans dans le systeme.
-	 * @param ex exercice réalisé par l'élève
+	 * Permet d'ajouter un exercice réalisé à l'élève
+	 * @param ex L'exercice à ajouter
 	 */
-		
 	public void addExerciceRealise(ExerciceRealise ex){ 
-		this.exerciceRealise.add(ex);		
+		if(!this.exerciceRealise.contains(ex))
+			this.exerciceRealise.add(ex);		
 	}
 	
-	
 	/**
-	 * 
+	 * Fonction permettant de récupérer la liste des exercices réalisé par l'élève
+	 * @return la liste des exercices réalisé par l'élève
 	 */
 	public ArrayList<ExerciceRealise> getExerciceRealise()
 	{
@@ -85,31 +72,26 @@ public class Eleve extends Utilisateur{
 	}
 	
 	/**
-	 * Permet de retourner la photo de l’élève. Affichage ou URL ?
+	 * Permet de récupérer le chemin absolu vers la photo
+	 * @return Le chemin absolu vers la photo
 	 */
 	public URL getPhoto(){
 		return this.photo;
 	}
 	
 	/**
-	 * Permet de modifier la photo de l’élève.
-	 * Callable uniquement si au moins un enfant dans le systeme.
-	 * @param photo URL de la photo de l'élève
-	 */
-	public void setPhoto(String photo){
-		this.photo = Eleve.class.getResource(photo);
-	}
-	
-	/**
 	 * Permet de récupérer la classe de l’élève.
-	 * @return TODO a voir ce qu'on return
+	 * @return La classe de l'élève
 	 */
 	public Classes getClasse(){
 		return this.classe;
 	}
 	
+	/**
+	 * Fonction permettant de modifier la classe de l'élève
+	 * @param c La nouvelle classe de l'élève
+	 */
 	public void setClasse(Classes c){
 		classe = c;
 	}
-
 }

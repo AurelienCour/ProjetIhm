@@ -2,10 +2,8 @@ package edu.ihm.construction_exercice;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import edu.ihm.acceuil.Acceuil;
 import edu.ihm.acceuil.AcceuilEleve;
 import edu.ihm.evaluation.PanelEvaluation;
@@ -23,16 +21,21 @@ import edu.ihm.tortue.TortueRapide;
 /**
  * La JFrame contenant le canvas, ainsi que les panel utile
  * a la visualisation et la résolution d'un exercice
- * Va utiliser un objet de type Exercice ou ExerciceRealise
- * @author Groupe8
- * @version 30/03/2017
+ * @author Aurelien
+ *
  */
 public class ConstructionExercice extends JFrame{
 	
-	private PanelListeAction listeAction;
-	private ModelConstructionExercice model;
-	private Acceuil acceuil;
+	private PanelListeAction listeAction; // Le panel correspondant a la liste des actions
+	private ModelConstructionExercice model; // Le model de notre JFrame
+	private Acceuil acceuil; // L'acceuil qui a fait appel à la classe
 
+	/**
+	 * Le constructeur de la class permettant la résolution d'une exercice
+	 * @param user L'utilisateur connecté
+	 * @param exercice L'exercice  L'exercice à réalisé
+	 * @param acceuil // L'acceuil ayant fait appel au constructeur
+	 */
 	public ConstructionExercice(Utilisateur user, Exercice exercice, Acceuil acceuil){
 		this.acceuil = acceuil;
 		this.model = new ModelConstructionExercice(user,exercice);
@@ -56,10 +59,15 @@ public class ConstructionExercice extends JFrame{
 		this.setVisible(true);
 		Dimension size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		int height = (int) size.getHeight();
-		this.setSize(new Dimension(800, height-22));
+		this.setSize(new Dimension(800, 630));
 		this.setLocationRelativeTo(null);
 	}
 
+	/**
+	 * Le constructeur de notre class permettant la visualisation d'un exercice pour un élève
+	 * @param tentative La tentative visualisé
+	 * @param exoR L'exerciceRealise
+	 */
 	public ConstructionExercice(Tentative tentative, ExerciceRealise exoR) {
 		this.setLayout(new BorderLayout());
 		PanelModele mod = new PanelModele(exoR.getExerciceFait());
@@ -90,6 +98,12 @@ public class ConstructionExercice extends JFrame{
 		this.setLocationRelativeTo(null);
 	}
 
+	/**
+	 * Le constructeur de notre class pour la visualisation ou la notation d'un exercice pour un professeur
+	 * @param exoR	L'exercice Realise
+	 * @param correct Permmet de savoir si l'exercice est corrigé, true si il est déja corrigé
+	 * @param acceuil	L'acceuil faisant appel au constructeur
+	 */
 	public ConstructionExercice(ExerciceRealise exoR, boolean correct, Acceuil acceuil) {
 		Tentative tent = exoR.getListeTentatives().get(exoR.getListeTentatives().size()-1);
 		if(correct){
@@ -152,12 +166,19 @@ public class ConstructionExercice extends JFrame{
 		}
 	}
 
+	/**
+	 * Permet d'ajouter une action au panel ListeAction
+	 * @param newAction L'action à ajouter
+	 */
 	public void addActionEffectue(String newAction) {
 		listeAction.addAction(newAction);
 		model.addActionTentative(newAction);
 	}
 	
-	
+	/**
+	 * Fonction appelé lorsque la réalisation de l'exercice est terminé
+	 * Permet de mettre a jour le model ainsi que le menu
+	 */
 	public void finExercice(){
 		this.dispose();
 		if(acceuil instanceof AcceuilEleve){
@@ -166,10 +187,18 @@ public class ConstructionExercice extends JFrame{
 		}
 	}
 	
+	/**
+	 * permet de récupérer le model de la classe
+	 * @return Le model de la classe
+	 */
 	public ModelConstructionExercice getModel(){
 		return this.model;
 	}
 
+	/**
+	 * Permet d'enlever la dernière action effectué
+	 * Utile lors de l'utilisation du bouton retour lors de la résolution d'un exercice
+	 */
 	public void removeLastAction() {
 		listeAction.removeLastAction();
 		model.removeLastAction();

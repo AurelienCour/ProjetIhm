@@ -1,28 +1,25 @@
 package edu.ihm.liste_exercice_eleve;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.net.URL;
-
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-
 import edu.ihm.acceuil.AcceuilEleve;
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.renderer.ImageCellRenderer;
 
 /**
  * Panel permettant à un élève de voir la liste des Exercices actuels
- * @author Groupe8
- * @version 30/03/2017
+ * @author Aurelien
+ *
  */
 public class PanelListeExerciceEleve extends JPanel{
 	
-	private AcceuilEleve acceuil;
-	private JTable tableExercice;
-	private TableListeExercice modeleTable;
+	private AcceuilEleve acceuil; // l'acceuil pour les redirections
+	private JTable tableExercice; // La table contenant la liste des élèves
+	private TableListeExercice modeleTable; // Le model de notre table
 	
 	/**
 	 * Constructeur de notre classe
@@ -31,7 +28,6 @@ public class PanelListeExerciceEleve extends JPanel{
 	public PanelListeExerciceEleve(AcceuilEleve acceuil){
 		this.acceuil = acceuil;
 		this.setLayout(new BorderLayout());
-		this.setBackground(new Color(225, 206, 154));
 		initComposant();
 	}
 	

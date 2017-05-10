@@ -27,8 +27,8 @@ public class ClassesTest
 	
 	/**
 	 * Partie qui s'execute avant chaque test
-	 * Ici permet donc de réinitialiser l'objet classe avant chaque test
-	 * Il faut créer un objet correct ici
+	 * Ici permet donc de rï¿½initialiser l'objet classe avant chaque test
+	 * Il faut crï¿½er un objet correct ici
 	 */
 	
 	@Before
@@ -60,6 +60,7 @@ public class ClassesTest
 	/**
      * Permet de tester la suppression d'un exercice
      */
+	@Test
 	public void testSuppExercice()
 	{
 		exercices.remove(exercice);
@@ -69,6 +70,7 @@ public class ClassesTest
 	/**
 	 * Teste la fonction getExercice et regarde si elle retourne l'exercice
 	 */
+	@Test
 	public void testGetExercice()
 	{
 		assertEquals(exercice,exercices.get(0));
@@ -78,6 +80,7 @@ public class ClassesTest
 	/**
 	 * Teste la fonction getNomClasse et regarde si elle retourne le nom de la classe
 	 */
+	@Test
 	public void testGetNomClasse()
 	{
 		 assertEquals("nomClasse", classe.getNomClasse());
@@ -85,18 +88,16 @@ public class ClassesTest
 	
 	
 	//------------------ELEVE--------------------------------------------------------- 
-    /**
-     * Permet de tester l'ajout d'un eleve
-   	 */
+    
+	@Test
 	public void testAddEleve(Eleve el)
 	{		
     	classe.addEleve(eleve);
 		assertEquals(eleve,classe.getEleves().get(0));
 	}
 	
-	/**
-     * Permet de tester la suppression d'un eleve
-     */
+	
+	@Test
 	public void testSuppEleve(Eleve el)
 	{
 		eleves.remove(eleve);

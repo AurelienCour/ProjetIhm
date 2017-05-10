@@ -5,20 +5,29 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
 import java.net.URL;
-
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
+/**
+ * Classe permettant la gestion de l'apparence des cellules du tableau
+ * @author Aurelien
+ *
+ */
 public class ImageCellRenderer extends DefaultTableCellRenderer {
  
+	/**
+	 * Constructeur de la classe
+	 */
     public ImageCellRenderer() {
         super();
         this.setHorizontalAlignment(SwingConstants.CENTER);
     }
  
+    /**
+     * Permet la gestion de l'affichage de la cellule
+     */
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);

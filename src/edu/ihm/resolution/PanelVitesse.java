@@ -1,9 +1,7 @@
 package edu.ihm.resolution;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -12,16 +10,20 @@ import javax.swing.SwingConstants;
 import edu.ihm.tortue.TortueRapide;
 
 /**
- * Panel permettant le gestion de la vitesse pour une tortue rapide
- * Va modifier un objet de type TortueRapide a l'aide du ControlerTortueG
- * @author Groupe8
- * @version 30/03/2017
+ * Panel comportant tous les boutons pour la gestion de la vitesse de la tortue
+ * @author Aurelien
+ *
  */
 public class PanelVitesse extends JPanel{
 	
-	private JLabel vitesse;
-	private TortueRapide myTurtle;
+	private JLabel vitesse; // Le label affichant la vitesse
+	private TortueRapide myTurtle; // La tortue à déplacer
 
+	/**
+	 * Le constructeur de la classe
+	 * @param myTurtle La tortue a déplacer
+	 * @param panelRes La panel contenant les boutons de base
+	 */
 	public PanelVitesse(TortueRapide myTurtle,PanelResolution panelRes){
 		this.myTurtle = myTurtle;
 		
@@ -43,6 +45,10 @@ public class PanelVitesse extends JPanel{
 		this.add(panelReglageVitesse,BorderLayout.SOUTH);
 	}
 
+	/**
+	 * Permet de modifier la valeur du JLabel affichant la vitesse
+	 * @param newVitesse La vitesse à afficher
+	 */
 	public void changeVitesse(String newVitesse) {
 		vitesse.setText(newVitesse);
 	}

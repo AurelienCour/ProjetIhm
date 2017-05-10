@@ -7,20 +7,38 @@ import edu.ihm.tortue.TortueCouleur;
 import edu.ihm.tortue.TortueG;
 import edu.ihm.tortue.TortueRapide;
 
+/**
+ * Classe permettant de gérer les intéractions avec le panel de resolution
+ * @author Aurelien
+ *
+ */
 public class ControlerResolution implements ActionListener {
 	
-	private PanelResolution panelResolution;
-	private String idAction;
-	private TortueG myTurtle;
-	private PanelVitesse panelVitesse;
-	private PanelCouleur panelCouleur;
+	private PanelResolution panelResolution; // Le panel contenant les boutons
+	private String idAction; // L'idée de l'action effectué
+	private TortueG myTurtle; // La tortue que l'on fait bougé
+	private PanelVitesse panelVitesse; // le panel contenant les boutons pour la gestion de la vitesse
+	private PanelCouleur panelCouleur; // Le panel contenant les boutons pour la gestion de la couleur
 
+	/**
+	 * Le constructeur de la classe pour la gestion des commandes de bases
+	 * @param panelResolution Le panel correspondant
+	 * @param idAction L'id du bouton
+	 * @param myTurtle La tortue a déplacer
+	 */
 	public ControlerResolution(PanelResolution panelResolution, String idAction, TortueG myTurtle) {
 		this.panelResolution = panelResolution;
 		this.idAction = idAction;
 		this.myTurtle = myTurtle;
 	}
 
+	/**
+	 * Le constructeur de la classe pour la gestion des commandes de la tortue rapide
+	 * @param panelVitesse Le panel correspondant
+	 * @param idAction L'id du bouton
+	 * @param myTurtle La tortue a déplacer
+	 * @param panelResolution Le panel avec les boutons de base
+	 */
 	public ControlerResolution(PanelVitesse panelVitesse, String idAction, TortueG myTurtle,
 			PanelResolution panelResolution) {
 		this.panelResolution = panelResolution;
@@ -29,6 +47,13 @@ public class ControlerResolution implements ActionListener {
 		this.myTurtle = myTurtle;
 	}
 
+	/**
+	 * Constructeur de la classe pour la gestion des intéractions avec les boutons pour gérer la couleur
+	 * @param panelCouleur Le panel correspondant
+	 * @param idAction L'id du bouton
+	 * @param myTurtle La tortue que l'on veux déplacer
+	 * @param panelResolution Le panel contenant les boutons de base
+	 */
 	public ControlerResolution(PanelCouleur panelCouleur, String idAction, TortueG myTurtle,
 			PanelResolution panelResolution) {
 		this.panelResolution = panelResolution;
@@ -37,6 +62,9 @@ public class ControlerResolution implements ActionListener {
 		this.myTurtle = myTurtle;
 	}
 
+	/**
+	 * Fonction permettant de gérer les différentes intéractions
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		panelResolution.changeBouton(true);

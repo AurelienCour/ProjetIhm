@@ -2,8 +2,6 @@ package edu.ihm.resolution;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.lang.reflect.Field;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -13,13 +11,16 @@ import edu.ihm.tortue.TortueCouleur;
 
 /**
  * Panel permettant de choisir la couleur de la tortue couleur
- * utiliser lors de la résolution d'exercice
- * Va modifier la tourtueG va utiliser la classe ControlerTortueG
- * @author Groupe8
- * @version 30/03/2017
+ * @author Aurelien
+ *
  */
 public class PanelCouleur extends JPanel{
 
+	/**
+	 * Le constructeur de la classe
+	 * @param myTurtle La tortue que l'on souhaite modifier
+	 * @param panelResolution Le panel contenant les boutons de base
+	 */
 	public PanelCouleur(TortueCouleur myTurtle, PanelResolution panelResolution){
 		this.setLayout(new GridLayout(3,2));
 		TitledBorder  title = BorderFactory.createTitledBorder(
@@ -52,6 +53,10 @@ public class PanelCouleur extends JPanel{
 		this.add(magenta);
 	}
 
+	/**
+	 * Permet de modifié la couleur du cadre entourant les boutons
+	 * @param idAction La couleur à appliquer
+	 */
 	public void changeCouleur(String idAction) {
 		TitledBorder  title;
 		switch (idAction) {

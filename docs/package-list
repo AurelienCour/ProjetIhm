@@ -1,3 +1,4 @@
+edu.ihm.Main
 edu.ihm.acceuil
 edu.ihm.construction_exercice
 edu.ihm.creation_exercice
@@ -8,8 +9,11 @@ edu.ihm.fiche_exercice_prof
 edu.ihm.liste_eleve_prof
 edu.ihm.liste_exercice_eleve
 edu.ihm.liste_exercice_prof
+edu.ihm.login
 edu.ihm.menu
 edu.ihm.noyau_fonctionnel
+edu.ihm.renderer
 edu.ihm.replay
 edu.ihm.resolution
+edu.ihm.tortue
 testUnitaire

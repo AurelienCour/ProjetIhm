@@ -1,33 +1,36 @@
 package edu.ihm.menu;
 
-
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeSelectionModel;
 import edu.ihm.acceuil.Acceuil;
 import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
 import edu.ihm.noyau_fonctionnel.Professeur;
-import edu.ihm.noyau_fonctionnel.Utilisateur;
 
 /**
- * Panel contenant le menu sous la forme d'un JTree
- * Va utiliser un objet de type Utilisateur
- * @author Groupe8
- * @version 30/03/2017
+ *  Panel contenant le menu sous la forme d'un JTree
+ * @author Aurelien
+ *
  */
 public class PanelMenu{
 	
-	private Acceuil acceuil;
-	private JTree tree;
+	private Acceuil acceuil; // L'acceuil pour les redirections
+	private JTree tree; // Le Jtree associé
 
+	/**
+	 * Le constructeur de la classe
+	 * @param acceuil L'acceuil pour les redirections
+	 */
 	public PanelMenu(Acceuil acceuil){
 		this.acceuil = acceuil;
 		buildTree();
 	}
 
+	/**
+	 * Permet l'initialisation et la construction du JTree
+	 */
 	public void buildTree() {
 		DefaultMutableTreeNode racine;
 		if(acceuil.getUser() instanceof Professeur){
@@ -67,10 +70,18 @@ public class PanelMenu{
 		
 	}
 	
+	/**
+	 * Permet de récupérer l'acceuil du JTree
+	 * @return L'acceuil de l'application
+	 */
 	public Acceuil getAcceuil(){
 		return this.acceuil;
 	}
 	
+	/**
+	 * Permet de récupérer l'arbre
+	 * @return Le Jtree correspondant
+	 */
 	public JTree getJTree(){
 		return this.tree;
 	}

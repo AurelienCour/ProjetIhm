@@ -22,21 +22,24 @@ import edu.ihm.noyau_fonctionnel.ExerciceRealise;
 
 /**
  * Le panel permettant à un professeur d'évaluer la dernière tentative d'un élève
- * pour un exercice donné
- * Modifie la classe ExerciceRealise a l'aide du ControlerExercice
- * @author Groupe8
- * @version 30/03/2017
+ * @author Aurelien
+ *
  */
 public class PanelEvaluation extends JPanel{
 	
-	private JComboBox<String> combo;
-	private JTextField comment;
-	private ExerciceRealise exoR;
-	private ConstructionExercice constructionExercice;
-	private AcceuilProf acceuil;
+	private JComboBox<String> combo; // Les différentes checkBox
+	private JTextField comment; // La field contenant le commentaire
+	private ExerciceRealise exoR; // L'exercire évalué
+	private ConstructionExercice constructionExercice; // La frame utilisant le panel
+	private AcceuilProf acceuil; // L'acceuil de l'application pour la redirecion
 	
+	/**
+	 * Le constructeur de notre classe
+	 * @param exoR L'exercice évalué
+	 * @param constructionExercice La frame utilisant le panel
+	 * @param acceuil L'acceuil pour la redirection
+	 */
 	public PanelEvaluation(ExerciceRealise exoR, ConstructionExercice constructionExercice, Acceuil acceuil){
-		
 		this.exoR = exoR;
 		this.acceuil = (AcceuilProf) acceuil;
 		this.constructionExercice = constructionExercice;
@@ -59,7 +62,6 @@ public class PanelEvaluation extends JPanel{
 	    panelChoix.add(choix);
 	    panelChoix.add(combo);
 	    
-	    
 	    JLabel commentaire = new JLabel("Commentaire :");
 	    comment = new JTextField();
 		
@@ -75,6 +77,9 @@ public class PanelEvaluation extends JPanel{
 	    this.add(eval);
 	}
 	
+	/**
+	 * Permet d'ajouter l'evaluation à l'exercice
+	 */
 	public void correct (){
 		Evaluation eval = new Evaluation(combo.getSelectedItem().toString(), comment.getText());
 		exoR.corriger(eval);

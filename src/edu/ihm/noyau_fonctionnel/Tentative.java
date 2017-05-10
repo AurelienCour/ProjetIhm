@@ -31,7 +31,8 @@ public class Tentative {
 	/**
 	 * Permet de rajouter une action à la liste des actions
 	 * si cette derniesre n'existe pas dans la liste
-	 * @param act L'action à ajouter, true si l'action a ete ajouter, false sinon
+	 * @param act L'action à ajouter
+	 * @return true si l'action a ete ajouter, false sinon
 	 */
 	public boolean addAction(Action act)
 	{

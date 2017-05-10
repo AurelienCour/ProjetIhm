@@ -57,17 +57,6 @@ public class EleveTest {
 		assertEquals(1,eleve.getExerciceRealise().size());
 	}
 
-	/**
-	 * 
-	 * Teste la modification de la photo de l'eleve
-	 */
-    @Test
-	public void testSetPhoto()
-	{
-		eleve.setPhoto("photo2");
-		assertEquals(Eleve.class.getResource("photo2"),eleve.getPhoto());
-	}
-
     @Test
 	public void testSetClasse()
 	{

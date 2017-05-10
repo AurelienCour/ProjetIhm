@@ -28,14 +28,21 @@ import edu.ihm.noyau_fonctionnel.ExerciceRealise;
  * @author Groupe8
  * @version 30/03/2017
  */
+/**
+ * Panel permettant la visualisation des information a propos d'une élève
+ * @author Aurelien
+ *
+ */
 public class PanelFicheEnfantProf extends JPanel{
 	
-	private Eleve eleve;
-	
+	/**
+	 * Le constructeur de notre class
+	 * @param eleve L'eleve dont on affiche les informations
+	 * @param acceuilProf L'acceuil pour la redirection
+	 */
 	public PanelFicheEnfantProf(Eleve eleve, AcceuilProf acceuilProf){
 		this.setBackground(new Color(225, 206, 154));
 		
-		this.eleve = eleve;
 		this.setLayout(new BorderLayout());
 		
 		JPanel nord = new JPanel();

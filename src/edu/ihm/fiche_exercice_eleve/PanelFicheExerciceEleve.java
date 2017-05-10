@@ -1,7 +1,6 @@
 package edu.ihm.fiche_exercice_eleve;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -21,15 +20,21 @@ import edu.ihm.noyau_fonctionnel.ExerciceRealise;
 import edu.ihm.noyau_fonctionnel.Utilisateur;
 
 /**
- * Panel permettant à un eleve de visualiser la fiche d'un exercice
- * Va utiliser un objet de type Exercice
- * @author Groupe8
- * @version 30/03/2017
+ * Panel permettant la visualisation des informations d'un exercice
+ * @author Aurelien
+ *
  */
 public class PanelFicheExerciceEleve extends JPanel{
 	
-	private Exercice exercice;
-	private Eleve user;
+	private Exercice exercice; // L'exercice visualisé
+	private Eleve user; // L'élève regardant l'exercice
+	
+	/**
+	 * Constructeur de la classe
+	 * @param exercice L'exercice visualisé
+	 * @param user L'élève regardant les informations
+	 * @param acceuilEleve L'acceuil pour la redirection
+	 */
 	public PanelFicheExerciceEleve(Exercice exercice, Utilisateur user, AcceuilEleve acceuilEleve){
 		this.exercice = exercice;
 		this.user = (Eleve) user;

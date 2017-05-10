@@ -1,13 +1,10 @@
 package edu.ihm.resolution;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
 import edu.ihm.construction_exercice.ConstructionExercice;
 import edu.ihm.construction_exercice.PanelModele;
 import edu.ihm.noyau_fonctionnel.Action;
@@ -18,22 +15,24 @@ import edu.ihm.tortue.TortueRapide;
 
 /**
  * Panel comportant les boutons pour resoudre un exercice
- * Va utiliser les objets ExerciceRealise et TortueG
- * Va utiliser le controler ControlerExercice
- * @author Groupe8
- * @version 30/03/2017
+ * @author Aurelien
+ *
  */
 public class PanelResolution extends JPanel{
 	
-	private Exercice exercice;
-	private TortueG myTurtle;
-	private ConstructionExercice constructionExercice;
-	private PanelCouleur panelCouleur;
-	private PanelVitesse panelVitesse;
-	private JButton bRetour;
+	private TortueG myTurtle; // La tortue que l'on souhaite déplacer
+	private ConstructionExercice constructionExercice; // La Jframe contenant le panel
+	private PanelCouleur panelCouleur; // Le panel comportant les boutons de couleurs
+	private PanelVitesse panelVitesse; // Le panel comportant les boutons de vitesse
+	private JButton bRetour; // Le bouton undo
 
+	/**
+	 * Le constructeur de la classe
+	 * @param exercice L'exercice à résoudre
+	 * @param myTurtle La tortue à déplacer
+	 * @param constructionExercice La JFrame contenant le panel
+	 */
 	public PanelResolution(Exercice exercice, TortueG myTurtle, ConstructionExercice constructionExercice){
-		this.exercice = exercice;
 		this.myTurtle = myTurtle;
 		this.constructionExercice = constructionExercice;
 		this.setLayout(new BorderLayout());
@@ -73,18 +72,32 @@ public class PanelResolution extends JPanel{
 		this.add(bTermine,BorderLayout.EAST);
 	}
 
+	/**
+	 * Permet d'ajouter une action a la liste
+	 * @param newAction L'action a ajouter
+	 */
 	public void addAction(String newAction) {
 		constructionExercice.addActionEffectue(newAction);
 	}
 	
+	/**
+	 * Permet la gestion des intéractions a la fin de la résolution
+	 */
 	public void finExercice() {
 		constructionExercice.finExercice();
 	}
 	
+	/**
+	 * Permet de modifier l'état du bouton retour Unable/Enable
+	 * @param etat True pour activé le bouton
+	 */
 	public void changeBouton(boolean etat){
 		bRetour.setEnabled(etat);
 	}
 
+	/**
+	 * Permet d'enlever la dernière action de la liste
+	 */
 	public void removeLastAction() {
 		constructionExercice.removeLastAction();
 		if(myTurtle instanceof TortueCouleur){

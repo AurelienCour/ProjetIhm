@@ -24,16 +24,25 @@ import edu.ihm.acceuil.AcceuilProf;
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Professeur;
 
+/**
+ * Classe permettant de gérer la connexion
+ * @author Aurelien
+ *
+ */
 public class LoginDialog extends JDialog {
 	 
-    private JTextField tfUsername;
-    private JPasswordField pfPassword;
-    private JLabel lbUsername;
-    private JLabel lbPassword;
-    private JButton btnLogin;
-    private JButton btnCancel;
-    private boolean succeeded;
+    private JTextField tfUsername; // Le field contenant l'ID
+    private JPasswordField pfPassword; // La field contenant le password
+    private JLabel lbUsername; // Label d'affichage
+    private JLabel lbPassword; // Label d'affichage
+    private JButton btnLogin; // Le bouton de connexion
+    private JButton btnCancel; // Le bouton cancel
+    private boolean succeeded; // Booleen permettant de savoir si la connexion est réussi
  
+    /**
+     * Constructeur de la classe
+     * @param db Database contenant les différents utilisateurs
+     */
     public LoginDialog(Database db) {
     	this.setUndecorated(true);
     	this.setTitle("Login");
@@ -118,14 +127,18 @@ public class LoginDialog extends JDialog {
         this.setLocationRelativeTo(null);
 	}
 
-	public LoginDialog() {
-		// TODO Auto-generated constructor stub
-	}
-
+    /**
+     * Permet de récupérer l'identifiant
+     * @return L'identifiant saisie
+     */
 	public String getUsername() {
         return tfUsername.getText().trim();
     }
  
+	/**
+     * Permet de récupérer le mot de passe
+     * @return Le password saisie
+     */
     public String getPassword() {
         return new String(pfPassword.getPassword());
     }

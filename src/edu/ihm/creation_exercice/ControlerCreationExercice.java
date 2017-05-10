@@ -7,11 +7,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.net.URL;
 import java.nio.file.Files;
-
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileSystemView;
-
 import edu.ihm.Main.Database;
 import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Exercice;
@@ -19,27 +17,50 @@ import edu.ihm.noyau_fonctionnel.FiltreSimple;
 import edu.ihm.noyau_fonctionnel.Professeur;
 import edu.ihm.noyau_fonctionnel.Utilisateur;
 
+/**
+ * Classe permetant de controler les intéractions avec le panel CreationExercice
+ * @author Aurelien
+ *
+ */
 public class ControlerCreationExercice implements ActionListener {
 	
-	private PanelCreationExercice pane;
-	private Professeur prof;
-	private Exercice exo;
+	private PanelCreationExercice pane; // Le panel correspondant
+	private Professeur prof; // Le professeur créant l'exercice
+	private Exercice exo; // L'exercice à modifier
 	
+	/**
+	 * Constructeur de la classe pour permettre la création d'un exercice
+	 * @param pane Le panel de création
+	 * @param prof Le professeur créant l'exercice
+	 */
 	public ControlerCreationExercice(PanelCreationExercice pane, Utilisateur prof) {
 		this.pane = pane;
 		this.prof = (Professeur) prof;
 	}
 	
+	/**
+	 * Constructeur de la classe pour permettre la modification d'un exercice
+	 * @param panelCreationExercice Le panel comportant les champs
+	 * @param user Le professeur modifiant l'exercice
+	 * @param exo L'exercice modifié
+	 */
 	public ControlerCreationExercice(PanelCreationExercice panelCreationExercice, Utilisateur user, Exercice exo) {
 		this.pane = panelCreationExercice;
 		this.prof = (Professeur) prof;
 		this.exo = exo;
 	}
 
+	/**
+	 * Constructeur de la classe pour permettre la recherche d'une image
+	 * @param panelCreationExercice Le panel comportant les champs
+	 */
 	public ControlerCreationExercice(PanelCreationExercice panelCreationExercice) {
 		this.pane = panelCreationExercice;
 	}
 
+	/**
+	 * Fonction permettant la gestion des différents event
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(exo == null && prof == null){
@@ -87,9 +108,6 @@ public class ControlerCreationExercice implements ActionListener {
                 		while( (nbLecture = sourceFile.read(buffer)) != -1 ) {
                 			destinationFile.write(buffer, 0, nbLecture);
                 		}
-
-                		// Copie réussie
-                		resultat = true;
                 		pane.setTextModel(destination.getName());
                 	} catch( java.io.FileNotFoundException f ) {
                 	} catch( java.io.IOException e ) {
@@ -107,18 +125,17 @@ public class ControlerCreationExercice implements ActionListener {
              }
 		}
 		else if(exo != null){
-			exo.setNomEx(pane.getFieldNom().getText());
-			exo.setTypeEx(pane.getCheckBoxSelected().getText());
-			exo.setNomImage(pane.getFieldModele().getText());
+			exo.setNomEx(pane.getFieldNom());
+			exo.setTypeEx(pane.getCheckBoxSelected());
+			exo.setNomImage(pane.getFieldModele());
 			pane.afterCreate(exo);
 		}
 		else{
-			Exercice exercice = new Exercice(pane.getFieldNom().getText(), pane.getCheckBoxSelected().getText(), pane.getFieldModele().getText());
+			Exercice exercice = new Exercice(pane.getFieldNom(), pane.getCheckBoxSelected(), pane.getFieldModele());
 			for (Classes cla : prof.getClasses()) {
 				cla.addExercice(exercice);
 			}
 			pane.afterCreate(exercice);
 		}
 	}
-
 }

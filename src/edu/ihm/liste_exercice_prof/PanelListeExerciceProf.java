@@ -23,15 +23,15 @@ import edu.ihm.renderer.ImageCellRenderer;
  * Panel de visualisation des Exercices pour un professeur
  * Affiche une liste des Exercices pour une classe donnée
  * Va utiliser un objet de type professeur
- * @author Groupe8
- * @version 30/03/2017
+ * @author Aurelien
+ *
  */
 public class PanelListeExerciceProf extends JPanel{
 	
-	private Classes cl;
-	private AcceuilProf acceuil;
-	private JTable tableExercice;
-	private TableListeExercice modeleTable;
+	private Classes cl; // La classe dont on souhaite les exercices
+	private AcceuilProf acceuil; // L'acceuil pour les redirections
+	private JTable tableExercice; // La table contenant les informations
+	private TableListeExercice modeleTable; // Le modele de notre table
 	
 	/**
 	 * Constructeur de notre classe
@@ -47,12 +47,10 @@ public class PanelListeExerciceProf extends JPanel{
 		boutonCreation.setBackground(Color.lightGray);
 		boutonCreation.setPreferredSize(new Dimension(2,40));
 		boutonCreation.addActionListener(new ActionListener(){
-
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				PanelListeExerciceProf.this.acceuil.goCreationExercice(PanelListeExerciceProf.this.cl);
 			}
-			
 		});
 		this.add(boutonCreation, BorderLayout.NORTH);
 		initComposant();

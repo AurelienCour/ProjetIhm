@@ -11,20 +11,26 @@ import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
 import edu.ihm.noyau_fonctionnel.Professeur;
 
-
+/**
+ * La classe permettant la gestion des intéraction avec le JTree
+ * @author Aurelien
+ *
+ */
 public class ControlerMenu implements TreeSelectionListener{
 	
-	private PanelMenu tree;
+	private PanelMenu tree; // Le panel contenant le JTree
 	
 	/**
 	 * Constructeur de la classe
 	 * @param tree Le model de JTree utiliser
-	 * @param model Model de notre application contenant les données
 	 */
 	public ControlerMenu(PanelMenu tree){
 		this.tree = tree;
 	}
 
+	/**
+	 * Gestion des intéractions avec le JTree
+	 */
 	@Override
 	public void valueChanged(TreeSelectionEvent arg0) {
 		DefaultMutableTreeNode node = (DefaultMutableTreeNode)

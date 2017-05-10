@@ -1,49 +1,49 @@
 package edu.ihm.creation_exercice;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
-import java.util.ArrayList;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import edu.ihm.acceuil.AcceuilProf;
 import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Exercice;
 
-/**
- * Panel contenant les outils necessaire à un professeur pour créer un exercice
- * permet de choisir :
- * 		- une image modèle
- * 		- Le nom de l'exercice
- * 		- Le type d'exercice
+/** Panel contenant les outils necessaire à un professeur pour créer un exercice permet de choisir :
+ * <ul>
+ * 	<li>une image modèle</li>
+ * 	<li>Le nom de l'exercice</li>
+ * 	<li>Le type d'exercice</li>
+ * </ul>
  * Va modifier un objet de type Exercice a l'aide d'un ControlerExercice
- * @author Groupe8
- * @version 30/03/2017
+ * @author Aurelien
+ *
  */
 public class PanelCreationExercice extends JPanel{
 
-	private AcceuilProf acceuil;
-	private Classes cl;
-	private JTextField nom;
-	private JTextField nomModel;
-	private JCheckBox check1;
-	private JCheckBox check2;
-	private JCheckBox check3;
+	private AcceuilProf acceuil; // L'acceuil utilisant le panel
+	private Classes cl; // La classe pour laquel l'exercice est créé
+	private JTextField nom; // Le field du champ nom
+	private JTextField nomModel; // Le field du nom de l'image
+	private JCheckBox check1; // La checkBox "basique"
+	private JCheckBox check2; // La checkBox "Couleur"
+	private JCheckBox check3; // La checkBox "Rapide"
 	
+	/**
+	 * Le constructeur de la class
+	 * @param acceuilProf L'acceuil ayant fait appel au panel
+	 * @param cl La classe ou l'exercice va être créé
+	 */
 	public PanelCreationExercice(AcceuilProf acceuilProf, Classes cl) {
 		this.acceuil = acceuilProf;
 		this.cl = cl;
-		//this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.setLayout(new GridBagLayout());
 		
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -59,14 +59,12 @@ public class PanelCreationExercice extends JPanel{
 		nom.setPreferredSize(new Dimension(150,25));
 		nomEx.add(nom);
 		
-		
 		JPanel nomMod = new JPanel();
 		nomMod.setLayout(new FlowLayout(FlowLayout.LEFT));
 		nomMod.add(new JLabel("Nom image :"));
 		nomModel = new JTextField();
 		nomModel.setPreferredSize(new Dimension(150,25));
 		nomMod.add(nomModel);
-		
 		
 	    ButtonGroup group = new ButtonGroup();
 	    check1 = new JCheckBox("Basique");
@@ -94,10 +92,14 @@ public class PanelCreationExercice extends JPanel{
 	    this.add(validate,gbc);
 	}
 	
+	/**
+	 * Le constructeur de la classe permettant de modifier un exercice
+	 * @param acceuilProf L'acceuil ayant fait apppel à notre panel
+	 * @param exo L'exercice à modifier
+	 */
 	public PanelCreationExercice(AcceuilProf acceuilProf, Exercice exo) {
 		this.acceuil = acceuilProf;
 		this.cl = cl;
-		//this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.setLayout(new GridBagLayout());
 		
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -160,27 +162,47 @@ public class PanelCreationExercice extends JPanel{
 	    this.add(validate,gbc);
 	}
 
-	public JTextField getFieldNom(){
-		return this.nom;
+	/**
+	 * Permet de récupérer le nom
+	 * @return Le nom entré dans la field
+	 */
+	public String getFieldNom(){
+		return this.nom.getText();
 	}
 	
-	public JTextField getFieldModele(){
-		return this.nomModel;
+	/**
+	 * Permet de récupérer le nom de l'image
+	 * @return Le nom de l'image
+	 */
+	public String getFieldModele(){
+		return this.nomModel.getText();
 	}
 	
-	public JCheckBox getCheckBoxSelected(){
+	/**
+	 * Permet de récupérer la valeur de la checkBox choisi
+	 * @return La valeur de la checkBox choisi
+	 */
+	public String getCheckBoxSelected(){
 		if(check1.isSelected())
-			return check1;
+			return check1.getText();
 		else if(check2.isSelected())
-			return check2;
+			return check2.getText();
 		else
-			return check3;
+			return check3.getText();
 	}
 	
+	/**
+	 * Permet de modifier le nom de l'image 
+	 * @param nomImage Le nom de l'image saisi
+	 */
 	public void setTextModel(String nomImage){
 		this.nomModel.setText(nomImage);
 	}
 	
+	/**
+	 * Permet d'effectuer les actions après la création de l'exercice
+	 * @param exo L'exercice créé
+	 */
 	public void afterCreate(Exercice exo){
 		acceuil.goFicheExercice(exo);
 		acceuil.reloadTree();

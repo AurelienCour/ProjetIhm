@@ -15,16 +15,19 @@ import javax.swing.SwingConstants;
 import edu.ihm.noyau_fonctionnel.Exercice;
 
 /**
- * Panel comportant le modèle de l'exercice afin de permettre sa visualisation
- * @author Groupe8
- * @version 30/03/2017
+ * Le panel comportant le modèle de l'exercice
+ * @author Aurelien
+ *
  */
 public class PanelModele extends JPanel{
 
+	/**
+	 * Le constructeur de la classe
+	 * @param exercice L'exercice dont on souhaite afficher le modèle
+	 */
 	public PanelModele(Exercice exercice) {
 		this.setLayout(new BorderLayout());
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
-		
 		JLabel titre = new JLabel("Modèle à réaliser");
 		titre.setHorizontalAlignment(SwingConstants.CENTER);
 		titre.setFont(new Font("Arial", Font.ITALIC, 15));

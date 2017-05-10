@@ -1,26 +1,24 @@
 package edu.ihm.fiche_exercice_eleve;
 
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
-
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import edu.ihm.noyau_fonctionnel.ExerciceRealise;
-import edu.ihm.noyau_fonctionnel.Tentative;
 
 /**
- * Panel permettant de visualiser le résultat d'un exercice évalué
- * Va utiliser un objet de type ExerciceRealise
- * @author Groupe8
- * @version 30/03/2017
+ * Le panel comportant l'affichage du résultat de l'exercice
+ * @author Aurelien
+ *
  */
 public class PanelResultat extends JPanel{
 
+	/**
+	 * Le constructeur de notre classe
+	 * @param exerciceR L'exercice dont on souhaite récupérer le résultat
+	 */
 	public PanelResultat(ExerciceRealise exerciceR) {
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		JLabel resultat = new JLabel("<html><h1>&nbsp;&nbsp;Résultat :</h1></br><div>"
@@ -51,5 +49,4 @@ public class PanelResultat extends JPanel{
 			this.add(info);
 		}
 	}
-
 }

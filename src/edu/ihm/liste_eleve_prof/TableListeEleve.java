@@ -1,27 +1,26 @@
 package edu.ihm.liste_eleve_prof;
 
-import java.awt.Image;
-import java.net.URL;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
 import javax.swing.table.AbstractTableModel;
-
 import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Professeur;
 
+/**
+ * La classe correspondant à la liste des élèves
+ * @author Aurelien
+ *
+ */
 public class TableListeEleve extends AbstractTableModel {
 
-	private ArrayList<Eleve> donnees;
-	private Professeur prof;
-	private Classes cl;
-	private final String[] entetes = {"Icone", "Nom", "Prenom"};
-
+	private ArrayList<Eleve> donnees; // La liste des élèves
+	private Professeur prof; // Le professeur voulant la liste de ses élèves
+	private Classes cl; // La classe contenant les élèves
+	private final String[] entetes = {"Icone", "Nom", "Prenom"}; // La liste des en-tête de la table
+	
 	/**
-	 * Le constructeur de notre classe
-	 * @param model Le model contenant nos données
-	 * @param fenetreInfo 
+	 * Le constructeur de la classe
+	 * @param prof Le prof dont on souhaite les élèves
 	 */
 	public TableListeEleve(Professeur prof) {
 		super();
@@ -30,6 +29,10 @@ public class TableListeEleve extends AbstractTableModel {
 		initDonnees();
 	}
 
+	/**
+	 * Le constructeur de la classe pour avoir les élèves d'une classe donnée
+	 * @param cl La classe dont on souhaite les élèves
+	 */
 	public TableListeEleve(Classes cl) {
 		super();
 		this.cl = cl;
@@ -39,7 +42,6 @@ public class TableListeEleve extends AbstractTableModel {
 
 	/**
 	 * Initialise les données de la table si une classe précise est choisis
-	 * @param cl La classe a importer au sein de la table
 	 */
 	private void initDonneesClasse() {
 		if(!donnees.isEmpty())
@@ -52,7 +54,6 @@ public class TableListeEleve extends AbstractTableModel {
 
 	/**
 	 * Initialise les données de la table
-	 * @param cl La classe a importer au sein de la table
 	 */
 	public void initDonnees(){
 		if(!donnees.isEmpty())
@@ -72,18 +73,30 @@ public class TableListeEleve extends AbstractTableModel {
 		fireTableDataChanged();
 	}
 
+	/**
+	 * Permet de récupérer le nombre de ligne de la table
+	 */
 	public int getRowCount() {
 		return donnees.size();
 	}
 
+	/**
+	 * Permet de récupérer le nombre de colonne
+	 */
 	public int getColumnCount() {
 		return entetes.length;
 	}
 
+	/**
+	 * Permet de récupérer le nom d'une colonne
+	 */
 	public String getColumnName(int columnIndex) {
 		return entetes[columnIndex];
 	}
 
+	/**
+	 * Permet de récupérer la valeur d'une case donnée
+	 */
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch(columnIndex){
 		case 0:
@@ -97,15 +110,24 @@ public class TableListeEleve extends AbstractTableModel {
 		}
 	}
 
+	/**
+	 * Permet de savoir si une cellule est modifiable
+	 */
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		return false;
 	}
 
+	/**
+	 * Permet de modifier la valeur d'une cellule
+	 */
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 	}
 
+	/**
+	 * Permet de connaitre la classe d'objet d'une colonne donné
+	 */
 	@Override
 	public Class getColumnClass(int columnIndex){
 		return getValueAt(0, columnIndex).getClass();
@@ -113,7 +135,7 @@ public class TableListeEleve extends AbstractTableModel {
 
 	/**
 	 * Permet d'ajouter un élève à notre table
-	 * @param eleve
+	 * @param eleve l'élève à ajouter
 	 */
 	public void addEleve(Eleve eleve) {
 		donnees.add(eleve);
@@ -122,8 +144,8 @@ public class TableListeEleve extends AbstractTableModel {
 
 	/**
 	 * Permet de récupérer l'objet d'une ligne
-	 * @param rowIndex
-	 * @return
+	 * @param rowIndex La ligne dont on souhaite l'objet
+	 * @return L'élève de la ligne donnée
 	 */
 	public Eleve getEleveRow(int rowIndex){
 		return donnees.get(rowIndex);
@@ -131,11 +153,10 @@ public class TableListeEleve extends AbstractTableModel {
 
 	/**
 	 * Supprime l'eleve de la table
-	 * @param rowIndex
+	 * @param rowIndex Le numéro de la ligne
 	 */
 	public void removeEleve(int rowIndex) {
 		donnees.remove(rowIndex);
 		fireTableRowsDeleted(rowIndex, rowIndex);
 	}
-
 }

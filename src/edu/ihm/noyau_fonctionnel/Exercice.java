@@ -9,42 +9,22 @@ import javax.swing.JLabel;
 import edu.ihm.Main.Database;
 
 /**
- * Cette classe représente les exercices que doivent effectuer les élèves.
- * Les exercices sont regroupés par noms et types. Ils sont listés dans la classe Classe.
- * @author Erwan MAZUREAU
- * @version 03/04/2017
+ * Classe représentant un Exerice
+ * @author Aurelien
+ *
  */
 public class Exercice {
 	
-	/**
-	 * Nom de l’exercice que les élèves doivent réaliser.
-	 */
-	private String nomExercice;  
+	private String nomExercice;  // Nom de l’exercice que les élèves doivent réaliser.
+	private String typeExercice; // Le type d'exercice (basique, couleur, rapide)
+	private URL modele; // Le chemin absolu vers le modèle de l'exercice
+	private String nomImage; // Le nom de l'image
 	
 	/**
-	 * cela représente le type de l’exercice. Le type est de trois types différents : une tortue générale, une tortue rapide et une rapide traçant en plusieurs couleurs.
-	 */
-	private String typeExercice;
-	
-	/**
-	 * le modèle est une image. Cette image représente l’exercice que doit réaliser les enfants.
-	 */
-	private URL modele;
-	
-	/**
-	 * le modèle est une image. Cette image représente l’exercice que doit réaliser les enfants.
-	 */
-	private String nomImage;
-	
-	/**
-	 * Constructeur de la classe Exercice
-	 * prend en paramètres 2 attributs de type String,
-	 * si null alors on initialise avec les valeurs "Exercice 0" pour nomExercice
-	 * et "Tortue normale" pour typeExercice,
-	 * et un attributs de type URL, possiblement null.
-	 * @param nomExercice : le nom de l'Exercice
-	 * @param TypeExercice : le type d'exercice
-	 * @param modele : le modele de l'exercice
+	 * Le constructeur de la classe
+	 * @param nomExercice Le nom de l'exercice
+	 * @param typeExercice Le type d'exercice
+	 * @param nomImage Le nom de l'image
 	 */
 	public Exercice(String nomExercice, String typeExercice, String nomImage){
 		this.nomImage = nomImage;
@@ -65,6 +45,10 @@ public class Exercice {
 		}
 	}
 	
+	/**
+	 * Permet de récupérer le nom de l'image
+	 * @return Le nom de l'image
+	 */
 	public String getNomImage(){
 		return this.nomImage;
 	}
@@ -79,7 +63,7 @@ public class Exercice {
 	
 	/**
 	 * Permet de modifier le nom de l’exercice
-	 * @param nom Nouveau nom de l'exercice
+	 * @param nomEx Nouveau nom de l'exercice
 	 */
 	public void setNomEx(String nomEx){
 		this.nomExercice = nomEx;
@@ -87,7 +71,7 @@ public class Exercice {
 	
 	/**
 	 * Permet de modifier le nom de l’image
-	 * @param nom Nouveau nom de l'exercice
+	 * @param nomImage Nouveau nom de l'exercice
 	 */
 	public void setNomImage(String nomImage){
 		this.nomImage = nomImage;
@@ -116,8 +100,8 @@ public class Exercice {
 	}
 	
 	/**
-	 *  Permet de modifier le type de l’exercice
-	 * @param type Type de la tortue (Rapide, couleur,normal)
+	 * Permet de modifier le type de l’exercice
+	 * @param typeEx Type de la tortue (Rapide, couleur, Basique)
 	 */
 	public void setTypeEx(String typeEx){
 		this.typeExercice = typeEx;
@@ -132,7 +116,7 @@ public class Exercice {
 	
 	/**
 	 * Permet de modifier l’image de l’exercice.
-	 * @param modele URL du nouveau modele de l'exercice
+	 * @param newUrl URL du nouveau modele de l'exercice
 	 */
 	public void setModele(URL newUrl){
 		this.modele = Exercice.class.getResource(newUrl.toString());

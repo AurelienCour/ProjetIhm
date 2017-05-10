@@ -8,10 +8,15 @@ import javax.swing.event.ListSelectionListener;
 import edu.ihm.acceuil.AcceuilProf;
 import edu.ihm.noyau_fonctionnel.Exercice;
 
+/**
+ * Classe permettant de gérer les intéraction avec la liste des exercices
+ * @author Aurelien
+ *
+ */
 public class ControlerListeExerciceProf implements ListSelectionListener {
 	
-	private JTable tableExercice;
-	private AcceuilProf acceuil;
+	private JTable tableExercice; // La table contenant la liste des exercices
+	private AcceuilProf acceuil; // L'acceuil pour les redirections
 
 	/**
 	 * Constrcuteur de notre classe permettant de controler les intéractions avec le tableau
@@ -23,6 +28,9 @@ public class ControlerListeExerciceProf implements ListSelectionListener {
 		this.acceuil = acceuil;
 	}
 
+	/**
+	 * Fonction permettant la gestion des intéractions
+	 */
 	@Override
 	public void valueChanged(ListSelectionEvent act) {
 		TableListeExercice modelTable = (TableListeExercice) tableExercice.getModel();

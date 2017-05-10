@@ -1,25 +1,25 @@
 package edu.ihm.liste_exercice_eleve;
 
 import java.util.ArrayList;
-
 import javax.swing.table.AbstractTableModel;
-
-import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
 import edu.ihm.noyau_fonctionnel.ExerciceRealise;
-import edu.ihm.noyau_fonctionnel.Professeur;
-import edu.ihm.noyau_fonctionnel.Utilisateur;
 
+/**
+ * Class permetant la gestion de la liste des éxercices
+ * @author Aurelien
+ *
+ */
 public class TableListeExercice extends AbstractTableModel {
 
-	private ArrayList<Exercice> donnees;
-	private Eleve el;
-	private final String[] entetes = {"Nom", "Modele", "Statut"};
+	private ArrayList<Exercice> donnees; // La liste des exercices 
+	private Eleve el; // L'eleve qui souhaite la liste des exercices
+	private final String[] entetes = {"Nom", "Modele", "Statut"}; // L'en-tête de la table
 
 	/**
 	 * Le constructeur de notre classe
-	 * @param cl l'Utilisateur de l'application
+	 * @param el l'Utilisateur de l'application
 	 */
 	public TableListeExercice(Eleve el) {
 		super();
@@ -30,7 +30,6 @@ public class TableListeExercice extends AbstractTableModel {
 
 	/**
 	 * Initialise les données de la table
-	 * @param cl La classe a importer au sein de la table
 	 */
 	public void initDonnees(){
 		if(!donnees.isEmpty())
@@ -46,6 +45,33 @@ public class TableListeExercice extends AbstractTableModel {
 	 */
 	public void reload(){
 		fireTableDataChanged();
+	}
+	
+	/**
+	 * Permet d'ajouter un exercice à notre table
+	 * @param exo L'exercice à ajouter
+	 */
+	public void addExercice(Exercice exo) {
+		donnees.add(exo);
+		fireTableRowsInserted(donnees.size() -1, donnees.size() -1);
+	}
+
+	/**
+	 * Permet de récupérer l'objet d'une ligne
+	 * @param rowIndex Le numéro de la ligne
+	 * @return L'exercice à la ligne données
+	 */
+	public Exercice getExerciceRow(int rowIndex){
+		return donnees.get(rowIndex);
+	}
+
+	/**
+	 * Supprime l'eleve de la table
+	 * @param rowIndex Le numéro de la ligne
+	 */
+	public void removeExercice(int rowIndex) {
+		donnees.remove(rowIndex);
+		fireTableRowsDeleted(rowIndex, rowIndex);
 	}
 
 	public int getRowCount() {
@@ -93,32 +119,4 @@ public class TableListeExercice extends AbstractTableModel {
 	public Class getColumnClass(int columnIndex){
 		return getValueAt(0, columnIndex).getClass();
 	}
-
-	/**
-	 * Permet d'ajouter un élève à notre table
-	 * @param eleve
-	 */
-	public void addExercice(Exercice exo) {
-		donnees.add(exo);
-		fireTableRowsInserted(donnees.size() -1, donnees.size() -1);
-	}
-
-	/**
-	 * Permet de récupérer l'objet d'une ligne
-	 * @param rowIndex
-	 * @return
-	 */
-	public Exercice getExerciceRow(int rowIndex){
-		return donnees.get(rowIndex);
-	}
-
-	/**
-	 * Supprime l'eleve de la table
-	 * @param rowIndex
-	 */
-	public void removeExercice(int rowIndex) {
-		donnees.remove(rowIndex);
-		fireTableRowsDeleted(rowIndex, rowIndex);
-	}
-
 }

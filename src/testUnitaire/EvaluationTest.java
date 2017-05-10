@@ -22,12 +22,18 @@ public class EvaluationTest {
     public void tearDown(){
     }
 	
+	/**
+	 * Permet de tester la modification de la note
+	 */
 	@Test
 	public void testSetNote() {
 		Eval.setNote("newNote");
 		assertEquals("newNote", Eval.getNote());
 	}
 	
+	/**
+	 * Permet de tester la modification du commentaire
+	 */
 	@Test
 	public void testSetCommentaire() {
 		Eval.setCommentaire("newCommentaire");

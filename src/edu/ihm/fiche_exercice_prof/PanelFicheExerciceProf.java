@@ -7,17 +7,13 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-
 import edu.ihm.acceuil.AcceuilProf;
-import edu.ihm.fiche_exercice_eleve.ControlerPanelFicheExerciceEleve;
 import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
@@ -25,17 +21,19 @@ import edu.ihm.noyau_fonctionnel.ExerciceRealise;
 import edu.ihm.noyau_fonctionnel.Professeur;
 
 /**
- * Panel permettant de visualiser la fiche d'un exercice pour un professeur
- * Va utiliser un objet de type Exercice
- * @author Groupe8
- * @version 30/03/2017
+ * La classe correspondant au panel d'affichage des informations d'un exercice pour un prof
+ * @author Aurelien
+ *
  */
 public class PanelFicheExerciceProf extends JPanel{
 	
-	private Exercice exercice;
-	
+	/**
+	 * Le constructeur de la classe
+	 * @param exercice L'exercice dont on souhaite les informations
+	 * @param user L'utilisateur de l'application
+	 * @param acceuilProf L'acceuil pour la redirection
+	 */
 	public PanelFicheExerciceProf(Exercice exercice, Professeur user, AcceuilProf acceuilProf){
-		this.exercice = exercice;
 		this.setLayout(new BorderLayout());
 		JPanel corp = new JPanel();
 		corp.setLayout(new BoxLayout(corp, BoxLayout.Y_AXIS));

@@ -9,14 +9,14 @@ import edu.ihm.acceuil.AcceuilProf;
 import edu.ihm.noyau_fonctionnel.Eleve;
 
 /**
- * Class permettant la gestion des intéractions entre l'utilisateur et lla liste des élèves
+ * Class permettant la gestion des intéractions entre l'utilisateur et la liste des élèves
  * @author Aurelien
  *
  */
 public class ControlerListeEleve implements ListSelectionListener{
 	
-	private JTable tableEleve;
-	private AcceuilProf acceuil;
+	private JTable tableEleve; // La table contenant la liste des élèves
+	private AcceuilProf acceuil; // L'acceuil pour la redirection
 
 	/**
 	 * Le constructeur de notre classe
@@ -28,6 +28,9 @@ public class ControlerListeEleve implements ListSelectionListener{
 		this.acceuil = acceuil;
 	}
 
+	/**
+	 * La fonction permettant la gestion des intéractions avec les boutons
+	 */
 	@Override
 	public void valueChanged(ListSelectionEvent act) {
 		TableListeEleve modelTable = (TableListeEleve) tableEleve.getModel();
