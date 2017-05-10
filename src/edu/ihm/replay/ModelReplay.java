@@ -81,8 +81,12 @@ public class ModelReplay {
 	 * Fonction permettant de reinitialisé la tortue et remettre les actions à 0
 	 */
 	public void reset(){
-		myTurtle.reset();
 		listeActionTemp = (ArrayList<Action>) tentative.getListeAction().clone();
+		myTurtle.reset();
+		if(myTurtle instanceof TortueCouleur)
+			((TortueCouleur) myTurtle).setCouleur("black");
+		else if(myTurtle instanceof TortueRapide)
+			((TortueRapide) myTurtle).setVitesse(1);
 	}
 	
 	/**
