@@ -6,6 +6,7 @@ import edu.ihm.noyau_fonctionnel.Classes;
 import edu.ihm.noyau_fonctionnel.Eleve;
 import edu.ihm.noyau_fonctionnel.Exercice;
 import edu.ihm.noyau_fonctionnel.ExerciceRealise;
+import edu.ihm.noyau_fonctionnel.Professeur;
 
 /**
  * Classe permettant de gérer l'affichage de la table
@@ -15,16 +16,18 @@ import edu.ihm.noyau_fonctionnel.ExerciceRealise;
 public class TableListeExercice extends AbstractTableModel {
 
 	private ArrayList<Exercice> donnees; // La liste des exercices
-	private Classes cl; // La classe dont on souhaite 
+	private Classes cl; // La classe dont on souhaite les exercices
+	private Professeur pr;
 	private final String[] entetes = {"Nom", "Modele", "Nombre élève"}; // Les en-tête de la table
 
 	/**
 	 * Le constructeur de notre classe
 	 * @param cl l'Utilisateur de l'application
 	 */
-	public TableListeExercice(Classes cl) {
+	public TableListeExercice(Classes cl, Professeur pr) {
 		super();
 		this.cl = cl;
+		this.pr = pr;
 		this.donnees = new ArrayList<Exercice>();
 		initDonnees();
 	}
@@ -97,14 +100,16 @@ public class TableListeExercice extends AbstractTableModel {
 			int nombEleveTot = 0;
 			int nombEleveFait = 0;
 			int nombAFaire = 0;
-			if(cl.containExercice(donnees.get(rowIndex))){
-				nombEleveTot += cl.getNombreEleve();
-				for(Eleve el : cl.getEleves()){
-					for(ExerciceRealise exoR : el.getExerciceRealise()){
-						if(exoR.getExerciceFait().equals(donnees.get(rowIndex))){
-							nombEleveFait += 1;
-							if(!exoR.isCorrect())
-								nombAFaire += 1;
+			for (Classes classes : pr.getClasses()) {
+				if(classes.containExercice(donnees.get(rowIndex))){
+					nombEleveTot += classes.getNombreEleve();
+					for(Eleve el : classes.getEleves()){
+						for(ExerciceRealise exoR : el.getExerciceRealise()){
+							if(exoR.getExerciceFait().equals(donnees.get(rowIndex))){
+								nombEleveFait += 1;
+								if(!exoR.isCorrect())
+									nombAFaire += 1;
+							}
 						}
 					}
 				}

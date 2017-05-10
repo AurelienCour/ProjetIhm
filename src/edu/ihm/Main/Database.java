@@ -225,15 +225,16 @@ public class Database
 			Statement statement = connection.createStatement();
 			statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-			statement.executeUpdate("INSERT INTO PROFESSEUR(IDENTIFIANT,MOTDEPASSE,NOM,PRENOM) values('Girard','pg','Girard','Patrick'),('Genniet','ag','Genniet','Annie')");
+			statement.executeUpdate("INSERT INTO PROFESSEUR(IDENTIFIANT,MOTDEPASSE,NOM,PRENOM) values('Girard','pg','Girard','Patrick')");
 			
-			statement.executeUpdate("INSERT INTO CLASSE (IDPROFESSEUR,NOMCLASSE) VALUES (1,'Master1'),(2,'Licence3')");
+			statement.executeUpdate("INSERT INTO CLASSE (IDPROFESSEUR,NOMCLASSE) VALUES (1,'Master1'),(1,'Licence3')");
 			
 			statement.executeUpdate("INSERT INTO ELEVE (IDCLASSE,IDENTIFIANT,MOTDEPASSE,NOM,PRENOM,PHOTO) values (1,'aurelien','Acourtillat','Courtillat','Aurelien','Aurelien.jpg'),(1,'mathias','Mantunes','Antunes','Mathias','Mathias.jpg'),(1,'audrey','Amartin','Martin','Audrey','Audrey.jpg'),(1,'marin','Mconrady','Conrady','Marin','Marin.jpg')");
-		
+			statement.executeUpdate("INSERT INTO ELEVE (IDCLASSE,IDENTIFIANT,MOTDEPASSE,NOM,PRENOM,PHOTO) values (2,'alexandre','Acailliaud','Cailliaud','Alexandre','Alexandre.jpg'),(2,'claire','Csousa','Sousa Da Silva','Claire','Claire.jpg'),(2,'severin','Shomelet','Lhomelet','Severin','Severin.jpg'),(2,'berengere','Bpera','Pera','Berengere','Berengere.jpg')");
+			
 			statement.executeUpdate("INSERT INTO EXERCICE (NOMEXERCICE,TYPEEXERCICE,MODELE) values ('Exercice 1','Basique','IE.JPG'),('Exercice 2','Couleur','IE2.JPG'),('Exercice 3','Rapide','IE3.JPG'),('Exercice 4','Couleur','IE4.JPG'),('Exercice 5','Basique','IE5.JPG')");
 			
-			statement.executeUpdate("INSERT INTO AVOIR (IDCLASSE,IDEXERCICE) values (1,1),(1,2),(1,3),(1,4),(1,5)");
+			statement.executeUpdate("INSERT INTO AVOIR (IDCLASSE,IDEXERCICE) values (1,1),(1,2),(1,3),(1,4),(1,5),(2,1),(2,2),(2,3),(2,4),(2,5)");
 			
 		}
 		catch(SQLException e){  System.err.println(e.getMessage()); }       

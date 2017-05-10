@@ -17,6 +17,7 @@ import javax.swing.ListSelectionModel;
 
 import edu.ihm.acceuil.AcceuilProf;
 import edu.ihm.noyau_fonctionnel.Classes;
+import edu.ihm.noyau_fonctionnel.Professeur;
 import edu.ihm.renderer.ImageCellRenderer;
 
 /**
@@ -60,7 +61,7 @@ public class PanelListeExerciceProf extends JPanel{
 	 * Permet d'initialiser les composants de notre JPanel
 	 */
 	public void initComposant(){
-		modeleTable = new TableListeExercice(cl);
+		modeleTable = new TableListeExercice(cl, (Professeur) this.acceuil.getUser());
 		initJTable();
 		this.add(new JScrollPane(tableExercice), BorderLayout.CENTER);
 	}
